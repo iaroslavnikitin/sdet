@@ -67,3 +67,17 @@ console.log(fillArray(0));
 console.log(fillArray(1));
 console.log(fillArray(2));
 console.log(fillArray(5));
+
+// #7. Напишите функцию sum, которая принимает неотрицательное число n и возвращает сумму чисел от 1 до n:
+// 1 + 2 + 3 + ... + n.
+function sum(n){
+  let arr = [];
+    if (n > 0) for (let i = 1; i <= n; i++) {
+      arr.push(i);
+    }
+  return arr.reduce((part_sum, a) => part_sum + a, 0);
+  }
+console.log(sum(0));
+console.log(sum(1));
+console.log(sum(2));
+console.log(sum(5));
