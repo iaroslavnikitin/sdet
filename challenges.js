@@ -81,3 +81,14 @@ console.log(sum(0));
 console.log(sum(1));
 console.log(sum(2));
 console.log(sum(5));
+
+// #8. Have a function fizzBuzz(num) which take a number as parameter. Function should return "Fizz" if number dividable by 3, "Buzz" by 5 or current number if not.
+function fizzBuzz(num) {
+  for (let num = 0; num <= 20; num++) {
+  if (num % 5 === 0 && num %3 === 0) console.log('fizzbuzz');
+  else if (num % 3 === 0) console.log('fizz');
+  else if (num % 5 === 0) console.log('buzz');
+  else console.log(num); 
+  }
+}
+console.log(fizzBuzz(20));
