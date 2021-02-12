@@ -92,3 +92,27 @@ function fizzBuzz(num) {
   }
 }
 console.log(fizzBuzz(20));
+
+// #9. Описание числа. Напишите функцию describesNumber, которая принимает аргумент number и возвращает описание числа: "Even positive number", "Even negative number", "Odd positive number", "Odd negative number", "Zero".
+function describesNumber(number){
+  if (number < 0) return 'Zero'
+  if (number % 2 === 0 && number > 0) return 'Even positive number';
+  if (number % 1 === 0 && number > 0) return 'Odd positive number';
+  if (number % 2 === 0 && number < 0) return 'Even negative number';
+  if (number % 1 === 0 && number < 0) return 'Odd negative number';
+}
+console.log(describesNumber(48)); // 'Even positive number';
+console.log(describesNumber(-12)); // 'Even negative number';
+console.log(describesNumber(51)); // 'Odd positive number';
+console.log(describesNumber(-5)); // 'Odd negative number';
+console.log(describesNumber(0)); // 'Zero';
+
+// #10. Сумма углов n-угольника. Мы знаем из школьного курса, что сумма углов треугольника равна 180 градусам, сумма углов квадрата или прямоугольника равна 360 градусам. Сумма углов n-угольника равна 180 * (n − 2).
+// Напишите функцию anglesOfPolygon, которая принимает аргумент n (число углов) и возвращает сумму углов n-угольника.
+function anglesOfPolygon(n){
+  return 180 * (n-2);
+}
+console.log(anglesOfPolygon(5)); // функция anglesOfPolygon(5) должна возвратить 540;
+console.log(anglesOfPolygon(4)); // функция anglesOfPolygon(4) должна возвратить 360;
+console.log(anglesOfPolygon(3)); // функция anglesOfPolygon(3) должна возвратить 180;
+console.log(anglesOfPolygon(2)); // функция anglesOfPolygon(2) должна возвратить 0.
