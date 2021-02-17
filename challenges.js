@@ -251,3 +251,72 @@ console.log(factorial(1)); // должна возвратить 1;
 console.log(factorial(2)); // должна возвратить 2;
 console.log(factorial(4)); // должна возвратить 24;
 console.log(factorial(5)); // должна возвратить 120;
+
+// #17. https://www.codewars.com/kata/5b7bd90ef643c4df7400015d/train/javascript
+// Create palindrome, Consider the string "adfa" and the following rules:
+// a) each character MUST be changed either to the one before or the one after in alphabet. 
+// b) "a" can only be changed to "b" and "z" to "y". 
+// From our string, we get:
+// "adfa" -> ["begb","beeb","bcgb","bceb"]
+// Here is another example: 
+// "bd" -> ["ae","ac","ce","cc"]
+// --We see that in each example, one of the outcomes is a palindrome. That is, "beeb" and "cc".
+// You will be given a lowercase string and your task is to return True if at least one of the outcomes is a palindrome or False otherwise.
+function solve(s) {
+  const alphabet = 'abcdefghijklmnopqrstuvwxyz';
+  for (let i = 0; i < s.length / 2; i++) {
+    let indexOfCurrentChar = alphabet.indexOf(s[i]);
+    let indexOfSimmetricalChar = alphabet.indexOf(s[s.length - i - 1]);
+    let currentCharBefore = '1';
+    let currentCharAfter = '';
+    let simmetricalCharBefore = '';
+    let simmetricalCharAfter = '2';
+    if (indexOfCurrentChar == 0) {
+      currentCharBefore = alphabet[indexOfCurrentChar - 1];
+      currentCharAfter = alphabet[indexOfCurrentChar + 1];
+    } else {
+      currentCharBefore = alphabet[indexOfCurrentChar - 1];
+      currentCharAfter = alphabet[indexOfCurrentChar + 1];
+    }
+    if (indexOfSimmetricalChar === alphabet.length - 1) {
+      simmetricalCharBefore = alphabet[indexOfSimmetricalChar - 1];
+    } else {
+      simmetricalCharBefore = alphabet[indexOfSimmetricalChar - 1];
+      simmetricalCharAfter = alphabet[indexOfSimmetricalChar + 1];
+    }
+    //console.log(currentCharBefore, currentCharAfter,simmetricalCharBefore ,simmetricalCharAfter)
+    if (currentCharBefore !== simmetricalCharBefore &&
+      currentCharBefore !== simmetricalCharAfter &&
+      currentCharAfter !== simmetricalCharBefore &&
+      currentCharAfter !== simmetricalCharAfter
+    ) return false;
+  }
+  return true;
+}
+
+// #18. Напишите функцию numberOfDigits, которая принимает аргумент number и возвращает количество цифр в этом числе.
+// Идея решения: чтобы найти количество цифр числа, мы будем отбрасывать по одной цифре с конца, до тех пор, пока число не станет равным нулю.
+// Количество таких действий равно количеству цифр в числе.
+function numberOfDigits(number){
+  return number.toString().split('').length;
+}
+console.log(numberOfDigits(1987874)); // должна возвратить 7;
+console.log(numberOfDigits(93)); // должна возвратить 2;
+console.log(numberOfDigits(346821)); // должна возвратить 6;
+console.log(numberOfDigits(5)); // должна возвратить 1;
+
+// #19. Напишите функцию numberOfDigits, которая принимает аргумент number и возвращает количество цифр в этом числе.
+// Идея решения: чтобы найти количество цифр числа, мы будем отбрасывать по одной цифре с конца, до тех пор, пока число не станет равным нулю.
+// Количество таких действий равно количеству цифр в числе.
+function numberOfDigits(number) {
+  let arr = number.toString().split('');
+  let count = 0;
+  for (let i = 0; i < arr.length; i++) {
+    if (arr !== 0) count++;
+  }
+  return count;
+}
+console.log(numberOfDigits(1987874)); // должна возвратить 7;
+console.log(numberOfDigits(93)); // должна возвратить 2;
+console.log(numberOfDigits(346821)); // должна возвратить 6;
+console.log(numberOfDigits(5)); // должна возвратить 1;
