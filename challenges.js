@@ -308,6 +308,15 @@ console.log(numberOfDigits(5)); // должна возвратить 1;
 // #19. Напишите функцию numberOfDigits, которая принимает аргумент number и возвращает количество цифр в этом числе.
 // Идея решения: чтобы найти количество цифр числа, мы будем отбрасывать по одной цифре с конца, до тех пор, пока число не станет равным нулю.
 // Количество таких действий равно количеству цифр в числе.
+let numberOfDigits = number => number.toString().split('').length;
+console.log(numberOfDigits(1987874)); // должна возвратить 7;
+console.log(numberOfDigits(93)); // должна возвратить 2;
+console.log(numberOfDigits(346821)); // должна возвратить 6;
+console.log(numberOfDigits(5)); // должна возвратить 1;
+
+// #20. Напишите функцию numberOfDigits, которая принимает аргумент number и возвращает количество цифр в этом числе.
+// Идея решения: чтобы найти количество цифр числа, мы будем отбрасывать по одной цифре с конца, до тех пор, пока число не станет равным нулю.
+// Количество таких действий равно количеству цифр в числе.
 function numberOfDigits(number) {
   let arr = number.toString().split('');
   let count = 0;
@@ -320,3 +329,19 @@ console.log(numberOfDigits(1987874)); // должна возвратить 7;
 console.log(numberOfDigits(93)); // должна возвратить 2;
 console.log(numberOfDigits(346821)); // должна возвратить 6;
 console.log(numberOfDigits(5)); // должна возвратить 1;
+
+// #21. Заполнить массив четными числами от 2 до n.
+// Напишите функцию fillArray, которая принимает аргумент n и возвращает массив четных чисел в диапазоне от 2 до n
+function fillArray(n) {
+  let arr = [];
+    if (n > 0) for (let i = 2; i <= n; i++) {
+      if (i % 2 === 0) arr.push(i);
+    }
+    return arr;
+}
+console.log(fillArray(0)); // должна возвратить [];
+console.log(fillArray(1)); // должна возвратить [];
+console.log(fillArray(2)); // должна возвратить [2];
+console.log(fillArray(3)); // должна возвратить [2];
+console.log(fillArray(9)); // должна возвратить [2, 4, 6, 8];
+console.log(fillArray(12)); // должна возвратить [2, 4, 6, 8, 10, 12];
