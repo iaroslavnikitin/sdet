@@ -421,3 +421,31 @@ console.log(indexOfFirstNegative([0, 8, -6, 0, -9])); // должна возвр
 console.log(indexOfFirstNegative([-2, 4])); // должна возвратить 0 (т.к. arr[0] < 0);
 console.log(indexOfFirstNegative([2, 7, 8])); // должна возвратить "no negative elements" (нет отрицательных элементов);
 console.log(indexOfFirstNegative([])); // должна возвратить "no negative elements";
+
+// #27. Сумма элементов массива
+// Напишите функцию sumOfArray, которая принимает массив arr как аргумент и возвращает сумму элементов этого массива.
+function sumOfArray(arr) {
+  let count = 0;
+  if (arr.length === 0) return 0;
+  for (let i = 0; i < arr.length; i++) {
+    count += arr[i];
+  }
+  return count;
+}
+console.log(sumOfArray([1, 2, 3, 4])); // должна возвратить 10;
+console.log(sumOfArray([])); // должна возвратить 0;
+
+// #28. Среднее арифметическое элементов массива
+// Напишите функцию average, которая принимает массив arr как аргумент и возвращает среднее арифметическое элементов этого массива.
+// Чтобы найти среднее арифметическое элементов массива, надо сумму элементов массива разделить на длину массива.
+// Если массив пустой (т.е его длина равна 0), функция должна вернуть 0.
+function average(arr) {
+  let count = 0;
+  if (arr.length === 0) return 0;
+  for (let i = 0; i < arr.length; i++) {
+    count = (count + arr[i]);
+  }
+  return count / 4;
+}
+console.log(average([1, 2, 3, 4])); // должна возвратить 2.5, т.к. (1 + 2 + 3 + 4) / 4 = 2.5;
+console.log(average([])); // должна возвратить 0;
