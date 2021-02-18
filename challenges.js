@@ -412,11 +412,10 @@ console.log(productOfArray([])); // должна возвратить 0;
 // Напишите функцию indexOfFirstNegative, которая принимает массив arr как аргумент и возвращает индекс первого отрицательного элемента массива.
 // Если отрицательных элементов нет или массив пустой, вернуть строку "no negative elements".
 function indexOfFirstNegative(arr) {
-  for (let i = 0, length = arr.length; i < length; i++) {
-    if (arr[i] < 0)
-      return i;
-  }
-  return 'no negative elements';
+  let length = arr.length;
+  for (let i = 0; i < length; i++) {
+    if(arr[i] < 0) return i;
+    } return 'no negative elements';
 }
 console.log(indexOfFirstNegative([0, 8, -6, 0, -9])); // должна возвратить 2 (т.к. arr[2] < 0 - первый отрицательный элемент);
 console.log(indexOfFirstNegative([-2, 4])); // должна возвратить 0 (т.к. arr[0] < 0);
