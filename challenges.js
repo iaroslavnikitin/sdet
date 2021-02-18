@@ -345,3 +345,47 @@ console.log(fillArray(2)); // должна возвратить [2];
 console.log(fillArray(3)); // должна возвратить [2];
 console.log(fillArray(9)); // должна возвратить [2, 4, 6, 8];
 console.log(fillArray(12)); // должна возвратить [2, 4, 6, 8, 10, 12];
+
+// #22. Количество нечетных элементов массива
+// Напишите функцию countOfOdd, которая принимает массив arr как аргумент и возвращает количество нечетных элементов этого массива.
+// Нечетными элементами являяются те числа, у которых остаток от деления на 2 не равен нулю.
+function countOfOdd(arr) {
+  let count = 0;
+  for (let i = 0; i < arr.length; i++) {
+    if (arr[i] % 2 !== 0) count++;
+  }
+  return count;
+}
+console.log(countOfOdd([1, 20, -5, 4, 19])); // должна возвратить 3 (3 нечетных элемента: 1, -5, 19);
+console.log(countOfOdd([-2, 4])); // должна возвратить 0;
+console.log(countOfOdd([7, 9, 11])); // должна возвратить 3;
+console.log(countOfOdd([])); // должна возвратить 0;
+
+// #23. Количество отрицательных элементов массива
+// Напишите функцию countOfNegative, которая принимает массив arr как аргумент и возвращает количество отрицательных элементов этого массива
+function countOfNegative(arr) {
+  let count = 0;
+  for (let i = 0; i < arr.length; i++) {
+    if (arr[i] < 0) count++;
+  }
+  return count;
+}
+console.log(countOfNegative([1, 2, -3, 4])); // должна возвратить 1;
+console.log(countOfNegative([-2, -4])); // должна возвратить 2;
+console.log(countOfNegative([12, 4, 45])); // должна возвратить 0;
+console.log(countOfNegative([])); // должна возвратить 0;
+
+// #24. Количество четных элементов массива
+// Напишите функцию countOfEven, которая принимает массив arr как аргумент и возвращает количество четных элементов этого массива.
+// Четными элементами являются те числа, которые делятся на 2 без остатка
+function countOfEven(arr) {
+  let count = 0;
+  for (let i = 0; i < arr.length; i++) {
+    if (arr[i] % 2 === 0) count++;
+  }
+  return count;
+}
+console.log(countOfEven([1, 20, -5, 4])); // должна возвратить 2;
+console.log(countOfEven([-2, -4, 0])); // должна возвратить 3;
+console.log(countOfEven([7, 9, 11])); // должна возвратить 0;
+console.log(countOfEven([])); // должна возвратить 0;
