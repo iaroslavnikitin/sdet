@@ -23,7 +23,7 @@ let str = 'Now I am studying programming on JS';
 let count = 0;
 for (let i = 0; i < str.length; i++) {
   if (str[i] === ' ') {
-  count++;
+    count++;
   }
 }
 console.log(count);
@@ -45,7 +45,7 @@ let arr = [3, 7, 4, 9, 2, 10, 1, 17, 6, 23, 5, 13];
 let max = arr[0];
 let min = arr[0];
 for (let i = 1; i < arr.length; i++) {
-  for (let j = 1; j < arr.length-1; j++) {
+  for (let j = 1; j < arr.length - 1; j++) {
     if (arr[i] < min) {
       min = arr[i];
     } else if (arr[j] > max) {
@@ -56,13 +56,14 @@ for (let i = 1; i < arr.length; i++) {
 console.log(max - min);
 
 // 6. Напишите функцию fillArray, которая принимает неотрицательное число n и возвращает массив чисел от 1 до n: [1, 2, 3, ..., n]
-function fillArray(n){
+function fillArray(n) {
   let arr = [];
-    if (n > 0) for (let i = 1; i <= n; i++) {
+  if (n > 0)
+    for (let i = 1; i <= n; i++) {
       arr.push(i);
     }
   return arr;
-  }
+}
 console.log(fillArray(0));
 console.log(fillArray(1));
 console.log(fillArray(2));
@@ -70,13 +71,14 @@ console.log(fillArray(5));
 
 // #7. Напишите функцию sum, которая принимает неотрицательное число n и возвращает сумму чисел от 1 до n:
 // 1 + 2 + 3 + ... + n.
-function sum(n){
+function sum(n) {
   let arr = [];
-    if (n > 0) for (let i = 1; i <= n; i++) {
+  if (n > 0)
+    for (let i = 1; i <= n; i++) {
       arr.push(i);
     }
   return arr.reduce((part_sum, a) => part_sum + a, 0);
-  }
+}
 console.log(sum(0));
 console.log(sum(1));
 console.log(sum(2));
@@ -85,17 +87,17 @@ console.log(sum(5));
 // #8. Have a function fizzBuzz(num) which take a number as parameter. Function should return "Fizz" if number dividable by 3, "Buzz" by 5 or current number if not.
 function fizzBuzz(num) {
   for (let num = 0; num <= 20; num++) {
-  if (num % 5 === 0 && num %3 === 0) console.log('fizzbuzz');
-  else if (num % 3 === 0) console.log('fizz');
-  else if (num % 5 === 0) console.log('buzz');
-  else console.log(num); 
+    if (num % 5 === 0 && num % 3 === 0) console.log('fizzbuzz');
+    else if (num % 3 === 0) console.log('fizz');
+    else if (num % 5 === 0) console.log('buzz');
+    else console.log(num);
   }
 }
 console.log(fizzBuzz(20));
 
 // #9. Описание числа. Напишите функцию describesNumber, которая принимает аргумент number и возвращает описание числа:
 // "Even positive number", "Even negative number", "Odd positive number", "Odd negative number", "Zero".
-function describesNumber(number){
+function describesNumber(number) {
   if (number < 0) return 'Zero'
   if (number % 2 === 0 && number > 0) return 'Even positive number';
   if (number % 1 === 0 && number > 0) return 'Odd positive number';
@@ -111,7 +113,7 @@ console.log(describesNumber(0)); // 'Zero';
 // #10. Сумма углов n-угольника. Мы знаем из школьного курса, что сумма углов треугольника равна 180 градусам,
 // сумма углов квадрата или прямоугольника равна 360 градусам. Сумма углов n-угольника равна 180 * (n − 2).
 // Напишите функцию anglesOfPolygon, которая принимает аргумент n (число углов) и возвращает сумму углов n-угольника.
-function anglesOfPolygon(n){
+function anglesOfPolygon(n) {
   return 180 * (n-2);
 }
 console.log(anglesOfPolygon(5)); // функция anglesOfPolygon(5) должна возвратить 540;
@@ -389,3 +391,34 @@ console.log(countOfEven([1, 20, -5, 4])); // должна возвратить 2
 console.log(countOfEven([-2, -4, 0])); // должна возвратить 3;
 console.log(countOfEven([7, 9, 11])); // должна возвратить 0;
 console.log(countOfEven([])); // должна возвратить 0;
+
+// #25. Произведение элементов массива
+// Напишите функцию productOfArray, которая принимает массив arr как аргумент и возвращает произведение элементов этого массива.
+// Если массив arr пустой (т.е. длина массива равна 0), функция должна вернуть 0.
+function productOfArray(arr) {
+  let count = 1;
+  if (arr.length === 0) return 0;
+  for (let i = 0; i < arr.length; i++) {
+    count = count * arr[i];
+  }
+  return count;
+}
+console.log(productOfArray([1, 2, 4])); // должна возвратить 8;
+console.log(productOfArray([4])); // должна возвратить 4;
+console.log(productOfArray([0])); // должна возвратить 0;
+console.log(productOfArray([])); // должна возвратить 0;
+
+// #26. Индекс первого отрицательного элемента массива
+// Напишите функцию indexOfFirstNegative, которая принимает массив arr как аргумент и возвращает индекс первого отрицательного элемента массива.
+// Если отрицательных элементов нет или массив пустой, вернуть строку "no negative elements".
+function indexOfFirstNegative(arr) {
+  for (let i = 0, length = arr.length; i < length; i++) {
+    if (arr[i] < 0)
+      return i;
+  }
+  return 'no negative elements';
+}
+console.log(indexOfFirstNegative([0, 8, -6, 0, -9])); // должна возвратить 2 (т.к. arr[2] < 0 - первый отрицательный элемент);
+console.log(indexOfFirstNegative([-2, 4])); // должна возвратить 0 (т.к. arr[0] < 0);
+console.log(indexOfFirstNegative([2, 7, 8])); // должна возвратить "no negative elements" (нет отрицательных элементов);
+console.log(indexOfFirstNegative([])); // должна возвратить "no negative elements";
