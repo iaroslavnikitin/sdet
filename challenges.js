@@ -451,3 +451,43 @@ console.log(average([1, 2, 3, 4])); // должна возвратить 2.5, т
 console.log(average([13, 10, -4, -2, 4, 5, 3, 5, 6, 12, -1, 10, 1, 4, -4])); // должна возвратить 4.133333333333334, т.к. 62 / 15 = 4.133333333333334;
 console.log(average([9, -5, 2, -2, -1, 0, 13, 5, 12, 13, 2, -2, -4, 14, 11])); // должна возвратить 4.466666666666667, т.к. 67 / 15 = 4.466666666666667;
 console.log(average([])); // должна возвратить 0;
+
+// # 29. Сумма отрицательных элементов массива
+// Напишите функцию sumOfNegative, которая принимает массив arr как аргумент и возвращает сумму отрицательных элементов этого массива.
+function sumOfNegative(arr) {
+  let neg = [];
+  let sum = 0;
+  for (let i = 0; i < arr.length; i++) {
+    if (arr[i] > 0) neg.push(arr[i]);
+    else sum += arr[i];
+  }
+  return sum;
+}
+console.log(sumOfNegative([1, 2, -3, -4])); // должна возвратить -7 (т.к. -3 + (-4) = -7);
+console.log(sumOfNegative([-2, -4])); // должна возвратить -6;
+console.log(sumOfNegative([2, 1])); // должна возвратить 0 (т.к. нет отрицательных элементов);
+console.log(sumOfNegative([])); // должна возвратить 0;
+
+// # 30. Сумма отрицательных элементов массива
+// Напишите функцию sumOfNegative, которая принимает массив arr как аргумент и возвращает сумму отрицательных элементов этого массива.
+function sumOfNegative(arr) {
+  let sum = 0;
+  for (i = 0; i < arr.length; i++) {
+    if (arr[i] < 0) sum += arr[i];
+  }
+  return sum;
+}
+console.log(sumOfNegative([1, 2, -3, -4])); // должна возвратить -7 (т.к. -3 + (-4) = -7);
+console.log(sumOfNegative([-2, -4])); // должна возвратить -6;
+console.log(sumOfNegative([2, 1])); // должна возвратить 0 (т.к. нет отрицательных элементов);
+console.log(sumOfNegative([])); // должна возвратить 0;
+
+// #31. Количество слов, состоящих из 5 букв
+// Напишите функцию countOfWordsOf5Letters, которая принимает массив строк arr как аргумент и возвращает количество слов длиной 5.
+function countOfWordsOf5Letters(arr) {
+  let str = arr.toString().filter(word => word.length === 5);
+  return str;
+}
+console.log(countOfWordsOf5Letters(['apple', 'peach', 'ice', 'water'])); // должна возвратить 3;
+console.log(countOfWordsOf5Letters(['banana', 'watermelon'])); // должна возвратить 0;
+console.log(countOfWordsOf5Letters([])); // должна возвратить 0;
