@@ -485,8 +485,29 @@ console.log(sumOfNegative([])); // должна возвратить 0;
 // #31. Количество слов, состоящих из 5 букв
 // Напишите функцию countOfWordsOf5Letters, которая принимает массив строк arr как аргумент и возвращает количество слов длиной 5.
 function countOfWordsOf5Letters(arr) {
-  let str = arr.toString().filter(word => word.length === 5);
-  return str;
+  let count = 0;
+  for (let a of arr) {
+    if (a.length === 5) count++;
+  }
+  return count;
+}
+console.log(countOfWordsOf5Letters(['apple', 'peach', 'ice', 'water'])); // должна возвратить 3;
+console.log(countOfWordsOf5Letters(['spray', 'limit', 'elite', 'exuberant', 'destruction', 'present'])); // должна возвратить 3;
+console.log(countOfWordsOf5Letters(['banana', 'watermelon'])); // должна возвратить 0;
+console.log(countOfWordsOf5Letters([])); // должна возвратить 0;
+
+// #32. Количество слов, состоящих из 5 букв
+// Напишите функцию countOfWordsOf5Letters, которая принимает массив строк arr как аргумент и возвращает количество слов длиной 5.
+let countOfWordsOf5Letters = arr => arr.filter(el => el.length === 5).length;
+console.log(countOfWordsOf5Letters(['apple', 'peach', 'ice', 'water'])); // должна возвратить 3;
+console.log(countOfWordsOf5Letters(['spray', 'limit', 'elite', 'exuberant', 'destruction', 'present'])); // должна возвратить 3;
+console.log(countOfWordsOf5Letters(['banana', 'watermelon'])); // должна возвратить 0;
+console.log(countOfWordsOf5Letters([])); // должна возвратить 0;
+
+// #33. Количество слов, состоящих из 5 букв
+// Напишите функцию countOfWordsOf5Letters, которая принимает массив строк arr как аргумент и возвращает количество слов длиной 5.
+function countOfWordsOf5Letters(arr) {
+  return arr.filter(word => word.length === 5).length
 }
 console.log(countOfWordsOf5Letters(['apple', 'peach', 'ice', 'water'])); // должна возвратить 3;
 console.log(countOfWordsOf5Letters(['banana', 'watermelon'])); // должна возвратить 0;
