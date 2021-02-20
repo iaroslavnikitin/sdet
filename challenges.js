@@ -512,3 +512,27 @@ function countOfWordsOf5Letters(arr) {
 console.log(countOfWordsOf5Letters(['apple', 'peach', 'ice', 'water'])); // должна возвратить 3;
 console.log(countOfWordsOf5Letters(['banana', 'watermelon'])); // должна возвратить 0;
 console.log(countOfWordsOf5Letters([])); // должна возвратить 0;
+
+// #34. Количество чисел в смешанном массиве
+// Напишите функцию countOfNumbers, которая принимает массив arr как аргумент и возвращает количество элементов, которые являются числами.
+// Массив arr может состоять из чисел, строк и булевых (логичесих) величин.
+function countOfNumbers(arr) {
+  let count = 0;
+  for (let i = 0; i < arr.length; i++) {
+    if (typeof arr[i] === 'number') count++;
+  }
+  return count;
+}
+console.log(countOfNumbers([2, 'a', 5, true, 'b', 1, 'c'])); // должна возвратить 3 (3 числа: 2, 5, 1);
+console.log(countOfNumbers([-2, 4, 'z'])); // должна возвратить 2;
+console.log(countOfNumbers([])); // должна возвратить 0;
+
+// #35. Количество чисел в смешанном массиве
+// Напишите функцию countOfNumbers, которая принимает массив arr как аргумент и возвращает количество элементов, которые являются числами.
+// Массив arr может состоять из чисел, строк и булевых (логичесих) величин.
+function countOfNumbers(arr) {
+  return arr.filter(item => Number.isFinite(item)).length;
+}
+console.log(countOfNumbers([2, 'a', 5, true, 'b', 1, 'c'])); // должна возвратить 3 (3 числа: 2, 5, 1);
+console.log(countOfNumbers([-2, 4, 'z'])); // должна возвратить 2;
+console.log(countOfNumbers([])); // должна возвратить 0;
