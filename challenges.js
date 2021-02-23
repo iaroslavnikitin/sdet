@@ -566,3 +566,15 @@ function fahrenheit(tempC) {
 }
 console.log(fahrenheit(5)); // должна возвратить 41;
 console.log(fahrenheit(32)); // должна возвратить 90;
+
+// #38. Maximum Multiple
+// Given a Divisor and a Bound, Find the largest integer N, Such That
+// N is divisible by divisor,
+// N is less than or equal to bound,
+// N is greater than 0.
+function maxMultiple(divisor, bound) {
+  return bound - (bound % divisor);
+}
+console.log(maxMultiple(2, 7)); // должна возвратить 6;
+console.log(maxMultiple(3, 10)); // должна возвратить 9;
+console.log(maxMultiple(7, 17)); // должна возвратить 14;
