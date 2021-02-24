@@ -578,3 +578,28 @@ function maxMultiple(divisor, bound) {
 console.log(maxMultiple(2, 7)); // должна возвратить 6;
 console.log(maxMultiple(3, 10)); // должна возвратить 9;
 console.log(maxMultiple(7, 17)); // должна возвратить 14;
+
+// #39. Miles per gallon to kilometers per liter
+// Some useful associations relevant to this kata: 1 Imperial Gallon = 4.54609188 litres 1 Mile = 1.609344 kilometres
+function converter(mpg) {
+  return +((mpg / 4.54609188) * 1.609344).toFixed(2);
+}
+console.log(converter(10)); // 3.54
+console.log(converter(20)); // 7.08
+console.log(converter(30)); // 10.62
+
+// #40. Find a slope
+// Given an array of 4 integers
+// [a,b,c,d] representing two points (a, b) and (c, d), return a string representation of the slope of the line joining these two points.
+// For an undefined slope (division by 0), return undefined . Note that the "undefined" is case-sensitive.
+function slope(points) {
+  let dx = points[2] - points[0], dy = points[3] - points[1];
+  if (dx === 0) return 'undefined';
+  else return (dy / dx) + '';
+}
+console.log(slope([19, 3, 20, 3])); // '0'
+console.log(slope([2, 7, 4, -7])); // '-7'
+console.log(slope([10, 50, 30, 150])); // '5'
+console.log(slope([15, 45, 12, 60])); // '-5'
+console.log(slope([10, 20, 20, 80])); // '6'
+console.log(slope([-10, 6, -10, 3])); // 'undefined'
