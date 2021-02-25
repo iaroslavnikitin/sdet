@@ -654,3 +654,23 @@ console.log(seatsInTheater(1, 1, 1, 1)); // должна возвратить 0
 console.log(seatsInTheater(13, 6, 8, 3)); // должна возвратить 18
 console.log(seatsInTheater(60, 100, 60, 1)); // должна возвратить 99
 console.log(seatsInTheater(1000, 1000, 1000, 1000)); // должна возвратить 0
+
+
+// #44.
+// names: "COLIN,AMANDBA,AMANDAB,CAROL,PauL,JOSEPH"
+// weights: [1, 4, 4, 5, 2, 1]
+// PauL -> som = length of firstname + 16 + 1 + 21 + 12 = 4 + 50 -> 54
+// The *weight* associated with PauL is 2 so PauL's *winning number* is 54 * 2 = 108.
+function rank(st, we, n) {
+  let albt = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z']
+  let vinNum = st.toLowerCase().split(',').map((el, i) => (el.split('').reduce((acc, cur) => acc + +albt.indexOf(cur) + 1, 0) + el.length) * we[i]);
+  let lst = st.split(',').reduce((acc, cur, i) => {
+    return acc.push([cur.toLowerCase(), vinNum[i]]), acc;
+  }, []).sort(([a, b], [c, d]) => d - b).sort(([a, b], [c, d]) => {
+    return b === d ? -1 : 0;
+  });
+  return lst;
+}
+console.log(rank("COLIN, AMANDBA, AMANDAB, CAROL, PauL, JOSEPH", [1, 4, 4, 5, 2, 1], 4)); // "PauL"
+console.log(rank("William, Willaim, Olivia, Olivai, Lily, Lyli", [1, 1, 1, 1, 1, 1], 1)); // "Willaim"
+console.log(rank("Elijah, Chloe, Elizabeth, Matthew, Natalie, Jayden", [1, 3, 5, 5, 3, 6], 2)); // "Matthew"
