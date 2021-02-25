@@ -656,21 +656,36 @@ console.log(seatsInTheater(60, 100, 60, 1)); // должна возвратит�
 console.log(seatsInTheater(1000, 1000, 1000, 1000)); // должна возвратить 0
 
 
-// #44.
-// names: "COLIN,AMANDBA,AMANDAB,CAROL,PauL,JOSEPH"
-// weights: [1, 4, 4, 5, 2, 1]
-// PauL -> som = length of firstname + 16 + 1 + 21 + 12 = 4 + 50 -> 54
-// The *weight* associated with PauL is 2 so PauL's *winning number* is 54 * 2 = 108.
-function rank(st, we, n) {
-  let albt = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z']
-  let vinNum = st.toLowerCase().split(',').map((el, i) => (el.split('').reduce((acc, cur) => acc + +albt.indexOf(cur) + 1, 0) + el.length) * we[i]);
-  let lst = st.split(',').reduce((acc, cur, i) => {
-    return acc.push([cur.toLowerCase(), vinNum[i]]), acc;
-  }, []).sort(([a, b], [c, d]) => d - b).sort(([a, b], [c, d]) => {
-    return b === d ? -1 : 0;
-  });
-  return lst;
+// // #44. – needs to be fixed
+// // names: "COLIN,AMANDBA,AMANDAB,CAROL,PauL,JOSEPH"
+// // weights: [1, 4, 4, 5, 2, 1]
+// // PauL -> som = length of firstname + 16 + 1 + 21 + 12 = 4 + 50 -> 54
+// // The *weight* associated with PauL is 2 so PauL's *winning number* is 54 * 2 = 108.
+// function rank(st, we, n) {
+//   let albt = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z']
+//   let vinNum = st.toLowerCase().split(',').map((el, i) => (el.split('').reduce((acc, cur) => acc + +albt.indexOf(cur) + 1, 0) + el.length) * we[i]);
+//   let lst = st.split(',').reduce((acc, cur, i) => {
+//     return acc.push([cur.toLowerCase(), vinNum[i]]), acc;
+//   }, []).sort(([a, b], [c, d]) => d - b).sort(([a, b], [c, d]) => {
+//     return b === d ? -1 : 0;
+//   });
+//   return lst;
+// }
+// console.log(rank("COLIN, AMANDBA, AMANDAB, CAROL, PauL, JOSEPH", [1, 4, 4, 5, 2, 1], 4)); // "PauL"
+// console.log(rank("William, Willaim, Olivia, Olivai, Lily, Lyli", [1, 1, 1, 1, 1, 1], 1)); // "Willaim"
+// console.log(rank("Elijah, Chloe, Elizabeth, Matthew, Natalie, Jayden", [1, 3, 5, 5, 3, 6], 2)); // "Matthew"
+
+// #45. Math operations
+// A magician in the subway showed you a trick, he put an ice brick in a bottle to impress you. The bricks width and height are equal, forming a square.
+// Just for fun and also to impress the magician and people around, you decided to calculate the brick's volume.
+// Write a function iceBrickVolume that will except these parameters:
+// radius - bottle's radius (always > 0);
+// bottleLength - total bottle length (always > 0);
+// rimLength - length from bottle top to brick (always < bottleLength);
+// And return volume of ice brick that magician managed to put into a bottle.
+function iceBrickVolume(radius, bottleLength, rimLength) {
+  if (radius <= 1) return ((bottleLength - rimLength) * radius) * 2;
+  else return radius * (((bottleLength - rimLength) * radius) * 2);
 }
-console.log(rank("COLIN, AMANDBA, AMANDAB, CAROL, PauL, JOSEPH", [1, 4, 4, 5, 2, 1], 4)); // "PauL"
-console.log(rank("William, Willaim, Olivia, Olivai, Lily, Lyli", [1, 1, 1, 1, 1, 1], 1)); // "Willaim"
-console.log(rank("Elijah, Chloe, Elizabeth, Matthew, Natalie, Jayden", [1, 3, 5, 5, 3, 6], 2)); // "Matthew"
+console.log(iceBrickVolume(1, 10, 2)); // должна возвратить 16;
+console.log(iceBrickVolume(5, 30, 7)); // должна возвратить 1150;
