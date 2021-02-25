@@ -603,3 +603,54 @@ console.log(slope([10, 50, 30, 150])); // '5'
 console.log(slope([15, 45, 12, 60])); // '-5'
 console.log(slope([10, 20, 20, 80])); // '6'
 console.log(slope([-10, 6, -10, 3])); // 'undefined'
+
+// #41. Nth Root of a Number Redux… Redux!
+// Given two numbers x and n, calculate the nth root of x, e.g. r such that r^n = x.
+// However, many useful Math functions has been disabled, the used type doesn't have a Floating instance.
+function root(x, nth) {
+  let r;
+  for (let i = 1; i <= 100; i++) {
+    if (x === i ** nth) {
+      r = i;
+      break;
+    }
+  }
+  return (x ** (1 / nth));
+}
+console.log(root(4, 2)); // должна возвратить 2
+console.log(root(8, 3)); // должна возвратить 2
+console.log(root(16, 2)); // должна возвратить 4
+console.log(root(27, 3)); // должна возвратить 3
+
+// #42. I love you, a little , a lot, passionately ... not at all
+// when girls would take a flower and tear its petals, saying each of the following phrases each time a petal was torn:
+// I love you; a little; a lot; passionately; madly; not at all;
+// When the last petal was torn there were cries of excitement, dreams, surging thoughts and emotions.
+// Your goal in this kata is to determine which phrase the girls would say for a flower of a given number of petals, where nb_petals > 0.
+function howMuchILoveYou(nbPetals) {
+  const arr = ['I love you', 'a little', 'a lot', 'passionately', 'madly', 'not at all'];
+  return arr[(nbPetals - 1) % 6];
+}
+console.log(howMuchILoveYou(7)); // должна возвратить 'I love you'
+console.log(howMuchILoveYou(3)); // должна возвратить 'a lot'
+console.log(howMuchILoveYou(6)); // должна возвратить 'not at all'
+
+// #43. Seats in Theater
+// Your friend advised you to see a new performance in the most popular theater in the city.
+// He knows a lot about art and his advice is usually good, but not this time: the performance turned out to be awfully dull.
+// It's so bad you want to sneak out, which is quite simple, especially since the exit is located right behind your row to the left.
+// All you need to do is climb over your seat and make your way to the exit.
+// The main problem is your shyness: you're afraid that you'll end up blocking the view (even if only for a couple of seconds) of all the people who sit behind you and in your column or the columns to your left.
+// To gain some courage, you decide to calculate the number of such people and see if you can possibly make it to the exit without disturbing too many people.
+// Given the total number of rows and columns in the theater (nRows and nCols, respectively), and the row and column you're sitting in,
+// return the number of people who sit strictly behind you and in your column or to the left, assuming all seats are occupied.
+// Example: For nCols = 16, nRows = 11, col = 5 and row = 3, the output should be
+function seatsInTheater(nCols, nRows, col, row) {
+  if (nCols >= 1 && nRows >= 1) return (((nCols - col) + 1) * (nRows - row));
+  else return 0;
+}
+console.log(seatsInTheater(16, 11, 5, 3)); // должна возвратить 96
+console.log(seatsInTheater(1, 1, 1, 1)); // должна возвратить 0
+console.log(seatsInTheater(13, 6, 8, 3)); // должна возвратить 18
+console.log(seatsInTheater(60, 100, 60, 1)); // должна возвратить 99
+console.log(seatsInTheater(1000, 1000, 1000, 1000)); // должна возвратить 0
