@@ -739,3 +739,70 @@ console.log(solve("abzy")); // должна возвратить false
 console.log(solve("ababbaba")); // должна возвратить true
 console.log(solve("sq")); // должна возвратить true
 console.log(solve("kxbkwgyydkcbtjcosgikfdyhuuprubpwthgflucpyylbofvqxkkvqthmdnywpaunfihvupbwpruwfybdmgeuocltdaidyyewmbzm")); // должна возвратить true
+
+// #47. Money, Money, Money
+// Mr. Scrooge has a sum of money 'P' that he wants to invest. Before he does, he wants to know how many years 'Y' this sum 'P' has to be kept in the bank in order for it to amount to a desired sum of money 'D'.
+// The sum is kept for 'Y' years in the bank where interest 'I' is paid yearly. After paying taxes 'T' for the year the new sum is re-invested.
+// Note to Tax: not the invested principal is taxed, but only the year's accrued interest
+// Example:
+  // Let P be the Principal = 1000.00      
+  // Let I be the Interest Rate = 0.05      
+  // Let T be the Tax Rate = 0.18      
+  // Let D be the Desired Sum = 1100.00
+// After 1st Year --> P = 1041.00
+// After 2nd Year --> P = 1083.86
+// After 3rd Year --> P = 1128.30
+// Thus Mr. Scrooge has to wait for 3 years for the initial principal to amount to the desired sum.
+// Your task is to complete the method provided and return the number of years 'Y' as a whole in order for Mr. Scrooge to get the desired sum.
+// Assumption: Assume that Desired Principal 'D' is always greater than the initial principal. However it is best to take into consideration that if Desired Principal 'D' is equal to Principal 'P' this should return 0 Years.
+function calculateYears(principal, interest, tax, desired) {
+  let years = 0;
+  while (principal < desired) {
+    principal = principal + principal * interest - principal * interest * tax;
+    years++;
+  }
+  return years;
+}
+console.log(calculateYears(1000, 0.05, 0.18, 1100)); // должна возвратить 3;
+console.log(calculateYears(1000, 0.01625, 0.18, 1200)); // должна возвратить 14;
+console.log(calculateYears(1000, 0.05, 0.18, 1000)); // должна возвратить 0;
+
+// #48. Growth of a Population
+// In a small town the population is p0 = 1000 at the beginning of a year. The population regularly increases by 2 percent per year and moreover 50 new inhabitants per year come to live in the town. How many years does the town need to see its population greater or equal to p = 1200 inhabitants?
+// At the end of the first year there will be: 1000 + 1000 * 0.02 + 50 => 1070 inhabitants
+// At the end of the 2nd year there will be:  1070 + 1070 * 0.02 + 50 => 1141 inhabitants (number of inhabitants is an integer)
+// At the end of the 3rd year there will be: 1141 + 1141 * 0.02 + 50 => 1213
+// It will need 3 entire years.
+// More generally given parameters:
+// p0, percent, aug (inhabitants coming or leaving each year), p (population to surpass) the function nb_year should return n number of entire years needed to get a population greater or equal to p. aug is an integer, percent a positive or null floating number, p0 and p are positive integers (> 0)
+// Examples:
+// nb_year(1500, 5, 100, 5000) -> 15
+// nb_year(1500000, 2.5, 10000, 2000000) -> 10
+// Note: Don't forget to convert the percent parameter as a percentage in the body of your function: if the parameter percent is 2 you have to convert it to 0.02.
+function nbYear(p0, percent, aug, p) {
+  let years = 0;
+  while (p0 < p) {
+    p0 = p0 + p0 * percent / 100 + aug;
+    years++;
+  }
+  return years;
+}
+console.log(nbYear(1500, 5, 100, 5000)); // должна возвратить 15;
+console.log(nbYear(1500000, 2.5, 10000, 2000000)); // должна возвратить 10;
+console.log(nbYear(1500000, 0.25, 1000, 2000000)); // должна возвратить 94;
+
+// #49. This program tests the life of an evaporator containing a gas.
+// We know the content of the evaporator (content in ml), the percentage of foam or gas lost every day (evap_per_day) and the threshold (threshold) in percentage beyond which the evaporator is no longer useful. All numbers are strictly positive.
+// The program reports the nth day (as an integer) on which the evaporator will be out of use.
+// Example: evaporator(10, 10, 5) -> 29
+// Note: Content is in fact not necessary in the body of the function "evaporator", you can use it or not use it, as you wish. Some people might prefer to reason with content, some other with percentages only. It's up to you but you must keep it as a parameter because the tests have it as an argument.
+function evaporator(content, evap_per_day, threshold) {
+  let days = 0;
+  let limit = content * threshold / 100;
+  while (content > limit) {
+    content = content - content * evap_per_day / 100;
+    days++;
+  }
+  return days;
+}
+console.log(evaporator(10, 10, 10)); // должна возвратить 22
