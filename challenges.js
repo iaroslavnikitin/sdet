@@ -805,4 +805,19 @@ function evaporator(content, evap_per_day, threshold) {
   }
   return days;
 }
-console.log(evaporator(10, 10, 10)); // должна возвратить 22
+console.log(evaporator(10, 10, 10)); // должна возвратить 22;
+
+// #50. Сколько чисел содержит массив?
+// Напишите функцию с именем countNumbers, которая принимает массив arr в качестве аргумента и возвращает количество чисел в этом массиве.
+function countNumbers(arr) {
+  let num = 0;
+  for (let i = 0; i < arr.length; i++) {
+    if (typeof arr[i] === 'number') {
+      num++;
+    }
+  }
+  return num;
+}
+console.log(countNumbers([2, 6, 'one'])); // должна возвратить 2;
+console.log(countNumbers(['hello'])); // должна возвратить 0;
+console.log(countNumbers([6, -12, 'abc', 0, 'bad'])); // должна возвратить 3;
