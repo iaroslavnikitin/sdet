@@ -646,7 +646,7 @@ console.log(howMuchILoveYou(6)); // должна возвратить 'not at al
 // return the number of people who sit strictly behind you and in your column or to the left, assuming all seats are occupied.
 // Example: For nCols = 16, nRows = 11, col = 5 and row = 3, the output should be
 function seatsInTheater(nCols, nRows, col, row) {
-  if (nCols >= 1 && nRows >= 1) return (((nCols - col) + 1) * (nRows - row));
+  if ((nCols && nRows) >= 1) return (((nCols - col) + 1) * (nRows - row));
   else return 0;
 }
 console.log(seatsInTheater(16, 11, 5, 3)); // должна возвратить 96
@@ -689,3 +689,53 @@ function iceBrickVolume(radius, bottleLength, rimLength) {
 }
 console.log(iceBrickVolume(1, 10, 2)); // должна возвратить 16;
 console.log(iceBrickVolume(5, 30, 7)); // должна возвратить 1150;
+
+// #46. Create palindrome
+// Consider the string "adfa" and the following rules:
+// a) each character MUST be changed either to the one before or the one after in alphabet.
+// b) "a" can only be changed to "b" and "z" to "y".
+// From our string, we get:
+// "adfa" -> ["begb","beeb","bcgb","bceb"]
+// Here is another example: 
+// "bd" -> ["ae","ac","ce","cc"]
+// --We see that in each example, one of the outcomes is a palindrome. That is, "beeb" and "cc".
+// You will be given a lowercase string and your task is to return True if at least one of the outcomes is a palindrome or False otherwise.
+function solve(s) {
+  const alphabet = 'abcdefghijklmnopqrstuvwxyz';
+  for (let i = 0; i < s.length / 2; i++) {
+    let indexOfCurrentChar = alphabet.indexOf(s[i]);
+    let indexOfSimmetricalChar = alphabet.indexOf(s[s.length - i - 1]);
+    let currentCharBefore = '1';
+    let currentCharAfter = '';
+    let simmetricalCharBefore = '';
+    let simmetricalCharAfter = '2';
+    if (indexOfCurrentChar == 0) {
+      currentCharBefore = alphabet[indexOfCurrentChar - 1];
+      currentCharAfter = alphabet[indexOfCurrentChar + 1];
+    } else {
+      currentCharBefore = alphabet[indexOfCurrentChar - 1];
+      currentCharAfter = alphabet[indexOfCurrentChar + 1];
+    }
+    if (indexOfSimmetricalChar === alphabet.length - 1) {
+      simmetricalCharBefore = alphabet[indexOfSimmetricalChar - 1];
+    } else {
+      simmetricalCharBefore = alphabet[indexOfSimmetricalChar - 1];
+      simmetricalCharAfter = alphabet[indexOfSimmetricalChar + 1];
+    }
+    if (currentCharBefore !== simmetricalCharBefore &&
+      currentCharBefore !== simmetricalCharAfter &&
+      currentCharAfter !== simmetricalCharBefore &&
+      currentCharAfter !== simmetricalCharAfter
+    ) return false;
+  }
+  return true;
+}
+console.log(solve("abba")); // должна возвратить true
+console.log(solve("abaazaba")); // должна возвратить false
+console.log(solve("abccba")); // должна возвратить true
+console.log(solve("adfa")); // должна возвратить true
+console.log(solve("ae")); // должна возвратить false
+console.log(solve("abzy")); // должна возвратить false
+console.log(solve("ababbaba")); // должна возвратить true
+console.log(solve("sq")); // должна возвратить true
+console.log(solve("kxbkwgyydkcbtjcosgikfdyhuuprubpwthgflucpyylbofvqxkkvqthmdnywpaunfihvupbwpruwfybdmgeuocltdaidyyewmbzm")); // должна возвратить true
