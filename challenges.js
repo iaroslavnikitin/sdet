@@ -821,3 +821,21 @@ function countNumbers(arr) {
 console.log(countNumbers([2, 6, 'one'])); // должна возвратить 2;
 console.log(countNumbers(['hello'])); // должна возвратить 0;
 console.log(countNumbers([6, -12, 'abc', 0, 'bad'])); // должна возвратить 3;
+
+// #51. Lowest int in given array
+function array(arr) {
+  let min = arr[0];
+  for (let i = 0; i < arr.length; i++) {
+    if (arr[i] < min) {
+      min = arr[i];
+    }
+  }
+  return min;
+}
+console.log(array([985, 438, 2, 4, 284, 985])); // 2;
+console.log(array([1000, 10, -100, 101010])); // -100;
+
+// #52. Lowest int in given array usung methods
+const arr = [985, 438, 1, 4, 284, 985];
+const min = arr.reduce((a, b) => Math.min(a, b));
+console.log(min);
