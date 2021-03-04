@@ -880,3 +880,59 @@ function squareArea(a) {
 console.log(squareArea(2)); // должна возвратить 1.62
 console.log(squareArea(0)); // должна возвратить 0
 console.log(squareArea(14.05)); // должна возвратить 80
+
+// #57. Area of a Square
+// Complete the function that calculates the area of the red square, when the length of the circular arc A is given as the input. Return the result rounded to two decimals.
+function squareArea(a) {
+  let circum = 4 * a;
+  let radius = circum / (2 * Math.PI);
+  let area = Math.pow(radius, 2);
+  return Math.round(area * 100) / 100
+}
+console.log(squareArea(2)); // должна возвратить 1.62
+console.log(squareArea(0)); // должна возвратить 0
+console.log(squareArea(14.05)); // должна возвратить 80
+
+// 58. How many times should I go?
+// Lot of museum allow you to be a member, for a certain amount amount_by_year you can have unlimitted acces to the museum.
+// In this kata you should complete a function in order to know after how many visit it will be better to take an annual pass. The function take 2 arguments annual_price and individual_price.
+function howManyTimes(annualPrice, individualPrice) {
+  return Math.ceil(annualPrice / individualPrice);
+}
+console.log(howManyTimes(40, 15)); // должна возвратить 3
+console.log(howManyTimes(30, 10)); // должна возвратить 3
+console.log(howManyTimes(80, 15)); // должна возвратить 6
+
+// 59. How many times should I go?
+// Lot of museum allow you to be a member, for a certain amount amount_by_year you can have unlimitted acces to the museum.
+// In this kata you should complete a function in order to know after how many visit it will be better to take an annual pass. The function take 2 arguments annual_price and individual_price.
+function howManyTimes(annual_price, individual_price) {
+  let visits = 0;
+  let cost = 0;
+  while (true) {
+    cost += individual_price;
+    visits++;
+    if (cost >= annual_price) {
+      return visits;
+    }
+  }
+}
+console.log(howManyTimes(40, 15)); // должна возвратить 3
+console.log(howManyTimes(30, 10)); // должна возвратить 3
+console.log(howManyTimes(80, 15)); // должна возвратить 6
+
+// 60. How many times should I go?
+// Lot of museum allow you to be a member, for a certain amount amount_by_year you can have unlimitted acces to the museum.
+// In this kata you should complete a function in order to know after how many visit it will be better to take an annual pass. The function take 2 arguments annual_price and individual_price.
+function howManyTimes(annual_price, individual_price) {
+  let diff = Math.round(annualPrice / individualPrice);
+  if (individualPrice * diff >= annualPrice) {
+    return diff;
+  } else {
+    return diff + 1;
+  }
+  return result;
+}
+console.log(howManyTimes(40, 15)); // должна возвратить 3
+console.log(howManyTimes(30, 10)); // должна возвратить 3
+console.log(howManyTimes(80, 15)); // должна возвратить 6
