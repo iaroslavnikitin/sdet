@@ -839,3 +839,44 @@ console.log(array([1000, 10, -100, 101010])); // -100;
 const arr = [985, 438, 1, 4, 284, 985];
 const min = arr.reduce((a, b) => Math.min(a, b));
 console.log(min);
+
+// #53. Defanging an IP Address
+// A defanged IP address replaces every period "." with "[.]".
+// Example 1: Input: address = "1.1.1.1" ––– Output: "1[.]1[.]1[.]1"
+// Example 2:  Input: address = "255.100.50.0" ––– Output: "255[.]100[.]50[.]0"
+function defangIPaddr(address) {
+  return address.replace(/[.\\]/g, '\[.]');
+}
+console.log(defangIPaddr('1.1.1.1')); // должна возвратить '1[.]1[.]1[.]1'
+
+// #54. Running Sum of 1d Array
+// Given an array nums. We define a running sum of an array as runningSum[i] = sum(nums[0]…nums[i]).
+// Return the running sum of nums.
+// Example 1: Input: nums = [1,2,3,4] ––– Output: [1,3,6,10]; Explanation: Running sum is obtained as follows: [1, 1+2, 1+2+3, 1+2+3+4].
+// Example 2: Input: nums = [1,1,1,1,1] ––– Output: [1,2,3,4,5]; Explanation: Running sum is obtained as follows: [1, 1+1, 1+1+1, 1+1+1+1, 1+1+1+1+1].
+const runningSum = (nums) => nums.map((sum => value => sum += value)(0));
+console.log(runningSum([1, 2, 3, 4])); // должна возвратить '[1, 3, 6, 10]';
+console.log(runningSum([1, 1, 1, 1, 1])); // должна возвратить '[1, 2, 3, 4, 5]';
+
+// #55. Discover The Original Price
+// We need to write some code to return the original price of a product, the return type must be of type decimal and the number must be rounded to two decimal places.
+// We will be given the sale price (discounted price), and the sale percentage, our job is to figure out the original price.
+// For example: Given an item at $75 sale price after applying a 25% discount, the function should return the original price of that item before applying the sale percentage, which is ($100.00) of course, rounded to two decimal places.
+// DiscoverOriginalPrice(75, 25) => 100.00M where 75 is the sale price (discounted price), 25 is the sale percentage and 100 is the original price
+function discoverOriginalPrice(discountedPrice, salePercentage) {
+  return +(discountedPrice / (1 - salePercentage / 100)).toFixed(2);
+}
+console.log(discoverOriginalPrice(75, 25)); // должна возвратить 100
+console.log(discoverOriginalPrice(25, 75)); // должна возвратить 100
+console.log(discoverOriginalPrice(75.75, 25)); // должна возвратить 101
+console.log(discoverOriginalPrice(66.48, 73.82)); // должна возвратить 253.93
+console.log(discoverOriginalPrice(38.02, 57.97)); // должна возвратить 90.46
+
+// #56. Area of a Square
+// Complete the function that calculates the area of the red square, when the length of the circular arc A is given as the input. Return the result rounded to two decimals.
+function squareArea(a) {
+  return +(((a * 4) / (2 * Math.PI)) ** 2).toFixed(2);
+}
+console.log(squareArea(2)); // должна возвратить 1.62
+console.log(squareArea(0)); // должна возвратить 0
+console.log(squareArea(14.05)); // должна возвратить 80
