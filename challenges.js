@@ -26,7 +26,7 @@ for (let i = 0; i < str.length; i++) {
     count++;
   }
 }
-console.log(count);
+console.log(count); // должна возвратить 6;
 
 
 //4. Найти общее количество гласных букв (a,o,e,u,i) в строке str.
@@ -933,6 +933,44 @@ function howManyTimes(annual_price, individual_price) {
   }
   return result;
 }
-console.log(howManyTimes(40, 15)); // должна возвратить 3
-console.log(howManyTimes(30, 10)); // должна возвратить 3
-console.log(howManyTimes(80, 15)); // должна возвратить 6
+console.log(howManyTimes(40, 15)); // должна возвратить 3;
+console.log(howManyTimes(30, 10)); // должна возвратить 3;
+console.log(howManyTimes(80, 15)); // должна возвратить 6;
+
+// #61. Count Odd Numbers below n
+// Given a number n, return the number of positive odd numbers below n:
+// oddCount(7) //=> 3, i.e [1, 3, 5]
+// oddCount(15) //=> 7, i.e [1, 3, 5, 7, 9, 11, 13]
+function oddCount(n) {
+  let count = 0;
+  for (let i = 1; i < n; i++) {
+    if (i % 2 !== 0) count++;
+  }
+  return count;
+}
+console.log(oddCount(15)); // должна возвратить 7;
+console.log(oddCount(15023)); // должна возвратить 7511;
+
+// #62. Count Odd Numbers below n
+// Given a number n, return the number of positive odd numbers below n:
+// oddCount(7) //=> 3, i.e [1, 3, 5]
+// oddCount(15) //=> 7, i.e [1, 3, 5, 7, 9, 11, 13]
+function oddCount(n) {
+  return Math.floor(n / 2);
+}
+console.log(oddCount(15)); // должна возвратить 7;
+console.log(oddCount(15023)); // должна возвратить 7511;
+
+// #63. Проверьте истинность утверждения "Среди трех данных чисел есть хотя бы два противоположных по значению числа".
+// Напишите функцию с именем atLeastOnePairOfOpposite, которая принимает три целых числа a, b, c в качестве аргументов и возвращает true,
+// если среди этих чисел есть хотя бы два противоположных по значению числа, и false - в противном случае.
+function atLeastOnePairOfOpposite(a, b, c) {
+  if (a === -c || a === -b || b === -c) return true;
+  else return false;
+}
+console.log(atLeastOnePairOfOpposite(4, -4, 10)); // должна возвратить true;
+console.log(atLeastOnePairOfOpposite(2, 6, -2)); // должна возвратить true;
+console.log(atLeastOnePairOfOpposite(4, -9, 9)); // должна возвратить true;
+console.log(atLeastOnePairOfOpposite(1, -1, 1)); // должна возвратить true;
+console.log(atLeastOnePairOfOpposite(2, 2, 0)); // должна возвратить false;
+console.log(atLeastOnePairOfOpposite(4, 6, -10)); // должна возвратить false;
