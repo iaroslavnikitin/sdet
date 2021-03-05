@@ -974,3 +974,35 @@ console.log(atLeastOnePairOfOpposite(4, -9, 9)); // должна возврат�
 console.log(atLeastOnePairOfOpposite(1, -1, 1)); // должна возвратить true;
 console.log(atLeastOnePairOfOpposite(2, 2, 0)); // должна возвратить false;
 console.log(atLeastOnePairOfOpposite(4, 6, -10)); // должна возвратить false;
+
+// #64. Проверьте истинность утверждения "Все цифры трехзначного числа различны"
+// Напишите функцию с именем areAllDigitsDifferent, которая принимает положительное трехзначное число num в качестве аргумента и возвращает true,
+// если все цифры этого числа различны, и false - в противном случае.
+function areAllDigitsDifferent(num) {
+  let num1 = num % 10;
+  let num2 = Math.floor((num % 100) * 0.1);
+  let num3 = Math.floor((num % 1000) * 0.01);
+  if (num1 !== num2 && num1 !== num3 && num2 !== num3) return true;
+  else return false;
+}
+console.log(areAllDigitsDifferent(123)); // должна возвратить true
+console.log(areAllDigitsDifferent(260)); // должна возвратить true
+console.log(areAllDigitsDifferent(220)); // должна возвратить false
+console.log(areAllDigitsDifferent(363)); // должна возвратить false
+
+// #65. Проверьте истинность утверждения "Все цифры трехзначного числа различны"
+// Напишите функцию с именем areAllDigitsDifferent, которая принимает положительное трехзначное число num в качестве аргумента и возвращает true,
+// если все цифры этого числа различны, и false - в противном случае.
+function areAllDigitsDifferent(num) {
+  num += '';
+  for (let i = 0; i <= num.length - 1; i++) {
+    for (let j = 0; j <= num.length - 1; j++) {
+      if (num[i] === num[j] && i !== j) return false;
+    }
+  }
+  return true;
+}
+console.log(areAllDigitsDifferent(123)); // должна возвратить true
+console.log(areAllDigitsDifferent(260)); // должна возвратить true
+console.log(areAllDigitsDifferent(220)); // должна возвратить false
+console.log(areAllDigitsDifferent(363)); // должна возвратить false
