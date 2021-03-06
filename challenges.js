@@ -1006,3 +1006,120 @@ console.log(areAllDigitsDifferent(123)); // должна возвратить tr
 console.log(areAllDigitsDifferent(260)); // должна возвратить true
 console.log(areAllDigitsDifferent(220)); // должна возвратить false
 console.log(areAllDigitsDifferent(363)); // должна возвратить false
+
+// #66. Basic data types--Boolean and conditional statements if..else
+// In javascript, Boolean object only has two value, true or false. Use ===, ==, >, <, >=, <= between two variables(or constant), the result of such an expression is a bool value.
+// The operation between the two bool values can be used with logical operators:&&, || or some bitwise operators:&, |, !, ^
+// Many of the data are likely to be implicitly converted to Boolean values in a given context, most common in conditional statements.
+// In other words, the Boolean value is mainly used for conditional judgment.
+// You can see, arr is defined as an array, arr.length should be a number value, but in this example, the number value should convert to bool value.
+// it means, if arr.length value is 0, convert value to false, if arr.length value is not 0, convert value to true.
+// Coding in function trueOrFalse, function accept 1 parameters:val, try to use the conditional statement if...else, if val value is false (val==false or it can convert to false),
+// should return a string "false", if not, return a string "true".
+function trueOrFalse(val) {
+  if (val) return 'true';
+  else return 'false';
+}
+// test for equations and inequalities var a = 1, b = 2, c = 1;
+console.log(trueOrFalse(a > b)); // false
+console.log(trueOrFalse(a === b)); // false
+console.log(trueOrFalse(a < b)); // true
+console.log(trueOrFalse(a !== b)); // true
+console.log(trueOrFalse(b > c)); // true
+console.log(trueOrFalse(b === c)); // false
+console.log(trueOrFalse(b < c)); // false
+console.log(trueOrFalse(b !== c)); // true
+console.log(trueOrFalse(a === c)); // true
+console.log(trueOrFalse(a !== c)); // false
+// test for logical operators and bitwise operators var t = true, f = false;
+console.log(trueOrFalse(t && f)); // false
+console.log(trueOrFalse(f && f)); // false
+console.log(trueOrFalse(t && t)); // true
+console.log(trueOrFalse(t || f)); // true
+console.log(trueOrFalse(t || t)); // true
+console.log(trueOrFalse(f || f)); // false
+console.log(trueOrFalse(t & f)); // false
+console.log(trueOrFalse(t & t)); // true
+console.log(trueOrFalse(f & f)); // false
+console.log(trueOrFalse(t | f)); // true
+console.log(trueOrFalse(t | t)); // true
+console.log(trueOrFalse(f | f)); // false
+console.log(trueOrFalse(!t)); // false
+console.log(trueOrFalse(!f)); // true
+console.log(trueOrFalse(t ^ f)); // true
+console.log(trueOrFalse(t ^ t)); // false
+console.log(trueOrFalse(f ^ f)); // false
+// test for implicit conversion
+console.log(trueOrFalse(true)); // true
+console.log(trueOrFalse(123)); // true
+console.log(trueOrFalse("123")); // true
+console.log(trueOrFalse(["123"])); // true
+console.log(trueOrFalse("false")); // true
+console.log(trueOrFalse(false)); // false
+console.log(trueOrFalse(0)); // false
+console.log(trueOrFalse("")); // false
+console.log(trueOrFalse(null)); // false
+console.log(trueOrFalse([].length)); // false
+console.log(trueOrFalse(undefined)); // false
+
+// #67. Basic data types--Boolean and conditional statements if..else
+// In javascript, Boolean object only has two value, true or false. Use ===, ==, >, <, >=, <= between two variables(or constant), the result of such an expression is a bool value.
+// The operation between the two bool values can be used with logical operators:&&, || or some bitwise operators:&, |, !, ^
+// Many of the data are likely to be implicitly converted to Boolean values in a given context, most common in conditional statements.
+// In other words, the Boolean value is mainly used for conditional judgment.
+// You can see, arr is defined as an array, arr.length should be a number value, but in this example, the number value should convert to bool value.
+// it means, if arr.length value is 0, convert value to false, if arr.length value is not 0, convert value to true.
+// Coding in function trueOrFalse, function accept 1 parameters:val, try to use the conditional statement if...else, if val value is false (val==false or it can convert to false),
+// should return a string "false", if not, return a string "true".
+function trueOrFalse(val) {
+  if (val == false) {
+    return ('false');
+  } else if (val == undefined) {
+    return ('false');
+  } else if (val == null) {
+    return ('false');
+  } else {
+    return ('true');
+  }
+}
+// test for equations and inequalities var a = 1, b = 2, c = 1;
+console.log(trueOrFalse(a > b)); // false
+console.log(trueOrFalse(a === b)); // false
+console.log(trueOrFalse(a < b)); // true
+console.log(trueOrFalse(a !== b)); // true
+console.log(trueOrFalse(b > c)); // true
+console.log(trueOrFalse(b === c)); // false
+console.log(trueOrFalse(b < c)); // false
+console.log(trueOrFalse(b !== c)); // true
+console.log(trueOrFalse(a === c)); // true
+console.log(trueOrFalse(a !== c)); // false
+// test for logical operators and bitwise operators var t = true, f = false;
+console.log(trueOrFalse(t && f)); // false
+console.log(trueOrFalse(f && f)); // false
+console.log(trueOrFalse(t && t)); // true
+console.log(trueOrFalse(t || f)); // true
+console.log(trueOrFalse(t || t)); // true
+console.log(trueOrFalse(f || f)); // false
+console.log(trueOrFalse(t & f)); // false
+console.log(trueOrFalse(t & t)); // true
+console.log(trueOrFalse(f & f)); // false
+console.log(trueOrFalse(t | f)); // true
+console.log(trueOrFalse(t | t)); // true
+console.log(trueOrFalse(f | f)); // false
+console.log(trueOrFalse(!t)); // false
+console.log(trueOrFalse(!f)); // true
+console.log(trueOrFalse(t ^ f)); // true
+console.log(trueOrFalse(t ^ t)); // false
+console.log(trueOrFalse(f ^ f)); // false
+// test for implicit conversion
+console.log(trueOrFalse(true)); // true
+console.log(trueOrFalse(123)); // true
+console.log(trueOrFalse("123")); // true
+console.log(trueOrFalse(["123"])); // true
+console.log(trueOrFalse("false")); // true
+console.log(trueOrFalse(false)); // false
+console.log(trueOrFalse(0)); // false
+console.log(trueOrFalse("")); // false
+console.log(trueOrFalse(null)); // false
+console.log(trueOrFalse([].length)); // false
+console.log(trueOrFalse(undefined)); // false
