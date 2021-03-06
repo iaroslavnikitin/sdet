@@ -1123,3 +1123,24 @@ console.log(trueOrFalse("")); // false
 console.log(trueOrFalse(null)); // false
 console.log(trueOrFalse([].length)); // false
 console.log(trueOrFalse(undefined)); // false
+
+// #68. Is the string a Palindrome
+function palindrome(str) {
+  let length = Math.floor(str.length / 2);
+  for (let i = 0; i < length; i++) {
+    if (str[i] !== str[str.length - i - 1])
+      return false;
+  }
+  return true;
+}
+console.log(palindrome('eye')); // true
+
+// #69. Is the string a Palindrome
+function checkPalindrome(word) {
+  let length = word.length;
+  for (let i = 0; i < length / 2; i++) {
+    if (word.charAt(i) !== word.charAt(length - 1 - i)) return 'The word is NOT a palindrome';
+    else return 'The word is a palindrome';
+  }
+}
+console.log(checkPalindrome('abdfaba'));
