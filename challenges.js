@@ -1249,3 +1249,14 @@ function quickSort(array) {
 }
 let arr = [8375, 387, 12, 968, 1, 402, 248, 90, 5];
 console.log(quickSort(arr)); // [1, 5, 12, 90, 248, 387, 402, 968, 8375]
+
+// #78. String Reverse
+function reverse(str) {
+  let rev = '';
+  for (let i = str.length - 1; i >= 0; i--) {
+    rev += str[i];
+  }
+  return rev;
+}
+console.log(reverse('abbey')); // yebba
+console.log(reverse('nikitin yaro')); // oray nitikin
