@@ -1260,3 +1260,18 @@ function reverse(str) {
 }
 console.log(reverse('abbey')); // yebba
 console.log(reverse('nikitin yaro')); // oray nitikin
+
+// #79. String Reverse with methods
+function reverse(str) {
+  return str.split('').reverse().join('');
+}
+console.log(reverse('abbey')); // yebba
+console.log(reverse('nikitin yaro')); // oray nitikin
+
+// #80. String Reverse with recursion
+function reverse(str) {
+  if (str === '') return '';
+  else return reverse(str.substr(1)) + str.charAt(0);
+}
+console.log(reverse('abbey')); // yebba
+console.log(reverse('nikitin yaro')); // oray nitikin
