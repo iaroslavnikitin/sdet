@@ -1147,8 +1147,7 @@ console.log(checkPalindrome('abdfaba'));
 
 // #70. Is the string a Palindrome
 function palindrome(str) {
-  let reg = /[\W_]/g;
-  str = str.toLowerCase().replace(reg, '');
+  str = str.toLowerCase().replace((/[\W_]/g), '');
   let strLen = str.length;
   for (let i = 0; i < strLen / 2; i++) {
     if (str[i] !== str[strLen - 1 - i]) return `false, '${str}' isn't a palindrome`;
@@ -1171,3 +1170,25 @@ console.log(palindrome('sSabBAss'));
 console.log(palindrome('sSabBAss sSabBAss sSabBAss'));
 console.log(palindrome('A man, a plan, a canal. Panama'));
 console.log(palindrome('A man, a plan, a canal. Panamas'));
+
+// #72. Is the integer a Palindrome
+function palindrome(num) {
+  num = num.toString().replace((/[\W_]/g), '');
+  let strLen = num.length;
+  for (let i = 0; i < strLen / 2; i++) {
+    if (num[i] !== num[strLen - 1 - i]) return `false, '${num}' isn't a palindrome`;
+  }
+  return `true, '${num}' is a palindrome`;
+}
+console.log(palindrome(11111111));
+console.log(palindrome(11111211));
+console.log(palindrome(11111112));
+
+// #73. Is the integer a Palindrome
+function palindrome(num) {
+  let revNum = num.toString().split('').reverse().join('');
+  return ((revNum) * Math.sign(num));
+}
+console.log(palindrome(11111111));
+console.log(palindrome(11111211));
+console.log(palindrome(11111112));
