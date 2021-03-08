@@ -1144,3 +1144,30 @@ function checkPalindrome(word) {
   }
 }
 console.log(checkPalindrome('abdfaba'));
+
+// #70. Is the string a Palindrome
+function palindrome(str) {
+  let reg = /[\W_]/g;
+  str = str.toLowerCase().replace(reg, '');
+  let strLen = str.length;
+  for (let i = 0; i < strLen / 2; i++) {
+    if (str[i] !== str[strLen - 1 - i]) return `false, '${str}' isn't a palindrome`;
+  }
+  return `true, '${str}' is a palindrome`;
+}
+console.log(palindrome('sSabBAss'));
+console.log(palindrome('sSabBAss sSabBAss sSabBAss'));
+console.log(palindrome('A man, a plan, a canal. Panama'));
+console.log(palindrome('A man, a plan, a canal. Panamas'));
+
+// #71. Is the string a Palindrome
+function palindrome(text) {
+  text = text.toLowerCase().replace((/[\W_]/g), '');
+  let reversedText = text.split('').reverse().join('');
+  if (text === reversedText) return `true, '${text}' is a palindrome`;
+  else return `false, '${text}' isn't a palindrome`;
+}
+console.log(palindrome('sSabBAss'));
+console.log(palindrome('sSabBAss sSabBAss sSabBAss'));
+console.log(palindrome('A man, a plan, a canal. Panama'));
+console.log(palindrome('A man, a plan, a canal. Panamas'));
