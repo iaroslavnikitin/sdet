@@ -1220,7 +1220,32 @@ function selectionArray(array) {
   }
   return array;
 }
-const arr = [2, 5, 134, 4, 342, 1, 29384];
-const output = selectionArray(arr);
-console.log(output); // [1, 2, 4, 5, 134, 342, 29384]
-// console.log(arr); // shows that 'array' and 'arr' are different variables
+console.log(selectionArray([111, 32, 346, 93, 1, 23, 9687, 141098])); // [1, 23, 32, 93, 111, 346, 9687, 141098]
+
+// #76. Insertion Sort
+function insertionSort(array) {
+  array = array.slice();
+  for (let i = 1; i < array.length; i++) {
+    for (let j = i; j > 0; j--) {
+      if (array[j] < array[j - 1])
+        [array[j], array[j - 1]] = [array[j - 1], array[j]];
+      else break;
+    }
+  }
+  return array;
+}
+console.log(insertionSort([43, 23489, 2, 64, 1, 5609, 242])); // [1, 2, 43, 64, 242, 5609, 23489]
+
+// #77. Quick Sort
+function quickSort(array) {
+  if (array.length <= 1) return array;
+  let pivot = array[array.length - 1];
+  let leftArr = [];
+  let rightArr = [];
+  for (let el of array.slice(0, array.length - 1)) {
+    el < pivot ? leftArr.push(el) : rightArr.push(el);
+  }
+  return [...quickSort(leftArr), pivot, ...quickSort(rightArr)];
+}
+let arr = [8375, 387, 12, 968, 1, 402, 248, 90, 5];
+console.log(quickSort(arr)); // [1, 5, 12, 90, 248, 387, 402, 968, 8375]
