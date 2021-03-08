@@ -1154,10 +1154,10 @@ function palindrome(str) {
   }
   return `true, '${str}' is a palindrome`;
 }
-console.log(palindrome('sSabBAss'));
-console.log(palindrome('sSabBAss sSabBAss sSabBAss'));
-console.log(palindrome('A man, a plan, a canal. Panama'));
-console.log(palindrome('A man, a plan, a canal. Panamas'));
+console.log(palindrome('sSabBAss')); // true, 'ssabbass' is a palindrome
+console.log(palindrome('sSabBAss sSabBAss sSabBAss')); // true, 'ssabbassssabbassssabbass' is a palindrome
+console.log(palindrome('A man, a plan, a canal. Panama')); // true, 'amanaplanacanalpanama' is a palindrome
+console.log(palindrome('A man, a plan, a canal. Panamas')); // false, 'amanaplanacanalpanamas' isn't a palindrome
 
 // #71. Is the string a Palindrome
 function palindrome(text) {
@@ -1166,10 +1166,10 @@ function palindrome(text) {
   if (text === reversedText) return `true, '${text}' is a palindrome`;
   else return `false, '${text}' isn't a palindrome`;
 }
-console.log(palindrome('sSabBAss'));
-console.log(palindrome('sSabBAss sSabBAss sSabBAss'));
-console.log(palindrome('A man, a plan, a canal. Panama'));
-console.log(palindrome('A man, a plan, a canal. Panamas'));
+console.log(palindrome('sSabBAss')); // true, 'ssabbass' is a palindrome
+console.log(palindrome('sSabBAss sSabBAss sSabBAss')); // true, 'ssabbassssabbassssabbass' is a palindrome
+console.log(palindrome('A man, a plan, a canal. Panama')); // true, 'amanaplanacanalpanama' is a palindrome
+console.log(palindrome('A man, a plan, a canal. Panamas')); // false, 'amanaplanacanalpanamas' isn't a palindrome
 
 // #72. Is the integer a Palindrome
 function palindrome(num) {
@@ -1180,15 +1180,47 @@ function palindrome(num) {
   }
   return `true, '${num}' is a palindrome`;
 }
-console.log(palindrome(11111111));
-console.log(palindrome(11111211));
-console.log(palindrome(11111112));
+console.log(palindrome(11111111)); // true, '11111111' is a palindrome
+console.log(palindrome(11111211)); // false, '11211111' isn't a palindrome
+console.log(palindrome(11111112)); // false, '21111111' isn't a palindrome
 
 // #73. Is the integer a Palindrome
 function palindrome(num) {
   let revNum = num.toString().split('').reverse().join('');
   return ((revNum) * Math.sign(num));
 }
-console.log(palindrome(11111111));
-console.log(palindrome(11111211));
-console.log(palindrome(11111112));
+console.log(palindrome(11111111)); // 11111111
+console.log(palindrome(11111211)); // 11211111
+console.log(palindrome(11111112)); // 21111111
+
+// #74. Bubble Sort
+function bubbleSort(array) {
+  for (let i = 0; i < array.length - 1; i++) {
+    for (let j = 0; j < array.length - 1 - i; j++) {
+      if (array[j] > array[j + 1]) {
+        [array[j], array[j + 1]] = [array[j + 1], array[j]]; // flip arrays
+      }
+    }
+  }
+  return array;
+}
+console.log(bubbleSort([111, 32, 346, 93, 1, 23, 9687, 141098])); // [1, 23, 32, 93, 111, 346, 9687, 141098]
+
+// #75. Selection Sort
+function selectionArray(array) {
+  array = array.slice(); // to create not mutated, but a pure function
+  for (let i = 0; i < array.length - 1; i++) {
+    let minIndex = i;
+    for (let j = i + 1; j < array.length; j++) {
+      if (array[j] < array[minIndex]) {
+        minIndex = j;
+      }
+    }
+    [array[i], array[minIndex]] = [array[minIndex], array[i]];
+  }
+  return array;
+}
+const arr = [2, 5, 134, 4, 342, 1, 29384];
+const output = selectionArray(arr);
+console.log(output); // [1, 2, 4, 5, 134, 342, 29384]
+// console.log(arr); // shows that 'array' and 'arr' are different variables
