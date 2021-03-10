@@ -158,7 +158,18 @@ function areaOfTriangle(a, b, c){
 console.log(areaOfTriangle(3, 4, 5)); // должна возвратить 6;
 console.log(areaOfTriangle(3, 2, 10)); // должна возвратить сообщение "The triangle does not exist".
 
-// #14. Факториал числа — это произведение натуральных чисел от 1 до самого числа (включая данное число). Факториал нуля и единицы равен 1.
+// #14.1 factorial
+function factorial(number) {
+    if (number === 0) return 1;
+    return (number * factorial(number - 1));
+}
+console.log(factorial(5));
+
+// #14.2 factorial
+const factorial = (number) => number === 0 ? 1 : (number * factorial(number - 1));
+console.log(factorial(5));
+
+// #14.3 Факториал числа — это произведение натуральных чисел от 1 до самого числа (включая данное число). Факториал нуля и единицы равен 1.
 // Напишите функцию factorial, которая принимает число number и возвращает факториал этого числа.
 function factorial(number) {
   if (number < 0) // If the number is less than 0, reject it.
@@ -1275,3 +1286,38 @@ function reverse(str) {
 }
 console.log(reverse('abbey')); // yebba
 console.log(reverse('nikitin yaro')); // oray nitikin
+
+// #81. Reverse string
+function printReverse(word) {
+    let rev = '';
+    for (let i = word.length - 1; i >= 0; i--) {
+        rev += word[i];
+    }
+    return rev;
+}
+console.log(printReverse('yaro')); // 'oray'
+console.log(reverse('nikitin yaro')); // oray nitikin
+
+// #82. Reverse string
+function printReverse(word) {
+    let arr = [];
+    for (let i = word.length - 1, j = 0; i >= 0; i--, j++) {
+        arr[j] = word[i];
+    }
+    return arr.join('');
+}
+console.log(printReverse('yaro')); // 'oray'
+console.log(reverse('nikitin yaro')); // oray nitikin
+
+// #83. Prime number
+function isPrime(num) {
+    if (num < 2) return false;
+    else if (num != 2 && num % 2 === 0) return false;
+    let sqrt = Math.sqrt(num);
+    for (let i = 3; i <= sqrt; i += 2) {
+        if (num % i === 0) return false;
+    }
+    return true;
+}
+console.log(isPrime(2)); // true
+console.log(isPrime(1)); // false
