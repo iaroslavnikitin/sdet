@@ -1367,3 +1367,28 @@ console.log(getGrade(58, 62, 70)); // 'D'
 console.log(getGrade(44, 55, 52)); // 'F'
 console.log(getGrade(48, 55, 52)); // 'F'
 console.log(getGrade(58, 59, 60)); // 'F'
+
+// #86. Debug Basic Calculator
+const calculate = (a, o, b) => (o === '+') ? a + b : (o === '-') ? a - b : (o === '/' && b === 0) ? null : (o === '/') ? a / b : (o === '*') ? a * b : (typeof o !== 'number') ? null : null;
+console.log(calculate(2, "+", 4)); // 6
+console.log(calculate(6, "-", 1.5)); //4.5
+console.log(calculate(-4, "*", 8)); // -32
+console.log(calculate(49, "/", -7)); // -7
+console.log(calculate(8, "m", 2)); // null
+console.log(calculate(4, "/", 0)); // null
+
+// 87. Debug Basic Calculator
+function calculate(a, o, b) {
+  if (o === '+') return a + b;
+  else if (o === '-') return a - b;
+  else if (o === '/' && b === 0) return null;
+  else if (o === '/') return a / b;
+  else if (o === '*') return a * b;
+  else if (typeof o !== 'number') return null;
+}
+console.log(calculate(2, "+", 4)); // 6
+console.log(calculate(6, "-", 1.5)); //4.5
+console.log(calculate(-4, "*", 8)); // -32
+console.log(calculate(49, "/", -7)); // -7
+console.log(calculate(8, "m", 2)); // null
+console.log(calculate(4, "/", 0)); // null
