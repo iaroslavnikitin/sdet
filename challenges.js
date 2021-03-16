@@ -549,7 +549,7 @@ console.log(countOfNumbers([-2, 4, 'z'])); // должна возвратить 
 console.log(countOfNumbers([])); // должна возвратить 0;
 
 // #35. Решение линейного уравнения
-// ешите линейное уравнение ax + b = 0, если даны коэффициенты a и b (a не равно 0).
+// решите линейное уравнение ax + b = 0, если даны коэффициенты a и b (a не равно 0).
 // Напишите функцию с именем equation, которая принимает значения a, b в качестве аргументов и возвращает корень уравнения x.
 function equation(a, b) {
   let x = -(b / a);
@@ -1194,6 +1194,9 @@ function palindrome(num) {
 console.log(palindrome(11111111)); // true, '11111111' is a palindrome
 console.log(palindrome(11111211)); // false, '11211111' isn't a palindrome
 console.log(palindrome(11111112)); // false, '21111111' isn't a palindrome
+console.log(palindrome(141)); // должна возвратить palindrome
+console.log(palindrome(111)); // должна возвратить palindrome
+console.log(palindrome(481)); // должна возвратить not a palindrome
 
 // #73. Is the integer a Palindrome
 function palindrome(num) {
@@ -1320,3 +1323,47 @@ console.log(isPrime(5)); // true
 console.log(isPrime(2)); // true
 console.log(isPrime(1.5)); // false
 console.log(isPrime(1)); // false
+
+
+// #84. Имеет ли квадратное уравнение действительные корни?
+// Напишите функцию с именем equationHasRoots, которая принимает три числа - коэффициенты квадратного уравнения a, b, c в качестве аргументов и возвращает строку:
+// "The equation has roots", если уравнение имеет корни,
+// "The equation has no roots", если уравнение не имеет корней.
+function equationHasRoots(a, b, c) {
+  let rootPart = Math.sqrt((b * b) - (4 * a * c));
+  let denom = 2 * a;
+  let firstRoot = (-b + rootPart) / denom;
+  let secondRoot = (-b - rootPart) / denom;
+  if (isNaN(firstRoot) || isNaN(secondRoot)) return 'The equation has no roots';
+  else return 'The equation has roots';
+}
+console.log(equationHasRoots(3, 2, 1)); // должна возвратить "The equation has no roots"
+console.log(equationHasRoots(19, 15, -34)); // должна возвратить "The equation has roots"
+
+// #85. Complete the function so that it finds the average of the three scores passed to it and returns the letter value associated with that grade.
+// Numerical Score	Letter Grade
+//    90 <=  score   <= 100 'A'
+//    80 <=  score   <= 90	'B'
+//    70 <=  score   <= 80	'C'
+//    60 <=  score   <= 70	'D'
+//    0  <=  score   <= 60	'F'
+function getGrade(s1, s2, s3) {
+  let score = (s1 + s2 + s3) / 3;
+  return score >= 90 ? 'A' : score >= 80 ? 'B' : score >= 70 ? 'C' : score >= 60 ? 'D' : 'F';
+}
+console.log(getGrade(95, 90, 93)); // 'A'
+console.log(getGrade(100, 85, 96)); // 'A'
+console.log(getGrade(92, 93, 94)); // 'A'
+console.log(getGrade(70, 70, 100)); // 'B'
+console.log(getGrade(82, 85, 87)); // 'B'
+console.log(getGrade(84, 79, 85)); // 'B'
+console.log(getGrade(89, 89, 90)); // 'B'
+console.log(getGrade(70, 70, 70)); // 'C'
+console.log(getGrade(75, 70, 79)); // 'C'
+console.log(getGrade(60, 82, 76)); // 'C'
+console.log(getGrade(65, 70, 59)); // 'D'
+console.log(getGrade(66, 62, 68)); // 'D'
+console.log(getGrade(58, 62, 70)); // 'D'
+console.log(getGrade(44, 55, 52)); // 'F'
+console.log(getGrade(48, 55, 52)); // 'F'
+console.log(getGrade(58, 59, 60)); // 'F'
