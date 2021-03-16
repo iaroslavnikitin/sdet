@@ -1392,3 +1392,48 @@ console.log(calculate(-4, "*", 8)); // -32
 console.log(calculate(49, "/", -7)); // -7
 console.log(calculate(8, "m", 2)); // null
 console.log(calculate(4, "/", 0)); // null
+
+// #88. Calculate BMI
+// Write function bmi that calculates body mass index (bmi = weight / height2).
+// if bmi <= 18.5 return "Underweight"
+// if bmi <= 25.0 return "Normal"
+// if bmi <= 30.0 return "Overweight"
+// if bmi > 30 return "Obese"
+function bmi(weight, height) {
+  let bmiCalc = (weight / (height ** 2)).toFixed(1);
+  return ((bmiCalc <= 18.5) ? `Underweight` : (bmiCalc <= 25) ? `Normal` : (bmiCalc <= 30) ? `Overweight` : `Obese`);
+}
+console.log(bmi(66.5, 1.80));
+console.log(bmi(80, 1.80));
+console.log(bmi(89, 1.80));
+console.log(bmi(90, 1.80));
+console.log(bmi(100, 1.80));
+console.log(bmi(105, 1.80));
+console.log(bmi(106, 1.80));
+console.log(bmi(108, 1.80));
+console.log(bmi(70, 1.80));
+console.log(bmi(60, 1.80));
+
+// #89. Calculate BMI
+// Write function bmi that calculates body mass index (bmi = weight / height2).
+// if bmi <= 18.5 return "Underweight"
+// if bmi <= 25.0 return "Normal"
+// if bmi <= 30.0 return "Overweight"
+// if bmi > 30 return "Obese"
+function bmi(weight, height) {
+  let bmiCalc = (weight / (height ** 2)).toFixed(1);
+  if (bmiCalc <= 18.5) return `${bmiCalc} == Underweight`;
+  else if (bmiCalc <= 25) return `${bmiCalc} == Normal`;
+  else if (bmiCalc <= 30) return `${bmiCalc} == Overweight`;
+  else return `${bmiCalc} == Obese`;
+}
+console.log(bmi(66.5, 1.80));
+console.log(bmi(80, 1.80));
+console.log(bmi(89, 1.80));
+console.log(bmi(90, 1.80));
+console.log(bmi(100, 1.80));
+console.log(bmi(105, 1.80));
+console.log(bmi(106, 1.80));
+console.log(bmi(108, 1.80));
+console.log(bmi(70, 1.80));
+console.log(bmi(60, 1.80));
