@@ -1483,3 +1483,18 @@ function countOfPosAndNeg(a, b, c) {
 console.log(countOfPosAndNeg(5, 13, 9)); // должна возвратить 3, 0
 console.log(countOfPosAndNeg(-2, 7, 9)); // должна возвратить 2, 1
 console.log(countOfPosAndNeg(-1, 7, 0)); // должна возвратить 1, 1
+
+// #93. Не самое большое и не самое маленькое число
+function middleOfThree(a, b, c) {
+  let arr = [a, b, c];
+  arr = arr.sort((a, b) => a - b);
+  return arr[1];
+}
+console.log(middleOfThree(5, 15, 18)); // должна возвратить 15
+console.log(middleOfThree(20, 9, 31)); // должна возвратить 20
+console.log(middleOfThree(20, 9, 12)); // должна возвратить 12
+console.log(middleOfThree(3, 4, -4)); // должна возвратить 3
+console.log(middleOfThree(2, 3, -5)); // должна возвратить 2
+console.log(middleOfThree(10, 5, 1)); // должна возвратить 5
+console.log(middleOfThree(-2, 5, 8)); // должна возвратить 5
+
