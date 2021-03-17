@@ -1437,3 +1437,49 @@ console.log(bmi(106, 1.80));
 console.log(bmi(108, 1.80));
 console.log(bmi(70, 1.80));
 console.log(bmi(60, 1.80));
+
+// #90. Fuel Calculator
+// In this kata you will have to write a function that takes litres and pricePerLitre as arguments.
+// Purchases of 2 or more litres get a discount of 5 cents per litre, purchases of 4 or more litres get a discount of 10 cents per litre, and so on every two litres, up to a maximum discount of 25 cents per litre.
+// But total discount per litre cannot be more than 25 cents. Return the toal cost rounded to 2 decimal places. Also you can guess that there will not be negative or non-numeric inputs.
+function fuelPrice(l, pPerL) {
+  let pr5 = Number((l * (pPerL - 0.05)).toFixed(2));
+  let pr10 = Number((l * (pPerL - 0.10)).toFixed(2));
+  let pr15 = Number((l * (pPerL - 0.15)).toFixed(2));
+  let pr20 = Number((l * (pPerL - 0.20)).toFixed(2));
+  let pr25 = Number((l * (pPerL - 0.25)).toFixed(2));
+  return (l > 2 && l < 4) ? pr5 : (l >= 4 && l < 6) ? pr10 : (l >= 6 && l < 8) ? pr15 : (l >= 8 && l < 10) ? pr20 : (l >= 10) ? pr25 : pr25;
+}
+console.log(fuelPrice(5, 1.23)); // 5.65
+console.log(fuelPrice(8, 2.5)); // 18.40
+console.log(fuelPrice(5, 5.6)); // 27.50
+
+// #91. Fuel Calculator
+// In this kata you will have to write a function that takes litres and pricePerLitre as arguments.
+// Purchases of 2 or more litres get a discount of 5 cents per litre, purchases of 4 or more litres get a discount of 10 cents per litre, and so on every two litres, up to a maximum discount of 25 cents per litre.
+// But total discount per litre cannot be more than 25 cents. Return the toal cost rounded to 2 decimal places. Also you can guess that there will not be negative or non-numeric inputs.
+function fuelPrice(litres, pricePerLitre) {
+  if (litres > 2 && litres < 4) return Number((litres * (pricePerLitre - 0.05)).toFixed(2));
+  else if (litres >= 4 && litres < 6) return Number((litres * (pricePerLitre - 0.10)).toFixed(2));
+  else if (litres >= 6 && litres < 8) return Number((litres * (pricePerLitre - 0.15)).toFixed(2));
+  else if (litres >= 8 && litres < 10) return Number((litres * (pricePerLitre - 0.20)).toFixed(2));
+  else if (litres >= 10) return Number((litres * (pricePerLitre - 0.25)).toFixed(2));
+}
+console.log(fuelPrice(5, 1.23)); // 5.65
+console.log(fuelPrice(8, 2.5)); // 18.40
+console.log(fuelPrice(5, 5.6)); // 27.50
+
+// #92. Количество положительных и количество отрицательных чисел в наборе
+// Дано три числа. Найдите, сколько среди них положительных чисел, и сколько отрицательных чисел.
+// Напишите функцию с именем countOfPosAndNeg, которая принимает три числа a, b, c в качестве аргументов и возвращает количество положительных и количество отрицательных чисел в этом наборе в виде массива [countOfPositive, countOfNegative]
+function countOfPosAndNeg(a, b, c) {
+  let abc = [a, b, c];
+  let countOfPositive = 0, countOfNegative = 0;
+  for (let i = 0; i < abc.length; i++) {
+    (abc[i] > 0) ? countOfPositive++ : (abc[i] < 0) ? countOfNegative++ : 0;
+  }
+  return [countOfPositive, countOfNegative];
+}
+console.log(countOfPosAndNeg(5, 13, 9)); // должна возвратить 3, 0
+console.log(countOfPosAndNeg(-2, 7, 9)); // должна возвратить 2, 1
+console.log(countOfPosAndNeg(-1, 7, 0)); // должна возвратить 1, 1
