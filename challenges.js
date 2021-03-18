@@ -1544,3 +1544,45 @@ console.log(shark(10, 8, 3, 7, true));  // Shark Bait!
 console.log(shark(45, 159, 0, 0, true)); // Alive!
 console.log(shark(6, 136, 1, 16, true)); // Alive!
 console.log(shark(17, 123, 4, 16, false)); // Alive!
+
+// #97. Find the sum of the roots of a quadratic equation
+// Implement function which will return sum of roots of a quadratic equation rounded to 2 decimal places, if there are any possible roots, else return None/null/nil/nothing.
+// If you use discriminant,when discriminant = 0, x1 = x2 = root => return sum of both roots.
+// There will always be valid arguments.
+function solve(a, b, c) {
+  var result1 = (-1 * b + Math.sqrt(Math.pow(b, 2) - (4 * a * c))) / (2 * a);
+  var result2 = (-1 * b - Math.sqrt(Math.pow(b, 2) - (4 * a * c))) / (2 * a);
+  return (isNaN(result1) || isNaN(result2)) ? null : (typeof result1 === 'number' && typeof result2 === 'number') ? Number((result1 + result2).toFixed(2)) : null;
+}
+console.log(solve(1, -35, -23)); // 35
+console.log(solve(1, -5 / 3.0, -26)); // 1.67
+console.log(solve(6, 4, 8)); // null
+
+// #98. Lucky number
+// Write a function to find if a number is lucky or not. If the sum of all digits is 0 or multiple of 9 then the number is lucky.
+// 1892376 => 1+8+9+2+3+7+6 = 36. 36 is divisible by 9, hence number is lucky.
+// Function will return true for lucky numbers and false for others.
+function isLucky(n) {
+  let arr = n.toString().split('').map(Number);
+  let count = 0;
+  for (let i = 0; i < arr.length; i++) {
+    count += arr[i];
+  }
+  return (count % 9 === 0 || count === 0) ? true : false;
+}
+console.log(isLucky(1892376)); // true
+console.log(isLucky(189237)); // false
+console.log(isLucky(1098)); // true
+console.log(isLucky(22869)); // true
+console.log(isLucky(0)); // true
+
+// #99. Lucky number
+// Write a function to find if a number is lucky or not. If the sum of all digits is 0 or multiple of 9 then the number is lucky.
+// 1892376 => 1+8+9+2+3+7+6 = 36. 36 is divisible by 9, hence number is lucky.
+// Function will return true for lucky numbers and false for others.
+const isLucky = n => n % 9 === 0;
+console.log(isLucky(1892376)); // true
+console.log(isLucky(189237)); // false
+console.log(isLucky(1098)); // true
+console.log(isLucky(22869)); // true
+console.log(isLucky(0)); // true
