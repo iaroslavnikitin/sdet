@@ -1498,3 +1498,28 @@ console.log(middleOfThree(2, 3, -5)); // должна возвратить 2
 console.log(middleOfThree(10, 5, 1)); // должна возвратить 5
 console.log(middleOfThree(-2, 5, 8)); // должна возвратить 5
 
+// #94. У какой фигуры площадь больше?
+function areaComparison(r, a) {
+  return ((r *= r * Math.PI) > (a *= a)) ? 'circle' : ((a *= a) > (r *= r * Math.PI)) ? 'square' : ((a *= a) === (r *= r * Math.PI)) ? 'the same' : 'square';
+}
+console.log(areaComparison(1, 1)); // должна возвратить circle
+console.log(areaComparison(2, 5)); // должна возвратить square
+console.log(areaComparison(3, 6)); // должна возвратить square
+
+// #95. Какая точка ближе к началу координат?
+// Даны координаты двух точек (x1, y1) и (x2, y2) в прямоугольной системе координат. Определить, какая из точек находится ближе к началу координат.
+// Напишите функцию с именем distanceComparison, которая принимает координаты точек (x1, y1) и (x2, y2)
+function distanceComparison(x1, y1, x2, y2) {
+  let d1 = Math.sqrt((y1 * y1) + (x1 * x1));
+  let d2 = Math.sqrt((y2 * y2) + (x2 * x2));
+  return (d1 < d2) ? 1 : (d1 > d2) ? 2 : (d1 === d2) ? 0 : 1;
+}
+console.log(distanceComparison(1, 1, 2, 2));      // должна возвратить 1
+console.log(distanceComparison(3, 4, 3, 0));      // должна возвратить 2
+console.log(distanceComparison(3, 3, -3, 3));     // должна возвратить 0
+console.log(distanceComparison(4, -4, 3, 5));     // должна возвратить 1
+console.log(distanceComparison(6, -7, 9, 2));     // должна возвратить 0
+console.log(distanceComparison(1, -8, -6, 3));    // должна возвратить 2
+console.log(distanceComparison(-10, -2, -7, -5)); // должна возвратить 2
+console.log(distanceComparison(-1, 4, -2, -3));   // должна возвратить 2
+console.log(distanceComparison(2, 5, -1, 6));     // должна возвратить 1
