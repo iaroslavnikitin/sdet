@@ -1586,3 +1586,31 @@ console.log(isLucky(189237)); // false
 console.log(isLucky(1098)); // true
 console.log(isLucky(22869)); // true
 console.log(isLucky(0)); // true
+
+// # 100. Is this a triangle?
+// Implement a method that accepts 3 integer values a, b, c. The method should return true if a triangle can be built with the sides of given length and false in any other case.
+// (In this case, all triangles must have surface greater than 0 to be accepted).
+function isTriangle(a, b, c) {
+  return a + b > c && a + c > b && c + b > a;
+}
+console.log(isTriangle(1, 2, 2)); // true
+console.log(isTriangle(5, 1, 5)); // true
+console.log(isTriangle(7, 2, 2)); // false
+console.log(isTriangle(-1, -2, -2)); // false
+
+// # 101 number with 3 roots
+// In mathematics, an nth root of a number x, where n is usually assumed to be a positive integer, is a number r which, when raised to the power n, yields x: r^n=x,
+// Given number n, such that n > 1, find if its 2nd root, 4th root and 8th root are all integers (fractional part is 0), return true if it exists, false if not.
+// 2nd root of 256 is 16
+// 4th root of 256 is 4
+// 8th root of 256 is 2
+// perfectRoots(256) // returns true 
+function perfectRoots(n) {
+  return (Math.sqrt(Math.sqrt(Math.sqrt(n)))) % 1 === 0;
+}
+console.log(perfectRoots(256)); // true
+console.log(perfectRoots(1000)); // false
+console.log(perfectRoots(6561)); // true
+console.log(perfectRoots(390625)); // true
+console.log(perfectRoots(16000000)); // false
+console.log(perfectRoots(5764801)); // true
