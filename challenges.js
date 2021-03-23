@@ -1669,3 +1669,72 @@ console.log(solve(8, 2)); // [2, 6]
 console.log(solve(10, 3)); // -1
 console.log(solve(12, 4)); // [4, 8]
 console.log(solve(12, 5)); // -1
+
+// # 105 Cat Years, Dog Years (2)
+// // Cat Years:
+// 15 cat years for first year
+// +9 cat years for second year
+// +4 cat years for each year after that
+// // Dog Years:
+// 15 dog years for first year
+// +9 dog years for second year
+// +5 dog years for each year after that
+const ownedCatAndDog = function (catYears, dogYears) {
+  let result = [catYears, dogYears];
+  result.forEach(function (v, i) {
+    if (v < 15) {
+      result[i] = 0;
+    } else if (v == 15 || v < 24) {
+      result[i] = 1;
+    } else {
+      if ((v - 15) <= 9) {
+        result[i] = 2;
+      } else {
+        result[i] = parseInt(((v - 24) / (i > 0 ? 5 : 4)) + 2);
+      }
+    }
+  });
+  return result;
+}
+console.log(ownedCatAndDog(15, 15)); // [1, 1]
+console.log(ownedCatAndDog(15, 15)); // [1, 1]
+console.log(ownedCatAndDog(56, 64)); // [10, 10]
+console.log(ownedCatAndDog(0, 0)); // [0, 0]
+console.log(ownedCatAndDog(20, 85)); // [1, 14]
+
+// # 105 Cat Years, Dog Years (2)
+// // Cat Years:
+// 15 cat years for first year
+// +9 cat years for second year
+// +4 cat years for each year after that
+// // Dog Years:
+// 15 dog years for first year
+// +9 dog years for second year
+// +5 dog years for each year after that
+const ownedCatAndDog = function (catYears, dogYears) {
+  let result = [catYears, dogYears];
+  if (catYears <= 15) {
+    catYears = 1;
+  } else {
+    if ((catYears - 15) <= 9) {
+      catYears = 2;
+    } else {
+      catYears = parseInt(((catYears - 24) / 4) + 2);
+    }
+  }
+  if (dogYears <= 15) {
+    dogYears = 1;
+  } else {
+    if ((dogYears - 15) <= 9) {
+      dogYears = 2;
+    } else {
+      dogYears = parseInt(((dogYears - 24) / 5) + 2);
+    }
+  }
+  return [catYears, dogYears];
+}
+console.log(ownedCatAndDog(15, 15)); // [1, 1]
+console.log(ownedCatAndDog(15, 15)); // [1, 1]
+console.log(ownedCatAndDog(56, 64)); // [10, 10]
+console.log(ownedCatAndDog(0, 0)); // [0, 0]
+console.log(ownedCatAndDog(20, 85)); // [1, 14]
