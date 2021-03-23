@@ -1598,7 +1598,7 @@ console.log(isTriangle(5, 1, 5)); // true
 console.log(isTriangle(7, 2, 2)); // false
 console.log(isTriangle(-1, -2, -2)); // false
 
-// # 101 number with 3 roots
+// # 101. number with 3 roots
 // In mathematics, an nth root of a number x, where n is usually assumed to be a positive integer, is a number r which, when raised to the power n, yields x: r^n=x,
 // Given number n, such that n > 1, find if its 2nd root, 4th root and 8th root are all integers (fractional part is 0), return true if it exists, false if not.
 // 2nd root of 256 is 16
@@ -1614,3 +1614,58 @@ console.log(perfectRoots(6561)); // true
 console.log(perfectRoots(390625)); // true
 console.log(perfectRoots(16000000)); // false
 console.log(perfectRoots(5764801)); // true
+
+// # 102. Triangular Treasure
+// Triangular numbers are so called because of the equilateral triangular shape that they occupy when laid out as dots. i.e.
+// 1st (1)   2nd (3)    3rd (6)
+// *          **        ***
+//            *         **
+//                      *
+// You need to return the nth triangular number. You should return 0 for out of range values:
+//  triangular(0) == 0
+//  triangular(2) == 3
+//  triangular(3) == 6
+//  triangular(-10) == 0
+function triangular(n) {
+  return (n > 0) ? (n * (n + 1) / 2) : 0;
+}
+console.log(triangular(2)); // 3
+console.log(triangular(4)); // 10
+
+// # 103. if..else and ternary operator
+// Complete function saleHotdogs/SaleHotDogs/sale_hotdogs, function accept 1 parameters:n, n is the number of customers to buy hotdogs,
+// different numbers have different prices (refer to the following table), return a number that the customer need to pay how much money.
+// +---------------+-------------+
+// |  numbers n    | price(cents)|
+// +---------------+-------------+
+// |n<5            |    100      |
+// +---------------+-------------+
+// |n>=5 and n<10  |     95      |
+// +---------------+-------------+
+// |n>=10          |     90      |
+// +---------------+-------------+
+function saleHotdogs(n) {
+  return n * (n < 5 ? 100 : n < 10 ? 95 : 90);
+}
+console.log(saleHotdogs(1)); // 100
+console.log(saleHotdogs(4)); // 400
+console.log(saleHotdogs(5)); // 475
+console.log(saleHotdogs(9)); // 855
+console.log(saleHotdogs(10)); // 900
+console.log(saleHotdogs(100)); // 9000
+
+// # 104. GCD sum
+// Description: Given the sum and gcd of two numbers, return those two numbers in ascending order. If the numbers do not exist, return -1
+// For example: 
+// Given sum = 12 and gcd = 4...
+// solve(12,4) = [4,8]. The two numbers 4 and 8 sum to 12 and have a gcd of 4.
+// solve(12,5) = -1. No two numbers exist that sum to 12 and have gcd of 5.
+// solve(10,2) = [2,8]. Note that [4,6] is also a possibility but we pick the one with the lower first element: 2 < 4, so we take [2,8].
+function solve(s, g) {  
+  return (s % g === 0) ? [(s + g) - s, s - g] : -1;
+}
+console.log(solve(6, 3)); // [3, 3]
+console.log(solve(8, 2)); // [2, 6]
+console.log(solve(10, 3)); // -1
+console.log(solve(12, 4)); // [4, 8]
+console.log(solve(12, 5)); // -1
