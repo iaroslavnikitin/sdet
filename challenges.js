@@ -1702,7 +1702,7 @@ console.log(ownedCatAndDog(56, 64)); // [10, 10]
 console.log(ownedCatAndDog(0, 0)); // [0, 0]
 console.log(ownedCatAndDog(20, 85)); // [1, 14]
 
-// # 105 Cat Years, Dog Years (2)
+// # 106 Cat Years, Dog Years (2)
 // // Cat Years:
 // 15 cat years for first year
 // +9 cat years for second year
@@ -1732,6 +1732,45 @@ const ownedCatAndDog = function (catYears, dogYears) {
     }
   }
   return [catYears, dogYears];
+}
+console.log(ownedCatAndDog(15, 15)); // [1, 1]
+console.log(ownedCatAndDog(15, 15)); // [1, 1]
+console.log(ownedCatAndDog(56, 64)); // [10, 10]
+console.log(ownedCatAndDog(0, 0)); // [0, 0]
+console.log(ownedCatAndDog(20, 85)); // [1, 14]
+
+// # 107 Cat Years, Dog Years (2)
+// // Cat Years:
+// 15 cat years for first year
+// +9 cat years for second year
+// +4 cat years for each year after that
+// // Dog Years:
+// 15 dog years for first year
+// +9 dog years for second year
+// +5 dog years for each year after that
+const ownedCatAndDog = (catYears, dogYears) => [
+  (catYears < 24) ? catYears / 15 : (catYears - 16) / 4,
+  (dogYears < 24) ? dogYears / 15 : (dogYears - 14) / 5
+].map(Math.floor);
+console.log(ownedCatAndDog(15, 15)); // [1, 1]
+console.log(ownedCatAndDog(15, 15)); // [1, 1]
+console.log(ownedCatAndDog(56, 64)); // [10, 10]
+console.log(ownedCatAndDog(0, 0)); // [0, 0]
+console.log(ownedCatAndDog(20, 85)); // [1, 14]
+
+// # 108 Cat Years, Dog Years (2)
+// // Cat Years:
+// 15 cat years for first year
+// +9 cat years for second year
+// +4 cat years for each year after that
+// // Dog Years:
+// 15 dog years for first year
+// +9 dog years for second year
+// +5 dog years for each year after that
+const ownedCatAndDog = function (catYears, dogYears) {
+  let cat = (catYears < 24) ? catYears / 15 : (catYears - 16) / 4;
+  let dog = (dogYears < 24) ? dogYears / 15 : (dogYears - 14) / 5;
+  return [Math.floor(cat), Math.floor(dog)];
 }
 console.log(ownedCatAndDog(15, 15)); // [1, 1]
 console.log(ownedCatAndDog(15, 15)); // [1, 1]
