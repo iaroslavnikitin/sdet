@@ -1777,3 +1777,67 @@ console.log(ownedCatAndDog(15, 15)); // [1, 1]
 console.log(ownedCatAndDog(56, 64)); // [10, 10]
 console.log(ownedCatAndDog(0, 0)); // [0, 0]
 console.log(ownedCatAndDog(20, 85)); // [1, 14]
+
+// # 109. Приветствие на разных языках
+function greetings(name, language) {
+  let arrL = [];
+  switch (name, language) {
+    case 'English': arrL.push('Hello'); return `${arrL} ${name}!`;
+    case 'German': arrL.push('Hallo'); return `${arrL} ${name}!`;
+    case 'French': arrL.push('Bonjour'); return `${arrL} ${name}!`;
+    case 'Spanish': arrL.push('Hola'); return `${arrL} ${name}!`;
+    case 'Italian': arrL.push('Saluto'); return `${arrL} ${name}!`;
+    case 'Russian': arrL.push('Привет'); return `${arrL} ${name}!`;
+    case 'Czech': arrL.push('Nazdar'); return `${arrL} ${name}!`;
+    default: return `Hello ${name}!`;
+  }
+}
+console.log(greetings('Peter', 'Russian')); // должна возвратить "Привет Peter!"
+console.log(greetings('Ann', 'Chinese')); // должна возвратить "Hello Ann!"
+console.log(greetings('Lera', 'Ukrainian')); // должна возвратить "Hello Ann!"
+console.log(greetings('Amber', 'German')); // должна возвратить "Hallo Amber!"
+console.log(greetings('Betty', 'French')); // должна возвратить "Bonjour Betty!"
+
+
+// # 110. Какой это день недели?
+// Дни недели пронумерованы так: 0 - 'Sunday', 1 - 'Monday', 2 - 'Tuesday', 3 - 'Wednesday', 4 - 'Thursday', 5 - 'Friday', 6 - 'Saturday'.
+// Дано целое число k (от 1 до 365). Определите название дня недели для k-го дня года, если считать, что 1 января был понедельник.
+// Напишите функцию с именем dayOfWeek, которая принимает число k в качестве аргумента (число от 1 до 365 - номер дня года) и возвращает название дня недели.
+function dayOfWeek(k) {
+  switch (k % 7) {
+    case 0: return 'Sunday';
+    case 1: return 'Monday';
+    case 2: return 'Tuesday';
+    case 3: return 'Wednesday';
+    case 4: return 'Thursday';
+    case 5: return 'Friday';
+    case 6: return 'Saturday';
+    default: return undefined;
+  }
+}
+console.log(dayOfWeek(3)); // должна возвратить "Wednesday"
+console.log(dayOfWeek(14)); // должна возвратить "Sunday"
+
+// # 111. Какой это день недели?
+// Дни недели пронумерованы так: 0 - 'Sunday', 1 - 'Monday', 2 - 'Tuesday', 3 - 'Wednesday', 4 - 'Thursday', 5 - 'Friday', 6 - 'Saturday'.
+// Дано целое число k (от 1 до 365). Определите название дня недели для k-го дня года, если считать, что 1 января был понедельник.
+// Напишите функцию с именем dayOfWeek, которая принимает число k в качестве аргумента (число от 1 до 365 - номер дня года) и возвращает название дня недели.
+function dayOfWeek(k) {
+  let arr = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+  return arr[k % 7];
+}
+console.log(dayOfWeek(3)); // должна возвратить "Wednesday"
+console.log(dayOfWeek(14)); // должна возвратить "Sunday"
+
+// # 111. Reverse a string and check if the string is a palindrome
+function palindrome(str) {
+  str = str.toLowerCase();
+  let strLen = str.length;
+  for (let i = 0; i < strLen / 2; i++) {
+    if (str[i] !== str[strLen - 1 - i]) return `${str.split('').reverse().join('')} isn't a palindrome`;
+  }
+  return `${str.split('').reverse().join('')} is a palindrome`;
+}
+console.log(palindrome('soMe word'));
+console.log(palindrome('dlroW olleH'));
+console.log(palindrome('raCecar'));
