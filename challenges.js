@@ -1867,3 +1867,34 @@ function cutStr(input, delimiter) {
 }
 console.log(cutStr('abcdefg', 'cd')); // должна возвратить 'efg'
 console.log(cutStr('yaro', 'a')); // должна возвратить 'ro'
+
+// # 113, Найти частное и остаток от деления без использования операций деления и нахождения остатка
+// Даны два положительных целых числа n и k. Используя только операции сложения и вычитания, найдите результат деления числа n на число k (частное), а также остаток от деления.
+// Напишите функцию с именем quotientAndRemainder, которая принимает два числа n, k и возвращает частное и остаток от деления в виде массива [quotient, remainder].
+function quotientAndRemainder(n, k) {
+  let q = 0;
+  while (n >= k) {
+    q++;
+    n = n - k;
+  }
+  return [q, n];
+}
+console.log(quotientAndRemainder(5, 5)); // должна возвратить [1, 0]
+console.log(quotientAndRemainder(5, 2)); // должна возвратить [2, 1]
+console.log(quotientAndRemainder(12, 5)); // должна возвратить [2, 2]
+console.log(quotientAndRemainder(5, 7)); // должна возвратить [0, 5]
+
+// # 114, Найти частное и остаток от деления без использования операций деления и нахождения остатка
+// Даны два положительных целых числа n и k. Используя только операции сложения и вычитания, найдите результат деления числа n на число k (частное), а также остаток от деления.
+// Напишите функцию с именем quotientAndRemainder, которая принимает два числа n, k и возвращает частное и остаток от деления в виде массива [quotient, remainder].
+function quotientAndRemainder(n, k) {
+  let i;
+  for (i = 0; n >= k; i++) {
+    n -= k;
+  }
+  return [i, n];
+}
+console.log(quotientAndRemainder(5, 5)); // должна возвратить [1, 0]
+console.log(quotientAndRemainder(5, 2)); // должна возвратить [2, 1]
+console.log(quotientAndRemainder(12, 5)); // должна возвратить [2, 2]
+console.log(quotientAndRemainder(5, 7)); // должна возвратить [0, 5]
