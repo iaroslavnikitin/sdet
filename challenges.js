@@ -1841,3 +1841,29 @@ function palindrome(str) {
 console.log(palindrome('soMe word'));
 console.log(palindrome('dlroW olleH'));
 console.log(palindrome('raCecar'));
+
+// # 112. Write a function to return the remainder of the input string that is found after the delimiter string.
+// Example of input strings:
+// input: "abc",
+// delimiter: "b",
+// Output: "c".
+// DO NOT use any standard string functions like split or substring
+// examples:
+// input | delimiter | output:
+// ---------------------------------------------------
+// input is 'abc'  | delimiter is 'b'  | output is 'c'
+// input is 'abcd' | delimiter is 'ab' | output is 'cd'
+// input is 'abcd' | delimiter is 'a'  | output is 'bcd'
+function cutStr(input, delimiter) {
+  let tmp = '', new_str = '';
+  for (let i = input.length - 1; i >= 0; i--) {
+    if (input[i] === delimiter[delimiter.length - 1]) break;
+    tmp += input[i];
+  }
+  for (let i = tmp.length - 1; i >= 0; i--) {
+    new_str += tmp[i];
+  }
+  return new_str;
+}
+console.log(cutStr('abcdefg', 'cd')); // должна возвратить 'efg'
+console.log(cutStr('yaro', 'a')); // должна возвратить 'ro'
