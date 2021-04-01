@@ -1974,3 +1974,60 @@ function sumOfDigits(n) {
 console.log(sumOfDigits(25)); // должна возвратить 7
 console.log(sumOfDigits(658)); // должна возвратить 19
 console.log(sumOfDigits(13881)); // должна возвратить 21
+
+// # 119, Сумма цифр числа
+// Напишите функцию с именем sumOfDigits, которая принимает неотрицательное число n (n >= 0) в качестве аргумента и возвращает cумму цифр этого числа.
+// При решении используйте цикл while. Запрещено использовать методы строк и массивов.
+function sumOfDigits(n) {
+  const arr = [];
+  while (n > 0) {
+    let lastDigit = n % 10;
+    arr.push(lastDigit);
+    n = (n / 10) | 0;
+  }
+  let val = 0;
+  for (let i = 0; i < arr.length; i++) {
+    val += arr[i];
+  }
+  return val;
+}
+console.log(sumOfDigits(25)); // должна возвратить 7
+console.log(sumOfDigits(658)); // должна возвратить 19
+console.log(sumOfDigits(13881)); // должна возвратить 21
+
+// # 120, Сумма цифр числа
+// Напишите функцию с именем sumOfDigits, которая принимает неотрицательное число n (n >= 0) в качестве аргумента и возвращает cумму цифр этого числа.
+// При решении используйте цикл while. Запрещено использовать методы строк и массивов.
+function sumOfDigits(n) {
+  let sum = 0;
+  while (n > 0) {
+    sum += n % 10;
+    n = Math.floor(n / 10)
+  }
+  return sum;
+}
+console.log(sumOfDigits(25)); // должна возвратить 7
+console.log(sumOfDigits(658)); // должна возвратить 19
+console.log(sumOfDigits(13881)); // должна возвратить 21
+
+// # 121, Сколько цифр содержит число?
+// Напишите функцию с именем numberOfDigits, которая принимает неотрицательное число n (n>=0) в качестве аргумента и возвращает количество цифр этого числа.
+// При решении используйте цикл while. Запрещено использовать методы и свойства строк и массивов.
+function sumOfDigits(n) {
+  let arr = [];
+  while (n > 0) {
+    let lastDigit = n % 10;
+    //  arr.push(lastDigit);
+    //  arr[arr.length] = lastDigit;
+    arr = [...arr, lastDigit];
+    n = (n / 10) | 0;
+  }
+  let val = 0;
+  for (let i = 0; i < arr.length; i++) {
+    val++;
+  }
+  return val;
+}
+console.log(sumOfDigits(25)); // должна возвратить 2
+console.log(sumOfDigits(658)); // должна возвратить 3
+console.log(sumOfDigits(13881)); // должна возвратить 5
