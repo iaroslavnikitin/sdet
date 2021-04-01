@@ -64,10 +64,10 @@ function fillArray(n) {
     }
   return arr;
 }
-console.log(fillArray(0));
-console.log(fillArray(1));
-console.log(fillArray(2));
-console.log(fillArray(5));
+console.log(fillArray(0)); // должна вернуть []
+console.log(fillArray(1)); // должна вернуть [ 1 ]
+console.log(fillArray(2)); // должна вернуть [ 1, 2 ]
+console.log(fillArray(5)); // должна вернуть [ 1, 2, 3, 4, 5 ]
 
 // #7. Напишите функцию sum, которая принимает неотрицательное число n и возвращает сумму чисел от 1 до n:
 // 1 + 2 + 3 + ... + n.
@@ -79,10 +79,10 @@ function sum(n) {
     }
   return arr.reduce((part_sum, a) => part_sum + a, 0);
 }
-console.log(sum(0));
-console.log(sum(1));
-console.log(sum(2));
-console.log(sum(5));
+console.log(sum(0)); // должна вернуть 0
+console.log(sum(1)); // должна вернуть 1
+console.log(sum(2)); // должна вернуть 3
+console.log(sum(5)); // должна вернуть 15
 
 // #8. Have a function fizzBuzz(num) which take a number as parameter. Function should return "Fizz" if number dividable by 3, "Buzz" by 5 or current number if not.
 function fizzBuzz(num) {
@@ -1933,3 +1933,44 @@ console.log(sumOfOdd(20)); // должна возвратить 100
 console.log(sumOfOdd(58)); // должна возвратить 841
 console.log(sumOfOdd(72)); // должна возвратить 1296
 console.log(sumOfOdd(96)); // должна возвратить 2304
+
+// # 117, Произведение четных чисел от 1 до n.
+// Найдите произведение четных чисел от 2 до n, т.е. 2 * 4 * 6 * ...
+// Напишите функцию с именем multOfEven, которая принимает число n в качестве аргумента и возвращает произведение четных чисел от 2 до n. При решении используйте цикл while.
+function multOfEven(n) {
+  let arr = [];
+  let i = 1;
+    while (i < n) {
+      i++;
+      if (i % 2 === 0) {
+        arr.push(i);
+      }
+    }
+  return arr.reduce((accumulator, current) => accumulator * current, 1);
+}
+console.log(multOfEven(2)); // должна возвратить 2
+console.log(multOfEven(3)); // должна возвратить 2
+console.log(multOfEven(6)); // должна возвратить 48
+console.log(multOfEven(9)); // должна возвратить 384
+console.log(multOfEven(10)); // должна возвратить 3840
+console.log(multOfEven(11)); // должна возвратить 3840
+console.log(multOfEven(21)); // должна возвратить 3715891200
+
+// # 118, Сумма цифр числа
+// Напишите функцию с именем sumOfDigits, которая принимает неотрицательное число n (n>=0) в качестве аргумента и возвращает cумму цифр этого числа.
+// При решении используйте цикл while. Запрещено использовать методы строк и массивов.
+function sumOfDigits(n) {
+  let arr = n.toString().split('').map(x => +x);
+  let sum = 0;
+  let i = 0;
+  while (i < arr.length) {
+    i++;
+    sum += arr[i];
+  }
+  return arr.reduce(function (a, b) {
+    return a + b;
+  }, 0);
+}
+console.log(sumOfDigits(25)); // должна возвратить 7
+console.log(sumOfDigits(658)); // должна возвратить 19
+console.log(sumOfDigits(13881)); // должна возвратить 21
