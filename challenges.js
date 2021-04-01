@@ -2031,3 +2031,32 @@ function sumOfDigits(n) {
 console.log(sumOfDigits(25)); // должна возвратить 2
 console.log(sumOfDigits(658)); // должна возвратить 3
 console.log(sumOfDigits(13881)); // должна возвратить 5
+
+// # 122, Сколько цифр содержит число?
+// Напишите функцию с именем numberOfDigits, которая принимает неотрицательное число n (n>=0) в качестве аргумента и возвращает количество цифр этого числа.
+// При решении используйте цикл while. Запрещено использовать методы и свойства строк и массивов.
+function numberOfDigits(n) {
+  let count = 0;
+  while (n > 0) {
+    n = Math.trunc(n / 10);
+    count++;
+  }
+  return count;
+}
+console.log(sumOfDigits(25)); // должна возвратить 2
+console.log(sumOfDigits(658)); // должна возвратить 3
+console.log(sumOfDigits(13881)); // должна возвратить 5
+
+// # 123, Power of two
+// Complete the function powerOfTwo (or equivalent, depending on your language) that determines if a given non-negative integer is a power of two. From the corresponding Wikipedia entry:
+// a power of two is a number of the form 2n where n is an integer, i.e. the result of exponentiation with number two as the base and integer n as the exponent.
+const isPowerOfTwo = function (n) {
+  if (n === 0) return false;
+  while (n % 2 === 0) {
+    n /= 2;
+  }
+  return n === 1;
+}
+console.log(isPowerOfTwo(2)); // true
+console.log(isPowerOfTwo(4096)); // true
+console.log(isPowerOfTwo(5)); // false
