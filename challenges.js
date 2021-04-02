@@ -2060,3 +2060,27 @@ const isPowerOfTwo = function (n) {
 console.log(isPowerOfTwo(2)); // true
 console.log(isPowerOfTwo(4096)); // true
 console.log(isPowerOfTwo(5)); // false
+
+// # 124, Largest prime number containing n digit
+// Do not mind the pattern as it is just an incident!
+// And make sure to return false if the input is not an integer :D
+// This might seem simple at first, it is, but keep an eye on the performance. Go for it!
+let largest = (n) => {
+  if (n > 0 && typeof (n) === 'number') {
+    let num = Math.pow(10, n) - 1;
+    for (let i = num; i > 2; i--) {
+      let j = 2;
+      while (j <= num) {
+        if (i % j === 0) break;
+        j++;
+        if (j === i) return i;
+      }
+    }
+  } else return false;
+}
+console.log(largest(0)); // false
+console.log(largest(1)); // 7
+console.log(largest(2)); // 97
+console.log(largest(3)); // 997
+console.log(largest(4)); // 9973
+console.log(largest(5)); // 99991
