@@ -2084,3 +2084,54 @@ console.log(largest(2)); // 97
 console.log(largest(3)); // 997
 console.log(largest(4)); // 9973
 console.log(largest(5)); // 99991
+
+// # 125, Largest prime number containing n digit
+// Do not mind the pattern as it is just an incident!
+// And make sure to return false if the input is not an integer :D
+// This might seem simple at first, it is, but keep an eye on the performance. Go for it!
+const largest = n => {
+  if (n <= 0 || !Number.isInteger(n)) return false;
+  let p = 10 ** n - 1;
+  let i = 3;
+  while (i * i <= p) {
+    if (p % i) {
+      i += 2;
+    } else {
+      i = 3;
+      p -= 2;
+    }
+  }
+  return p;
+}
+console.log(largest(0)); // false
+console.log(largest(1)); // 7
+console.log(largest(2)); // 97
+console.log(largest(3)); // 997
+console.log(largest(4)); // 9973
+console.log(largest(5)); // 99991
+
+// # 126, Largest prime number containing n digit
+// Do not mind the pattern as it is just an incident!
+// And make sure to return false if the input is not an integer :D
+// This might seem simple at first, it is, but keep an eye on the performance. Go for it!
+function isPrime(num) {
+  if (num <= 1) return false;
+  for (let i = 2; i <= Math.round(num ** 0.5); i++) {
+    if (num % i === 0) return false;
+  }
+  return true;
+}
+let largest = (n) => {
+  if (n <= 0 || typeof n != 'number') return false;
+  let number = 10 ** n - 1;
+  while (!isPrime(number)) {
+    number--;
+  }
+  return number;
+}
+console.log(largest(0)); // false
+console.log(largest(1)); // 7
+console.log(largest(2)); // 97
+console.log(largest(3)); // 997
+console.log(largest(4)); // 9973
+console.log(largest(5)); // 99991
