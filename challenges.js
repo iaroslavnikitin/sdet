@@ -2197,3 +2197,92 @@ function differenceOfSquares(n) {
 console.log(differenceOfSquares(5)); // 170
 console.log(differenceOfSquares(10)); // 2640
 console.log(differenceOfSquares(100)); // 25164150
+
+// # 130, Going to the cinema
+// My friend John likes to go to the cinema. He can choose between system A and system B.
+// System A : he buys a ticket (15 dollars) every time
+// System B : he buys a card (500 dollars) and a first ticket for 0.90 times the ticket price, then for each additional ticket he pays 0.90 times the price paid for the previous ticket.
+// If John goes to the cinema 3 times:
+// System A : 15 * 3 = 45
+// System B : 500 + 15 * 0.90 + (15 * 0.90) * 0.90 + (15 * 0.90 * 0.90) * 0.90 ( = 536.5849999999999, no rounding for each ticket)
+// John wants to know how many times he must go to the cinema so that the final result of System B, when rounded up to the next dollar, will be cheaper than System A.
+// The function movie has 3 parameters: card (price of the card), ticket (normal price of a ticket), perc (fraction of what he paid for the previous ticket) and returns the first n such that
+// ceil(price of System B) < price of System A.
+function movie(card, ticket, perc) {
+  let count = 0;
+  let totalA = 0;
+  let totalB = 0;
+  while (Math.ceil(card + totalB) >= totalA) {
+    totalA += ticket;
+    totalB = (totalB + ticket) * perc;
+    count += 1;
+  }
+  return count;
+}
+console.log(movie(500, 15, 0.9)); // 43
+console.log(movie(100, 10, 0.95)); // 24
+console.log(movie(835076, 13, 0.97)); // 64270
+
+// # 131, Finding Remainder Without Using '%' Operator
+// Write a method remainder which takes two integer arguments, dividend and divisor, and returns the remainder when dividend is divided by divisor.
+// Do NOT use the modulus operator (%) to calculate the remainder!
+// Dividend will always be greater than or equal to divisor.
+// Make sure that the implemented remainder function works exactly the same as the Modulus operator (%).
+function remainder (D, d) {
+  while (D >= d) D -= d;
+  return D;
+}
+console.log(remainder(3, 2)); // 1
+console.log(remainder(19, 2)); // 1
+console.log(remainder(10, 2)); // 0
+console.log(remainder(34, 7)); // 6
+console.log(remainder(27, 5)); // 2
+console.log(remainder(100, 7)); // 2
+
+// # 132, sum of integer from a to b (1+2+3+4...+10)
+let a = 10; let b = 1; let sum = 0;
+if (a < b) {
+  for (a; a <= b; a++) {
+    sum += a;
+  }
+} else {
+  for (b; b <= a; b++) {
+    sum += b;
+  }
+}
+console.log(sum); // 55
+
+// # 132, No zeros for heros
+// Numbers ending with zeros are boring.
+// They might be fun in your world, but not here. Get rid of them. Only the ending ones.
+// 1450 -> 145
+// 960000 -> 96
+// 1050 -> 105
+// -1050 -> -105
+// Zero alone is fine, don't worry about it. Poor guy anyway
+function noBoringZeros(n) {
+  while (n % 10 === 0 && n !== 0) n /= 10;
+  return n;
+}
+console.log(noBoringZeros(1450)); // 145
+console.log(noBoringZeros(960000)); // 96
+console.log(noBoringZeros(1050)); // 105
+console.log(noBoringZeros(-1050)); // -105
+console.log(noBoringZeros(-105)); // -105
+console.log(noBoringZeros(0)); // 0
+
+// # 133, No zeros for heros
+// Numbers ending with zeros are boring.
+// They might be fun in your world, but not here. Get rid of them. Only the ending ones.
+// 1450 -> 145
+// 960000 -> 96
+// 1050 -> 105
+// -1050 -> -105
+// Zero alone is fine, don't worry about it. Poor guy anyway
+const noBoringZeros = n => (n === 0) ? 0 : (n !== 0) ? Number(String(n).replace(/0+$/,'')) : 0;
+console.log(noBoringZeros(1450)); // 145
+console.log(noBoringZeros(960000)); // 96
+console.log(noBoringZeros(1050)); // 105
+console.log(noBoringZeros(-1050)); // -105
+console.log(noBoringZeros(-105)); // -105
+console.log(noBoringZeros(0)); // 0
