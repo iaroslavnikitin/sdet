@@ -2149,3 +2149,51 @@ console.log(largest(2)); // 97
 console.log(largest(3)); // 997
 console.log(largest(4)); // 9973
 console.log(largest(5)); // 99991
+
+// # 128, Ученик учит английские слова
+// Ученик к моменту начала обучения не знает ни одного английского слова. В первый день занятий он выучил 5 английских слов.
+// В каждый последующий день он выучивал на 2 слова больше, чем в предыдущий. Через сколько дней ученик будет знать не менее n английских слов?
+// Напишите функцию с именем englishWords, которая принимает в качестве аргумента неотрицательное число n (n>=0)
+// (количество английских слов, которые хочет выучить ученик) и возвращает количество дней, которые необходимы для изучения n слов.
+function englishWords(n) {
+  if (n === 5) return 1;
+  let i = 5;          // 5 words a day
+  let days = 1;       // days
+  let increment = 2;  // plus 2 words every other day
+  while (i < n) {
+    i += (5 + increment * days);
+    days++;
+  }
+  return days;
+}
+console.log(englishWords(5)); // должна возвратить 1;
+console.log(englishWords(10)); // должна возвратить 2;
+console.log(englishWords(20)); // должна возвратить 3;
+console.log(englishWords(30)); // должна возвратить 4;
+console.log(englishWords(276)); // должна возвратить 15;
+console.log(englishWords(288)); // должна возвратить 16;
+console.log(englishWords(157)); // должна возвратить 11;
+console.log(englishWords(100)); // должна возвратить 9;
+
+
+// # 129, Difference Of Squares
+// Find the difference between the sum of the squares of the first n natural numbers (1 <= n <= 100) and the square of their sum.
+// For example, when n = 10:
+// The square of the sum of the numbers is: (1 + 2 + 3 + 4 + 5 + 6 + 7 + 8 + 9 + 10)2 = 552 = 3025
+// The sum of the squares of the numbers is: 12 + 22 + 32 + 42 + 52 + 62 + 72 + 82 + 92 + 102 = 385
+// Hence the difference between square of the sum of the first ten natural numbers and the sum of the squares of those numbes is: 3025 - 385 = 2640
+function differenceOfSquares(n) {
+  n = [n];
+  let s1 = 0;
+  let s2 = 0;
+  let x = 1;
+  while (x <= n) {
+    s1 += x;
+    s2 += x ** 2;
+    x += 1;
+  }
+  return (s1 ** 2) - s2;
+}
+console.log(differenceOfSquares(5)); // 170
+console.log(differenceOfSquares(10)); // 2640
+console.log(differenceOfSquares(100)); // 25164150

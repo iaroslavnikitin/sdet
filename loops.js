@@ -1,4 +1,4 @@
-// Циклы while, for, do while    (https://www.youtube.com/watch?v=tLZOxD-TttM)
+// Циклы while, for, do while    (https://youtu.be/EVDC_61Z6f4)
 
 //while цикл с предусловием
 
@@ -122,7 +122,7 @@
 
 
 
-//Циклы. Комбинирование циклов и условных операторов     (https://www.youtube.com/watch?v=SZimwqVSZi8)
+//Циклы. Комбинирование циклов и условных операторов     (https://youtu.be/SZimwqVSZi8)
 
 //1+2+3+4...+10
 // let sum = 0;
@@ -225,16 +225,16 @@
 
 
 //перевернуть строку hello ---> olleh
-let str = 'hello world';
+// let str = 'hello world';
 
-let t = ''; //  o+ l+ l+ e+ h+''
-for (let i = 0; i < str.length; i++){
-  t = str[i] + t;
-}
-console.log(t);
+// let t = ''; //  o+ l+ l+ e+ h+''
+// for (let i = 0; i < str.length; i++){
+//   t = str[i] + t;
+// }
+// console.log(t);
 
-let r = '';
-for (let i = str.length-1; i >=0; i--){
-  r = r + str[i];
-}
-console.log(r);
+// let r = '';
+// for (let i = str.length-1; i >=0; i--){
+//   r = r + str[i];
+// }
+// console.log(r);

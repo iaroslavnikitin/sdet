@@ -1,4 +1,4 @@
-//Массив
+//Массив   (https://youtu.be/tLZOxD-TttM)
 // let arr = [];
 // console.log(arr);
 // console.log(typeof arr);
