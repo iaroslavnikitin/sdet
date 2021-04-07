@@ -2286,3 +2286,204 @@ console.log(noBoringZeros(1050)); // 105
 console.log(noBoringZeros(-1050)); // -105
 console.log(noBoringZeros(-105)); // -105
 console.log(noBoringZeros(0)); // 0
+
+// # 134, Powers of 3
+// Given a positive integer N, return the largest integer k such that 3^k < N.
+// For example:
+// largest_power(3) == 0
+// largest_power(4) == 1
+function largestPower(n) {
+  let k = 0;
+  while (n > (3 ** k)) {
+    k++;
+  }
+  return k - 1;
+}
+console.log(largestPower(3));  // 0
+console.log(largestPower(5));  // 1
+console.log(largestPower(7));  // 1
+console.log(largestPower(81)); // 3
+console.log(largestPower(82)); // 4
+
+// # 135, print all numbers except num % 5 (for loop)
+const arr = [];
+for (let i = 0; i <= 20; i++) {
+  if (i % 5 === 0 && i % 2 !== 0) continue;
+  else {
+    arr.push(i);
+  }
+}
+console.log(arr);  // [ 1,  2,  3,  4,  6,  7,  8,  9,  11,  12,  13,  14,  16,  17,  18,  19 ]
+
+// # 135, print all numbers except num % 5 (while loop)
+const arr = [];
+let i = 0;
+while (i <= 20) {
+  if (i % 5 === 0) {
+    i++;
+    continue;
+  } else {
+    arr.push(i);
+    i++;
+  }
+}
+console.log(arr);  // [ 1,  2,  3,  4,  6,  7,  8,  9,  11,  12,  13,  14,  16,  17,  18,  19 ]
+
+// # 136, Row Weights
+// Several people are standing in a row divided into two teams.
+// The first person goes into team 1, the second goes into team 2, the third goes into team 1, and so on.
+// Task: Given an array of positive integers (the weights of the people), return a new array/tuple of two integers, where the first one is the total weight of team 1, and the second one is the total weight of team 2.
+// Notes: Array size is at least 1.
+// All numbers will be positive.
+// Input >> Output Examples
+// rowWeights([13, 27, 49])  ==>  return (62, 27)
+// Explanation: The first element 62 is the total weight of team 1, and the second element 27 is the total weight of team 2.
+// rowWeights([50, 60, 70, 80])  ==>  return (120, 140)
+// Explanation: The first element 120 is the total weight of team 1, and the second element 140 is the total weight of team 2.
+// rowWeights([80])  ==>  return (80, 0)
+// Explanation: The first element 80 is the total weight of team 1, and the second element 0 is the total weight of team 2.
+function rowWeights(array) {
+  let sum1 = 0;
+  let sum2 = 0;
+  let res = [];
+  for (let i = 0; i < array.length; i++) {
+    if (i % 2 === 0) sum1 += array[i];
+    else {
+      sum2 += array[i]
+    } 
+  }
+  return [sum1, sum2];
+}
+console.log(rowWeights([80]));     // [80,0]
+console.log(rowWeights([100, 50])); // [100,50]
+
+// # 137, Debug Sum of Digits of a Number
+// Debug   function getSumOfDigits that takes positive integer to calculate sum of it's digits. Assume that argument is an integer.
+// Example:
+// 123  => 6
+// 223  => 7
+// 1337 => 14
+function getSumOfDigits(integer) {
+  let sum = 0;
+  let digits = integer.toString();
+  for (let ix = 0; ix < digits.length; ix++) {
+    sum += +digits[ix];
+  }
+  return sum;
+}
+console.log(getSumOfDigits(123)); // 6
+
+// # 138, Show multiples of 2 numbers within a range
+// Print all numbers up to 3rd parameter which are multiple of both 1st and 2nd parameter.
+// NOTICE:
+// Do NOT worry about checking zeros or negative values.
+// To find out if 3rd parameter (the upper limit) is inclusive or not, check the tests, it differs in each translation
+function multiples(s1, s2, s3) {
+  let res = [];
+  for (let i = 1; i < s3; i++) {
+    if (i % s1 === 0 && i % s2 === 0) {
+      res.push(i)
+    }
+  }
+  return res;
+}
+console.log(multiples(2, 4, 40)); // [4, 8, 12, 16, 20, 24, 28, 32, 36]
+console.log(multiples(13, 5, 800)); // [65, 130, 195, 260, 325, 390, 455, 520, 585, 650, 715, 780]
+console.log(multiples(13, 15, 800)); // [195, 390, 585, 780]
+console.log(multiples(17, 15, 800)); // [255, 510, 765]
+
+// # 139, Find the middle element
+// Description:
+// As a part of this Kata, you need to create a function that when provided with a triplet, returns the index of the numerical element that lies between the other two elements.
+// The input to the function will be an array of three distinct numbers (Haskell: a tuple).
+// For example: gimme([2, 3, 1]) => 0
+// 2 is the number that fits between 1 and 3 and the index of 2 in the input array is 0.
+// Another example (just to make sure it is clear): gimme([5, 10, 14]) => 1
+// 10 is the number that fits between 5 and 14 and the index of 10 in the input array is 1.
+let gimme = function (inputArray) {
+  let min = Math.min(...inputArray);
+  let max = Math.max(...inputArray);
+  for (let i = 0; i < inputArray.length; i++) {
+    if (inputArray[i] !== max && inputArray[i] !== min) return i;
+  }
+}
+console.log(gimme([2, 3, 1]));   // 0, 'Finds the index of middle element'
+console.log(gimme([5, 10, 14])); // 1, 'Finds the index of middle element'
+
+// # 140, Remove the minimum
+// The museum of incredible dull things wants to get rid of some exhibitions. Miriam, the interior architect, comes up with a plan to remove the most boring exhibitions. She gives them a rating, and then removes the one with the lowest rating.
+// However, just as she finished rating all exhibitions, she's off to an important fair, so she asks you to write a program that tells her the ratings of the items after one removed the lowest one. Fair enough.
+// Task:
+// Given an array of integers, remove the smallest value. Do not mutate the original array/list. If there are multiple elements with the same value, remove the one with a lower index. If you get an empty array/list, return an empty array/list.
+// Don't change the order of the elements that are left.
+// Examples:
+// removeSmallest([1,2,3,4,5]) = [2,3,4,5]
+// removeSmallest([5,3,2,1,4]) = [5,3,2,4]
+// removeSmallest([2,2,1,2,1]) = [2,2,2,1]
+function removeSmallest(numbers) {
+  let res = [];
+  let min = Math.min(...numbers);
+  if (numbers === []) return [];
+  for (let i = 0; i < numbers.length; i++) {
+    if (numbers[i] !== min) {
+      res.push(numbers[i]);
+    } else {
+      min = null;
+    }
+  }
+  return res;
+}
+console.log(removeSmallest([1, 2, 3, 4, 5])); // [2, 3, 4, 5], "Wrong result for [1, 2, 3, 4, 5]"
+console.log(removeSmallest([5, 3, 2, 1, 4])); // [5, 3, 2, 4], "Wrong result for [5, 3, 2, 1, 4]"
+console.log(removeSmallest([2, 2, 1, 2, 1])); // [2, 2, 2, 1], "Wrong result for [2, 2, 1, 2, 1]"
+console.log(removeSmallest([])); // [], "Wrong result for []
+
+// # 141, Find Maximum and Minimum Values of a List
+// Description: Your task is to make two functions, max and min (maximum and minimum in PHP and Python, maxi and mini in Julia) that take a(n) array/vector of integers list as input and outputs, respectively, the largest and lowest number in that array/vector.
+// #Examples:
+// max([4,6,2,1,9,63,-134,566]) returns 566
+// min([-52, 56, 30, 29, -54, 0, -110]) returns -110
+// max([5]) returns 5
+// min([42, 54, 65, 87, 0]) returns 0
+let min = function (list) {
+  let res = list[0];
+  for (let i = 1; i < list.length; i++) {
+    if (list[i] < res) res = list[i];
+  }
+  return res;
+}
+let max = function (list) {
+  let res = list[0];
+  for (let i = 1; i < list.length; i++) {
+    if (list[i] > res) res = list[i];
+  }
+  return res;
+}
+console.log(min([-52, 56, 30, 29, -54, 0, -110])); // -110
+console.log(min([42, 54, 65, 87, 0])); // 0
+console.log(max([4, 6, 2, 1, 9, 63, -134, 566])); // 566
+console.log(max([5])); // 5
+
+// # 142, Fix string case
+// In this Kata, you will be given a string that may have mixed uppercase and lowercase letters and your task is to convert that string to either lowercase only or uppercase only based on:
+// make as few changes as possible.
+// if the string contains equal number of uppercase and lowercase letters, convert the string to lowercase.
+// For example:
+// solve("coDe") = "code". Lowercase characters > uppercase. Change only the "D" to lowercase.
+// solve("CODe") = "CODE". Uppercase characters > lowecase. Change only the "e" to uppercase.
+// solve("coDE") = "code". Upper == lowercase. Change all to lowercase.
+function solve(s) {
+  let l = 0; let u = 0;
+  for (let i = 0; i < s.length; i++) {
+    if (s[i] === s[i].toLowerCase()) {
+      l++;
+    } else if (s[i] === s[i].toUpperCase()) {
+      u++;
+    }
+  }
+  return l < u ? s.toUpperCase() : s.toLowerCase();
+}
+console.log(solve("code")); // "code"
+console.log(solve("CODe")); // "CODE"
+console.log(solve("COde")); // "code"
+console.log(solve("Code")); // "code"
