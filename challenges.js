@@ -2523,3 +2523,148 @@ console.log(getMiddle("test")); // 'es'
 console.log(getMiddle("testing")); // 't'
 console.log(getMiddle("middle")); // 'dd'
 console.log(getMiddle("A")); // 'A'
+
+// # 145, "Very Even" Numbers
+// #Task: Write a function that returns true if the number is a "Very Even" number.
+// If a number is a single digit, then it is simply "Very Even" if it itself is even.
+// If it has 2 or more digits, it is "Very Even" if the sum of it's digits is "Very Even".
+// #Examples:
+// input(88) => returns false -> 8 + 8 = 16 -> 1 + 6 = 7 => 7 is odd 
+// input(222) => returns true
+// input(5) => returns false
+// input(841) => returns true -> 8 + 4 + 1 = 13 -> 1 + 3 => 4 is even
+function isVeryEvenNumber(n) {
+  let numbers = String(n).split('').map(Number);
+  let totalSum = numbers.reduce((acc, number) => acc + number, 0);
+  while (String(totalSum).length > 1) return isVeryEvenNumber(totalSum);
+  return totalSum % 2 === 0;
+}
+console.log(isVeryEvenNumber([0, 4, 12, 222, 5, 45, 4554, 1234, 88, 24, 400000220])); // [true, true, false, true, false, false, false, false, false, true, true]
+
+// # 146, "Very Even" Numbers
+// #Task: Write a function that returns true if the number is a "Very Even" number.
+// If a number is a single digit, then it is simply "Very Even" if it itself is even.
+// If it has 2 or more digits, it is "Very Even" if the sum of it's digits is "Very Even".
+// #Examples:
+// input(88) => returns false -> 8 + 8 = 16 -> 1 + 6 = 7 => 7 is odd 
+// input(222) => returns true
+// input(5) => returns false
+// input(841) => returns true -> 8 + 4 + 1 = 13 -> 1 + 3 => 4 is even
+function isVeryEvenNumber(n) {
+  while (String(n).length > 1) {
+    let arr = String(n).split('').map(Number);
+    n = arr.reduce((a, b) => a + b, 0);
+  }
+  if (n % 2 !== 0) false;
+  else true;
+}
+console.log(isVeryEvenNumber([0, 4, 12, 222, 5, 45, 4554, 1234, 88, 24, 400000220])); // [true, true, false, true, false, false, false, false, false, true, true]
+
+// # 147, Next Prime
+// You will get a numbern (>= 0) and your task is to find the next prime number.
+// Make sure to optimize your code: there will numbers tested up to about 10^12.
+// Examples:
+// 5   =>  7
+// 12  =>  13
+function getNextPrime(n) {
+  let numArray = Array.of(n);
+  for (var i = 2; i < Math.sqrt(numArray) + 1; ++i) {
+    if (numArray % i === 0) return false;
+  }
+  return n !== 1;
+}
+function nextPrime(prime) {
+  let primeArray = Array.of(prime);
+  var sortedArray = primeArray.sort((a, b) => a - b);
+  var last = sortedArray[sortedArray.length - 1];
+  for (var count = last + 1;; ++count) {
+    if (count === 1 || count === 2) return 2;
+      else if(getNextPrime(count)) break;
+  }
+  return count;
+}
+console.log(nextPrime(0)); // 2
+console.log(nextPrime(1)); // 2
+console.log(nextPrime(2)); // 3
+console.log(nextPrime(3)); // 5
+console.log(nextPrime(5)); // 7
+console.log(nextPrime(11)); // 13
+console.log(nextPrime(17)); // 19
+console.log(nextPrime(2971)); // 2999
+
+// # 148, Next Prime
+// You will get a numbern (>= 0) and your task is to find the next prime number.
+// Make sure to optimize your code: there will numbers tested up to about 10^12.
+// Examples:
+// 5   =>  7
+// 12  =>  13
+function nextPrime(n) {
+  if (n++ < 2) return 2;
+  for (let i = 2; i <= Math.sqrt(n); i++) {
+    if (n % i === 0) return nextPrime(n);
+  }
+  return n;
+}
+console.log(nextPrime(0)); // 2
+console.log(nextPrime(1)); // 2
+console.log(nextPrime(2)); // 3
+console.log(nextPrime(3)); // 5
+console.log(nextPrime(5)); // 7
+console.log(nextPrime(11)); // 13
+console.log(nextPrime(17)); // 19
+console.log(nextPrime(2971)); // 2999
+
+// # 149, The wheat/rice and chessboard problem
+// A young man asks as a compensation only 1 grain of rice for the first square, 2 grains for the second, 4 for the third, 8 for the fourth and so on, always doubling the previous.
+// Your task is pretty straightforward (but not necessarily easy): given an amount of grains, you need to return up to which square of the chessboard one should count in order to get at least as many.
+// As usual, a few examples might be way better than thousands of words from me:
+// squaresNeeded(0) === 0
+// squaresNeeded(1) === 1
+// squaresNeeded(2) === 2
+// squaresNeeded(3) === 2
+// squaresNeeded(4) === 3
+function squaresNeeded(grains) {
+  let s = 0;
+  while (2 ** s - 1 < grains) s++;
+  return s;
+}
+console.log(squaresNeeded(0)); // 0
+console.log(squaresNeeded(1)); // 1
+console.log(squaresNeeded(2)); // 2
+console.log(squaresNeeded(3)); // 2
+console.log(squaresNeeded(4)); // 3
+console.log(squaresNeeded(31)); // 5
+
+// # 150, The wheat/rice and chessboard problem
+// A young man asks as a compensation only 1 grain of rice for the first square, 2 grains for the second, 4 for the third, 8 for the fourth and so on, always doubling the previous.
+// Your task is pretty straightforward (but not necessarily easy): given an amount of grains, you need to return up to which square of the chessboard one should count in order to get at least as many.
+// As usual, a few examples might be way better than thousands of words from me:
+// squaresNeeded(0) === 0
+// squaresNeeded(1) === 1
+// squaresNeeded(2) === 2
+// squaresNeeded(3) === 2
+// squaresNeeded(4) === 3
+const squaresNeeded = grains => Math.ceil(Math.log2(grains+1));
+console.log(squaresNeeded(0)); // 0
+console.log(squaresNeeded(1)); // 1
+console.log(squaresNeeded(2)); // 2
+console.log(squaresNeeded(3)); // 2
+console.log(squaresNeeded(4)); // 3
+console.log(squaresNeeded(31)); // 5
+
+// # 151, The wheat/rice and chessboard problem
+// A young man asks as a compensation only 1 grain of rice for the first square, 2 grains for the second, 4 for the third, 8 for the fourth and so on, always doubling the previous.
+// Your task is pretty straightforward (but not necessarily easy): given an amount of grains, you need to return up to which square of the chessboard one should count in order to get at least as many.
+// As usual, a few examples might be way better than thousands of words from me:
+// squaresNeeded(0) === 0
+// squaresNeeded(1) === 1
+// squaresNeeded(2) === 2
+// squaresNeeded(3) === 2
+// squaresNeeded(4) === 3
+const squaresNeeded = grains => !grains ? 0 : grains.toString(2).length;
+console.log(squaresNeeded(0)); // 0
+console.log(squaresNeeded(1)); // 1
+console.log(squaresNeeded(2)); // 2
+console.log(squaresNeeded(3)); // 2
+console.log(squaresNeeded(4)); // 3
+console.log(squaresNeeded(31)); // 5
