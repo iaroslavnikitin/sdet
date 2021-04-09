@@ -2668,3 +2668,91 @@ console.log(squaresNeeded(2)); // 2
 console.log(squaresNeeded(3)); // 2
 console.log(squaresNeeded(4)); // 3
 console.log(squaresNeeded(31)); // 5
+
+// # 152, Cумма чисел от n до m.
+// Дано два числа n и m. Найдите сумму всех целых чисел от n до m включительно.
+// Напишите функцию с именем sumFromNToM, которая принимает два числа n, m и возвращает сумму чисел от n до m. В решении используйте цикл for.
+function sumFromNToM(n, m) {
+  let sum = 0;
+  for (let i = n; i <= m; i++) sum += i;
+  return sum;
+}
+console.log(sumFromNToM(5, 5)); // должна возвратить 5
+console.log(sumFromNToM(5, 2)); // должна возвратить 0
+console.log(sumFromNToM(12, 13)); // должна возвратить 25
+console.log(sumFromNToM(5, 7)); // должна возвратить 18
+
+// # 153, Cумма чисел от n до m, кратных числу n
+// Дано два числа n и m. Найдите сумму целых чисел от n до m включительно, кратных числу n.
+// Напишите функцию с именем sumMultN, которая принимает два числа n, m и возвращает сумму чисел от n до m, кратных числу n. В решении используйте цикл for.
+function sumFromNToM(n, m) {
+  let sum = 0;
+  for (let i = n; i <= m; i += n) sum += i;
+  return sum;
+}
+console.log(sumFromNToM(5, 5)); // должна возвратить 5
+console.log(sumFromNToM(5, 2)); // должна возвратить 0
+console.log(sumFromNToM(2, 9)); // должна возвратить 20
+console.log(sumFromNToM(5, 19)); // должна возвратить 30
+
+// # 154, Сумма дробей
+// Дано число n > 0. Найдите сумму: 1 + 1/2 + 1/3 + 1/4 + ... + 1/n
+// Напишите функцию с именем sumOfFractionals, которая принимает число n и возвращает сумму дробей, у которых в числителе 1, а в знаменателе - числа от 1 до n.
+// В решении используйте цикл for. Сумму округлите до двух десятичных знаков.
+function sumOfFractionals(n) {
+  let sum = 0;
+  for (let i = 1; i <= n; i++) sum += 1 / i;
+  return Number(sum.toFixed(2));
+}
+console.log(sumOfFractionals(1)); // должна возвратить 1
+console.log(sumOfFractionals(5)); // должна возвратить 2.28
+console.log(sumOfFractionals(10)); // должна возвратить 2.93
+
+// # 155, Найдите значение дроби
+// Дано число n > 0. Найдите значение дроби: '1+2+3+...+n / 1*2*3*...*n'
+// Напишите функцию с именем fractional, которая принимает число n и возвращает значение дроби. В решении используйте цикл for. Значение дроби округлите до трех десятичных знаков.
+function fractional(n) {
+  let sum = 0; let mult = 1;
+  for (let i = 1; i <= n; i++) sum += i; mult *= i;
+  return +(sum / mult).toFixed(3);
+}
+console.log(fractional(1)); // должна возвратить 1       //   1 / 1 = 1
+console.log(fractional(2)); // должна возвратить 1.5     //   3 / 2 = 1.5
+console.log(fractional(3)); // должна возвратить 1       //   6 / 6 = 1
+console.log(fractional(4)); // должна возвратить 0.417   //   10 / 24 = 0.41666666... = 0.417
+
+// # 156, Count the divisors of a number
+// Count the number of divisors of a positive integer n.
+// Random tests go up to n = 500000.
+// Examples:
+// divisors(4)  = 3  // 1, 2, 4
+// divisors(5)  = 2  // 1, 5
+// divisors(12) = 6  // 1, 2, 3, 4, 6, 12
+// divisors(30) = 8  // 1, 2, 3, 5, 6, 10, 15, 30
+function numberOfDividers(n) {
+  let count = 0;
+  for (let i = 1; i <= n; i++) if (n % i === 0) count++;
+  return count;
+}
+console.log(numberOfDividers(1)); // должна возвратить 1; // 1 делитель - число 1
+console.log(numberOfDividers(2)); // должна возвратить 2; // 2 делителя - числа 1 и 2
+console.log(numberOfDividers(3)); // должна возвратить 2; // 2 делителя - числа 1 и 3
+console.log(numberOfDividers(4)); // должна возвратить 3; // 3 делителя - числа 1, 2, 4
+console.log(numberOfDividers(12)); // должна возвратить 6; // 6 делителей - числа 1, 2, 3, 4, 6, 12
+console.log(numberOfDividers(44)); // должна возвратить 6;
+console.log(numberOfDividers(46)); // должна возвратить 4;
+console.log(numberOfDividers(95)); // должна возвратить 4;
+
+// # 157, Find the divisors!
+// Create a function named divisors/Divisors that takes an integer n > 1 and returns an array with all of the integer's divisors
+// (except for 1 and the number itself), from smallest to largest. If the number is prime return the string '(integer) is prime'
+function divisors(n) {
+  let count = [];
+  for (let i = 2; i <= Math.floor(n / 2); ++i) if (n % i === 0) count.push(i);
+  return count.length ? count : `${n} is prime`;
+}
+console.log(divisors(15)); // [3, 5]
+console.log(divisors(12)); // [2, 3, 4, 6]
+console.log(divisors(13)); // "13 is prime"
+console.log(divisors(17)); // "13 is prime"
+console.log(divisors(25)); // [5]
