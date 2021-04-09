@@ -2756,3 +2756,17 @@ console.log(divisors(12)); // [2, 3, 4, 6]
 console.log(divisors(13)); // "13 is prime"
 console.log(divisors(17)); // "13 is prime"
 console.log(divisors(25)); // [5]
+
+// # 158, Find the divisors!
+// Create a function named divisors/Divisors that takes an integer n > 1 and returns an array with all of the integer's divisors
+// (except for 1 and the number itself), from smallest to largest. If the number is prime return the string '(integer) is prime'function divisors(n) {
+function divisors(n) {
+  let arr = [];
+  for (let i = 2; i < n; i++) if (n % i === 0) arr.push(i);
+  return arr.length ? arr : `${n} is prime`;
+}
+console.log(divisors(15)); // [3, 5]
+console.log(divisors(12)); // [2, 3, 4, 6]
+console.log(divisors(13)); // "13 is prime"
+console.log(divisors(17)); // "13 is prime"
+console.log(divisors(25)); // [5]
