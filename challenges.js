@@ -1324,6 +1324,16 @@ console.log(isPrime(2)); // true
 console.log(isPrime(1.5)); // false
 console.log(isPrime(1)); // false
 
+// #83.2 Prime number
+function isPrime(n) {
+  for (let i = 2; i < n; i++) if (n % i === 0) return false;
+  return n > 1;
+}
+console.log(isPrime(1));  // должна возвратить false
+console.log(isPrime(2));  // должна возвратить true
+console.log(isPrime(3));  // должна возвратить true
+console.log(isPrime(4));  // должна возвратить false
+
 
 // #84. Имеет ли квадратное уравнение действительные корни?
 // Напишите функцию с именем equationHasRoots, которая принимает три числа - коэффициенты квадратного уравнения a, b, c в качестве аргументов и возвращает строку:
@@ -2770,3 +2780,17 @@ console.log(divisors(12)); // [2, 3, 4, 6]
 console.log(divisors(13)); // "13 is prime"
 console.log(divisors(17)); // "13 is prime"
 console.log(divisors(25)); // [5]
+
+// № 159, Создайте массив делителей
+// Дано число n > 0. Найдите все делители этого числа. Делитель - это число, на которое данное число делится без остатка.
+// Напишите функцию с именем dividers, которая принимает число n и возвращает делители этого числа в виде массива.
+function dividers(n) {
+  let count = [];
+  for (let i = 1; i <= n; i++) if (n % i === 0) count.push(i);
+  return count;
+}
+console.log(dividers(1));  // должна возвратить [1]
+console.log(dividers(2));  // должна возвратить [1, 2]
+console.log(dividers(3));  // должна возвратить [1, 3]
+console.log(dividers(4));  // должна возвратить [1, 2, 4]
+console.log(dividers(12)); // должна возвратить [1, 2, 3, 4, 6, 12]
