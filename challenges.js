@@ -2820,3 +2820,152 @@ function fibonacciNumbers(n) {
 console.log(fibonacciNumbers(2)); // должна возвратить [0, 1]
 console.log(fibonacciNumbers(5)); // должна возвратить [0, 1, 1, 2, 3]
 console.log(fibonacciNumbers(7)); // должна возвратить [0, 1, 1, 2, 3, 5, 8]
+
+// # 162, Sum of the first nth term of Series
+// Your task is to write a function which returns the sum of following series upto nth term(parameter).
+// Series: 1 + 1/4 + 1/7 + 1/10 + 1/13 + 1/16 +...
+// Rules: You need to round the answer to 2 decimal places and return it as String. If the given value is 0 then it should return 0.00
+// You will only be given Natural Numbers as arguments.
+// Examples:
+// SeriesSum(1) => 1 = "1.00"
+// SeriesSum(2) => 1 + 1/4 = "1.25"
+// SeriesSum(5) => 1 + 1/4 + 1/7 + 1/10 + 1/13 = "1.57"
+function SeriesSum(n) {
+  let res = 1;
+  if (n === 0) return '0.00';
+  for (let i = 4; i <= n * 3; i+=3) res += 1 / i;
+  return res.toFixed(2);
+}
+console.log(SeriesSum(1)); // "1.00"
+console.log(SeriesSum(2)); // "1.25"
+console.log(SeriesSum(3)); // "1.39"
+console.log(SeriesSum(4)); // "1.49"
+
+// # 163, Sum of the first nth term of Series
+// Your task is to write a function which returns the sum of following series upto nth term(parameter).
+// Series: 1 + 1/4 + 1/7 + 1/10 + 1/13 + 1/16 +...
+// Rules: You need to round the answer to 2 decimal places and return it as String. If the given value is 0 then it should return 0.00
+// You will only be given Natural Numbers as arguments.
+// Examples:
+// SeriesSum(1) => 1 = "1.00"
+// SeriesSum(2) => 1 + 1/4 = "1.25"
+// SeriesSum(5) => 1 + 1/4 + 1/7 + 1/10 + 1/13 = "1.57"
+function SeriesSum(n) {
+  for (let s = 0, i = 0; i < n; i++) {
+    s += 1 / (1 + i * 3);
+  }
+  return s.toFixed(2);
+}
+console.log(SeriesSum(1)); // "1.00"
+console.log(SeriesSum(2)); // "1.25"
+console.log(SeriesSum(3)); // "1.39"
+console.log(SeriesSum(4)); // "1.49"
+
+// # 164, Figurate Numbers #2 - Pronic Number
+// You have to create a function isPronic to check whether the argument passed is a Pronic Number and return true if it is & false otherwise.
+// Description: Pronic Number -A pronic number, oblong number, rectangular number or heteromecic number, is a number which is the product of two consecutive integers, that is, n(n + 1).
+// The first few Pronic Numbers are - 0, 2, 6, 12, 20, 30, 42...
+// Explanation:
+//   0 = 0 × 1   // ∴  0 is a Pronic Number
+//   2 = 1 × 2   // ∴  2 is a Pronic Number
+//   6 = 2 × 3   // ∴  6 is a Pronic Number
+//  12 = 3 × 4   // ∴ 12 is a Pronic Number
+//  20 = 4 × 5   // ∴ 20 is a Pronic Number
+//  30 = 5 × 6   // ∴ 30 is a Pronic Number
+//  42 = 6 × 7   // ∴ 42 is a Pronic Number
+function isPronic(n) {
+  for (let i = 0; i <= n; i++)
+    if (n === i * (i + 1)) return true;
+  return false;
+}
+console.log(isPronic(0)); // true,'0 is a Pronic Number'
+console.log(isPronic(1)); // false,'1 is not a Pronic Number'
+console.log(isPronic(2)); // true,'2 is a Pronic Number'
+console.log(isPronic(3)); // false,'3 is not a Pronic Number'
+console.log(isPronic(4)); // false,'4 is not a Pronic Number'
+console.log(isPronic(5)); // false,'5 is not a Pronic Number'
+console.log(isPronic(6)); // true,'6 is a Pronic Number'
+console.log(isPronic(-3)); // false,'-3 is not a Pronic Number'
+console.log(isPronic(-27)); // false,'-27 is not a Pronic Number'
+
+// # 165, Beginner Series #3 Sum of Numbers
+// Given two integers a and b, which can be positive or negative, find the sum of all the integers between including them too and return it. If the two numbers are equal return a or b.
+// Note: a and b are not ordered!
+// Examples:
+// GetSum(1, 0) == 1   // 1 + 0 = 1
+// GetSum(1, 2) == 3   // 1 + 2 = 3
+// GetSum(0, 1) == 1   // 0 + 1 = 1
+// GetSum(1, 1) == 1   // 1 Since both are same
+// GetSum(-1, 0) == -1 // -1 + 0 = -1
+// GetSum(-1, 2) == 2  // -1 + 0 + 1 + 2 = 2
+function getSum(...range) {
+  const rangeSort = range.sort((a, b) => a - b);
+  if (rangeSort[0] === rangeSort[1]) return rangeSort[0];
+  let result = 0;
+  for (let i = rangeSort[0]; i <= rangeSort[1]; i++) result += i;
+  return result;
+}
+console.log(getSum(0, -1));      // -1
+console.log(getSum(0, 1));       // 1
+console.log(getSum(1, 0));       // 1
+console.log(getSum(1, 2));       // 3
+console.log(getSum(0, 1));       // 1
+console.log(getSum(1, 1));       // 1
+console.log(getSum(-1, 0));      // -1
+console.log(getSum(-1, 2));      // 2
+console.log(getSum(108, -211));  // -16480
+console.log(getSum(-267, -561)); // -122130
+console.log(getSum(282, 5));     // 39893
+console.log(getSum(455, 113));   // 97412
+
+// # 166, Beginner Series #3 Sum of Numbers
+// Given two integers a and b, which can be positive or negative, find the sum of all the integers between including them too and return it. If the two numbers are equal return a or b.
+// Note: a and b are not ordered!
+// Examples:
+// GetSum(1, 0) == 1   // 1 + 0 = 1
+// GetSum(1, 2) == 3   // 1 + 2 = 3
+// GetSum(0, 1) == 1   // 0 + 1 = 1
+// GetSum(1, 1) == 1   // 1 Since both are same
+// GetSum(-1, 0) == -1 // -1 + 0 = -1
+// GetSum(-1, 2) == 2  // -1 + 0 + 1 + 2 = 2
+function getSum(a, b) {
+  let min = Math.min(a, b);
+  let max = Math.max(a, b);
+  return ((max - min) + 1) * (min + max) / 2;
+}
+console.log(getSum(0, -1));      // -1
+console.log(getSum(0, 1));       // 1
+console.log(getSum(1, 0));       // 1
+console.log(getSum(1, 2));       // 3
+console.log(getSum(0, 1));       // 1
+console.log(getSum(1, 1));       // 1
+console.log(getSum(-1, 0));      // -1
+console.log(getSum(-1, 2));      // 2
+console.log(getSum(108, -211));  // -16480
+console.log(getSum(-267, -561)); // -122130
+console.log(getSum(282, 5));     // 39893
+console.log(getSum(455, 113));   // 97412
+
+// # 167, Beginner Series #3 Sum of Numbers
+// Given two integers a and b, which can be positive or negative, find the sum of all the integers between including them too and return it. If the two numbers are equal return a or b.
+// Note: a and b are not ordered!
+// Examples:
+// GetSum(1, 0) == 1   // 1 + 0 = 1
+// GetSum(1, 2) == 3   // 1 + 2 = 3
+// GetSum(0, 1) == 1   // 0 + 1 = 1
+// GetSum(1, 1) == 1   // 1 Since both are same
+// GetSum(-1, 0) == -1 // -1 + 0 = -1
+// GetSum(-1, 2) == 2  // -1 + 0 + 1 + 2 = 2
+const getSum = (a, b) => (Math.abs(a - b) + 1) * (a + b) / 2;
+console.log(getSum(0, -1));      // -1
+console.log(getSum(0, 1));       // 1
+console.log(getSum(1, 0));       // 1
+console.log(getSum(1, 2));       // 3
+console.log(getSum(0, 1));       // 1
+console.log(getSum(1, 1));       // 1
+console.log(getSum(-1, 0));      // -1
+console.log(getSum(-1, 2));      // 2
+console.log(getSum(108, -211));  // -16480
+console.log(getSum(-267, -561)); // -122130
+console.log(getSum(282, 5));     // 39893
+console.log(getSum(455, 113));   // 97412
