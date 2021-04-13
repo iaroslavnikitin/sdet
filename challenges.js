@@ -3087,3 +3087,98 @@ console.log(sumTriangularNumbers(34));   // 7140
 console.log(sumTriangularNumbers(-291)); // 0
 console.log(sumTriangularNumbers(943));  // 140205240
 console.log(sumTriangularNumbers(-971)); // 0
+
+// # 174, Draw stairs
+// Given a number n, draw stairs using the letter "I", n tall and n wide, with the tallest in the top left.
+// For example n = 3 result in:
+// "I\n I\n  I"
+// or printed:
+// I
+//  I
+//   I
+// Another example, a 7-step stairs should be drawn like this:
+// I
+//  I
+//   I
+//    I
+//     I
+//      I
+//       I
+function drawStairs(n) {
+  let result = [];
+  for (let i = 0; i < n; i++) {
+    result[i] = `${' '.repeat(i)}I`;
+  }
+  return result.join('\n');
+}
+console.log(drawStairs(1));
+console.log(drawStairs(3));
+console.log(drawStairs(5));
+console.log(drawStairs(7));
+console.log(drawStairs(9));
+console.log(drawStairs(88));
+console.log(drawStairs(213));
+
+// # 174, Draw stairs
+// Given a number n, draw stairs using the letter "I", n tall and n wide, with the tallest in the top left.
+// For example n = 3 result in:
+// "I\n I\n  I"
+// or printed:
+// I
+//  I
+//   I
+// Another example, a 7-step stairs should be drawn like this:
+// I
+//  I
+//   I
+//    I
+//     I
+//      I
+//       I
+function drawStairs(n) {
+  return [...Array(n)].map((_, i) => ' '.repeat(i) + 'I').join('\n');
+}
+console.log(drawStairs(1));
+console.log(drawStairs(3));
+console.log(drawStairs(5));
+console.log(drawStairs(7));
+console.log(drawStairs(9));
+console.log(drawStairs(88));
+console.log(drawStairs(213));
+
+// # 175, Divisible by 9?
+// Given a non-negative integer number represented as a string, which can be arbitrary large. Detect whether it is divisible by 9?
+// Avoid BigInt
+function divBy9(ns) {
+  return [...ns].reduce((total, number) => total + Number(number), 0) % 9 === 0;
+}
+console.log(divBy9("0")); // true
+console.log(divBy9("7")); // false
+console.log(divBy9("9")); // true
+console.log(divBy9("777777777777777777777777777777777777777777777")); // true
+
+// # 176, Divisible by 9?
+// Given a non-negative integer number represented as a string, which can be arbitrary large. Detect whether it is divisible by 9?
+// Avoid BigInt
+function divBy9(ns) {
+  let sum = 0;
+  for (let el of ns) sum += +el;
+  return !(sum % 9);
+}
+console.log(divBy9("0")); // true
+console.log(divBy9("7")); // false
+console.log(divBy9("9")); // true
+console.log(divBy9("777777777777777777777777777777777777777777777")); // true
+
+// # 177, Divisible by 9?
+// Given a non-negative integer number represented as a string, which can be arbitrary large. Detect whether it is divisible by 9?
+// Avoid BigInt
+function divBy9(n) {
+  let sum = 0;
+  for (let i = 0; i < n.length; i++) sum += +n[i];
+  return sum % 9 === 0;
+}
+console.log(divBy9("0")); // true
+console.log(divBy9("7")); // false
+console.log(divBy9("9")); // true
+console.log(divBy9("777777777777777777777777777777777777777777777")); // true
