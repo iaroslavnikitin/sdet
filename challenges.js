@@ -2969,3 +2969,121 @@ console.log(getSum(108, -211));  // -16480
 console.log(getSum(-267, -561)); // -122130
 console.log(getSum(282, 5));     // 39893
 console.log(getSum(455, 113));   // 97412
+
+// # 168, For loop statement
+// Coding in function pickIt, function accept 1 parameter:arr, it's a number array, we need traverse arr by using for loop,
+// if element is odd number, push it to array odd, if it's a even number, push it to array even.
+// I've defined two array odd and even in the function, and also wrote the return statement. your work is write a for loop.
+function pickIt(arr) {
+  let odd = [];
+  let even = [];
+  for (let i = 0; i < arr.length; i++) (arr[i] % 2 === 0) ? even.push(arr[i]) : odd.push(arr[i]);
+  return [odd, even];
+}
+console.log(pickIt([1, 2]));                // [[1], [2]]
+console.log(pickIt([1, 2, 3]));             // [[1, 3], [2]]
+console.log(pickIt([3, 2, 1]));             // [[3, 1], [2]]
+console.log(pickIt([10, 20, 30]));          // [[], [10, 20, 30]]
+console.log(pickIt([11, 21, 31]));          // [[11, 21, 31], []]
+console.log(pickIt([8, 1, 5, 4, 6, 1, 1])); // [[1, 5, 1, 1], [8, 4, 6]]
+
+// # 168, For Of loop statement
+// Coding in function pickIt, function accept 1 parameter:arr, it's a number array, we need traverse arr by using for loop,
+// if element is odd number, push it to array odd, if it's a even number, push it to array even.
+// I've defined two array odd and even in the function, and also wrote the return statement. your work is write a for loop.
+function pickIt(arr) {
+  let odd = [];
+  let even = [];
+  for (let i of arr) ((i % 2) ? odd : even).push(i);
+  return [odd, even];
+}
+console.log(pickIt([1, 2]));                // [[1], [2]]
+console.log(pickIt([1, 2, 3]));             // [[1, 3], [2]]
+console.log(pickIt([3, 2, 1]));             // [[3, 1], [2]]
+console.log(pickIt([10, 20, 30]));          // [[], [10, 20, 30]]
+console.log(pickIt([11, 21, 31]));          // [[11, 21, 31], []]
+console.log(pickIt([8, 1, 5, 4, 6, 1, 1])); // [[1, 5, 1, 1], [8, 4, 6]]
+
+// # 169, Sum of Multiples
+// Find the sum of all multiples of n below m
+// Keep in Mind:
+// n and m are natural numbers (positive integers)
+// m is excluded from the multiples
+function sumMul(n, m) {
+  if (n >= m) return 'INVALID';
+  let sum = [];
+  for (let i = n; i < m; i++) {
+    if (i % n === 0) sum.push(i);
+  }
+  return sum.reduce((a, b) => a + b, 0);
+}
+console.log(sumMul(0, 0));   // 'INVALID'
+console.log(sumMul(2, 9));   // 20
+console.log(sumMul(4, -7));  // 'INVALID'
+console.log(sumMul(3, 13));  // 30 = 3 + 6 + 9 + 12
+console.log(sumMul(4, 123)); // 1860 = 4 + 8 + 12 + ...
+
+// # 170, Sum of Multiples
+// Find the sum of all multiples of n below m
+// Keep in Mind:
+// n and m are natural numbers (positive integers)
+// m is excluded from the multiples
+function sumMul(n, m) {
+  if (n >= m) return 'INVALID';
+  let sum = 0;
+  for (let i = n; i < m; i+=n) {
+    sum += i;
+  }
+  return sum;
+}
+console.log(sumMul(0, 0));   // 'INVALID'
+console.log(sumMul(2, 9));   // 20
+console.log(sumMul(4, -7));  // 'INVALID'
+console.log(sumMul(3, 13));  // 30 = 3 + 6 + 9 + 12
+console.log(sumMul(4, 123)); // 1860 = 4 + 8 + 12 + ...
+
+// # 171, Sum of Multiples
+// Find the sum of all multiples of n below m
+// Keep in Mind:
+// n and m are natural numbers (positive integers)
+// m is excluded from the multiples
+function sumMul(n, m) {
+  if (n <= 0 || m <= 0) return "INVALID";
+  const last = Math.ceil(m / n) * n - n;
+  return (last + n) * (last / n) / 2;
+}
+console.log(sumMul(0, 0));   // 'INVALID'
+console.log(sumMul(2, 9));   // 20
+console.log(sumMul(4, -7));  // 'INVALID'
+console.log(sumMul(3, 13));  // 30 = 3 + 6 + 9 + 12
+console.log(sumMul(4, 123)); // 1860 = 4 + 8 + 12 + ...
+
+// # 172, Sum of Triangular Numbers
+// Your task is to return the sum of Triangular Numbers up-to-and-including the nth Triangular Number.
+// Triangular Number: "any of the series of numbers (1, 3, 6, 10, 15, etc.) obtained by continued summation of the natural numbers 1, 2, 3, 4, 5, etc."
+// e.g. If 4 is given: 1 + 3 + 6 + 10 = 20.
+// Triangular Numbers cannot be negative so return 0 if a negative number is given.
+function sumTriangularNumbers(n) {
+  var sum = 0;
+  for (let i = 1; i <= n; i++) {
+    sum += (i * (i + 1)) / 2;
+  }
+  return sum;
+}
+console.log(sumTriangularNumbers(6));    // 56
+console.log(sumTriangularNumbers(34));   // 7140
+console.log(sumTriangularNumbers(-291)); // 0
+console.log(sumTriangularNumbers(943));  // 140205240
+console.log(sumTriangularNumbers(-971)); // 0
+
+// # 173, Sum of Triangular Numbers
+// Your task is to return the sum of Triangular Numbers up-to-and-including the nth Triangular Number.
+// Triangular Number: "any of the series of numbers (1, 3, 6, 10, 15, etc.) obtained by continued summation of the natural numbers 1, 2, 3, 4, 5, etc."
+// e.g. If 4 is given: 1 + 3 + 6 + 10 = 20.
+// Triangular Numbers cannot be negative so return 0 if a negative number is given.
+const sumTriangularNumbers = n => (n < 0 ? 0 : (n * (n + 1) * (n + 2)) / 6);
+console.log(sumTriangularNumbers(6));    // 56
+console.log(sumTriangularNumbers(34));   // 7140
+console.log(sumTriangularNumbers(-291)); // 0
+console.log(sumTriangularNumbers(943));  // 140205240
+console.log(sumTriangularNumbers(-971)); // 0
