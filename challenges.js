@@ -3182,3 +3182,109 @@ console.log(divBy9("0")); // true
 console.log(divBy9("7")); // false
 console.log(divBy9("9")); // true
 console.log(divBy9("777777777777777777777777777777777777777777777")); // true
+
+// # 178, Round up to the next multiple of 5
+// Description: Given an integer as input, can you round it to the next (meaning, "higher") multiple of 5?
+function roundToNext5(n) {
+  if (n === 0 || (n % 5 === 0)) return n;
+  do {
+    n++;
+  } while (n % 5 !== 0)
+  return n;
+}
+console.log(roundToNext5(0));   // 0
+console.log(roundToNext5(1));   // 5
+console.log(roundToNext5(3));   // 5
+console.log(roundToNext5(5));   // 5
+console.log(roundToNext5(7));   // 10
+console.log(roundToNext5(39));  // 40
+console.log(roundToNext5(10));  // 10
+console.log(roundToNext5(9));   // 10
+console.log(roundToNext5(8));   // 10
+console.log(roundToNext5(7));   // 10
+console.log(roundToNext5(6));   // 10
+console.log(roundToNext5(5));   // 5
+console.log(roundToNext5(4));   // 5
+console.log(roundToNext5(3));   // 5
+console.log(roundToNext5(2));   // 5
+console.log(roundToNext5(1));   // 5
+console.log(roundToNext5(0));   // 0
+console.log(roundToNext5(-1));  // 0
+console.log(roundToNext5(-2));  // 0
+console.log(roundToNext5(-3));  // 0
+console.log(roundToNext5(-4));  // 0
+console.log(roundToNext5(-5));  // -5
+console.log(roundToNext5(-6));  // -5
+console.log(roundToNext5(-7));  // -5
+console.log(roundToNext5(-8));  // -5
+console.log(roundToNext5(-9));  // -5
+console.log(roundToNext5(-10)); // -10
+console.log(roundToNext5(-11)); // -10
+
+// # 179, Round up to the next multiple of 5
+// Description: Given an integer as input, can you round it to the next (meaning, "higher") multiple of 5?
+function roundToNext5(n) {
+  for (let i = n; i <= Math.abs(n * 5); i++) if (i % 5 === 0) return i;
+}
+console.log(roundToNext5(0));   // 0
+console.log(roundToNext5(1));   // 5
+console.log(roundToNext5(3));   // 5
+console.log(roundToNext5(5));   // 5
+console.log(roundToNext5(7));   // 10
+console.log(roundToNext5(39));  // 40
+console.log(roundToNext5(10));  // 10
+console.log(roundToNext5(9));   // 10
+console.log(roundToNext5(8));   // 10
+console.log(roundToNext5(7));   // 10
+console.log(roundToNext5(6));   // 10
+console.log(roundToNext5(5));   // 5
+console.log(roundToNext5(4));   // 5
+console.log(roundToNext5(3));   // 5
+console.log(roundToNext5(2));   // 5
+console.log(roundToNext5(1));   // 5
+console.log(roundToNext5(0));   // 0
+console.log(roundToNext5(-1));  // 0
+console.log(roundToNext5(-2));  // 0
+console.log(roundToNext5(-3));  // 0
+console.log(roundToNext5(-4));  // 0
+console.log(roundToNext5(-5));  // -5
+console.log(roundToNext5(-6));  // -5
+console.log(roundToNext5(-7));  // -5
+console.log(roundToNext5(-8));  // -5
+console.log(roundToNext5(-9));  // -5
+console.log(roundToNext5(-10)); // -10
+console.log(roundToNext5(-11)); // -10
+
+// # 180, Round up to the next multiple of 5
+// Description: Given an integer as input, can you round it to the next (meaning, "higher") multiple of 5?
+function roundToNext5(n) {
+  return Math.ceil(n / 5) * 5;
+}
+console.log(roundToNext5(0));   // 0
+console.log(roundToNext5(1));   // 5
+console.log(roundToNext5(3));   // 5
+console.log(roundToNext5(5));   // 5
+console.log(roundToNext5(7));   // 10
+console.log(roundToNext5(39));  // 40
+console.log(roundToNext5(10));  // 10
+console.log(roundToNext5(9));   // 10
+console.log(roundToNext5(8));   // 10
+console.log(roundToNext5(7));   // 10
+console.log(roundToNext5(6));   // 10
+console.log(roundToNext5(5));   // 5
+console.log(roundToNext5(4));   // 5
+console.log(roundToNext5(3));   // 5
+console.log(roundToNext5(2));   // 5
+console.log(roundToNext5(1));   // 5
+console.log(roundToNext5(0));   // 0
+console.log(roundToNext5(-1));  // 0
+console.log(roundToNext5(-2));  // 0
+console.log(roundToNext5(-3));  // 0
+console.log(roundToNext5(-4));  // 0
+console.log(roundToNext5(-5));  // -5
+console.log(roundToNext5(-6));  // -5
+console.log(roundToNext5(-7));  // -5
+console.log(roundToNext5(-8));  // -5
+console.log(roundToNext5(-9));  // -5
+console.log(roundToNext5(-10)); // -10
+console.log(roundToNext5(-11)); // -10
