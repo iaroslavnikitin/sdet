@@ -3288,3 +3288,34 @@ console.log(roundToNext5(-8));  // -5
 console.log(roundToNext5(-9));  // -5
 console.log(roundToNext5(-10)); // -10
 console.log(roundToNext5(-11)); // -10
+
+// # 181, Breaking chocolate problem
+// Description: Your task is to split the chocolate bar of given dimension n x m into small squares. Each square is of size 1x1 and unbreakable.
+// Implement a function that will return minimum number of breaks needed.
+// For example if you are given a chocolate bar of size 2 x 1 you can split it to single squares in just one break, but for size 3 x 1 you must do two breaks.
+// If input data is invalid you should return 0 (as in no breaks are needed if we do not have any chocolate to split). Input will always be a non-negative integer.
+function breakChocolate(n, m) {
+  let sum = n * m - 1;
+  return sum <= 0 ? 0 : sum;
+}
+console.log(breakChocolate(5, 5)); // 24
+console.log(breakChocolate(1, 1)); // 0
+
+// # 182, Царевна-лягушка
+// Царевна-лягушка съедает ежедневно на 3 комара больше, чем в предыдущий день. Определите, в какой день количество съеденных комаров превысит 1000, если в первый день было съедено n комаров.
+// Напишите функцию с именем frogPrincess, которая принимает число n (количество комаров в первый день) и возвращает количество дней, в течение которых лягушка съест 1000 комаров.
+// В решении используйте цикл do while.
+function frogPrincess(n) {
+  let count = 0, i = 0;
+  do {
+    count += n;
+    n += 3;
+    i++;
+  } while (count < 1000)
+  return i;
+}
+console.log(frogPrincess(1));    // должна возвратить 26
+console.log(frogPrincess(12));   // должна возвратить 23
+console.log(frogPrincess(99));   // должна возвратить 10
+console.log(frogPrincess(100));  // должна возвратить 9
+console.log(frogPrincess(1000)); // должна возвратить 1
