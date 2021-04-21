@@ -3319,3 +3319,66 @@ console.log(frogPrincess(12));   // должна возвратить 23
 console.log(frogPrincess(99));   // должна возвратить 10
 console.log(frogPrincess(100));  // должна возвратить 9
 console.log(frogPrincess(1000)); // должна возвратить 1
+
+// # 183, Draw the Triangle
+let tr = '';
+for (let i = 0; i < 5; i++) {
+    for (let j = 0; j <= i; j++) tr += '* ';
+    tr += '\n';
+}
+console.log(tr);
+// * 
+// * * 
+// * * * 
+// * * * * 
+// * * * * * 
+
+// # 184, Draw the Square
+let sq = '';
+for (let i = 0; i < 4; i++) {
+    for (let j = 0; j < 5; j++) sq += '* ';
+    sq += '\n';
+}
+console.log(sq);
+// * * * * * 
+// * * * * * 
+// * * * * * 
+// * * * * * 
+
+// # 185, Basic Calculator
+function calculate(num1, operation, num2) {
+  let result;
+  switch (operation) {
+    case '+' : result = num1 + num2; break;
+    case '-' : result = num1 - num2; break;
+    case '/' : result = num2 !== 0 ? num1 / num2 : null; break;
+    case '*' : result = num1 > 0 ? num1 * num2 : 0; break;
+    default : result = null;
+  }
+  return result;
+}
+console.log(calculate(3.2, '+', 8)); // 11.2, "3.2 + 8 = 11.2"
+console.log(calculate(3.2, '-', 8)); // -4.8, "3.2 - 8 = -4.8"
+console.log(calculate(3.2, '/', 8)); // 0.4, "3.2 / 8 = .4"
+console.log(calculate(3.2, '*', 8)); // 25.6, "3.2 * 8 = 25.6"
+console.log(calculate(-3, '+', 0)); // -3, "-3 + 0 = -3"
+console.log(calculate(-3, '-', 0)); // -3, "-3 - 0 = -3"
+console.log(calculate(-3, '/', 0)); // null, "-3 / 0 = null"
+console.log(calculate(-3, '*', 0)); // 0, "-3 * 0 = 0"
+console.log(calculate(-3, 'w', 0)); // null, "-3 w 0 = null"
+
+// # 186, Basic Calculator
+function calculate(n1, op, n2) {
+  if (n1 === 0 || n2 === 0 && op === '/') return null
+  else if (typeof n1 === 'number' && typeof n2 === 'number' && (op === '+' || op === '-' || op === '*' || op === '/')) return eval(n1 + op + n2);
+  else return null;
+}
+console.log(calculate(3.2, '+', 8)); // 11.2, "3.2 + 8 = 11.2"
+console.log(calculate(3.2, '-', 8)); // -4.8, "3.2 - 8 = -4.8"
+console.log(calculate(3.2, '/', 8)); // 0.4, "3.2 / 8 = .4"
+console.log(calculate(3.2, '*', 8)); // 25.6, "3.2 * 8 = 25.6"
+console.log(calculate(-3, '+', 0)); // -3, "-3 + 0 = -3"
+console.log(calculate(-3, '-', 0)); // -3, "-3 - 0 = -3"
+console.log(calculate(-3, '/', 0)); // null, "-3 / 0 = null"
+console.log(calculate(-3, '*', 0)); // 0, "-3 * 0 = 0"
+console.log(calculate(-3, 'w', 0)); // null, "-3 w 0 = null"
