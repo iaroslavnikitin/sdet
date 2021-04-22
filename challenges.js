@@ -261,7 +261,7 @@ function factorial(number) { // If num = 0 OR num = 1, the factorial will return
 }
 console.log(factorial(0)); // должна возвратить 1;
 console.log(factorial(1)); // должна возвратить 1;
-console.log(factorial(2)); // должна возвратить 2;
+console.log(factorial(2)); // должна возвратить 2; 
 console.log(factorial(4)); // должна возвратить 24;
 console.log(factorial(5)); // должна возвратить 120;
 
@@ -3382,3 +3382,187 @@ console.log(calculate(-3, '-', 0)); // -3, "-3 - 0 = -3"
 console.log(calculate(-3, '/', 0)); // null, "-3 / 0 = null"
 console.log(calculate(-3, '*', 0)); // 0, "-3 * 0 = 0"
 console.log(calculate(-3, 'w', 0)); // null, "-3 w 0 = null"
+
+// # 187, Power (do while)
+// The goal is to create a function 'numberToPower(number, power)' that "raises" the number up to power (ie multiplies number by itself power times).
+// Note: Math.pow and some other Math functions like eval() and ** can't be used.
+function numberToPower(number, power) {
+  let sum = 1;
+  do {
+    sum *= number;
+    power--;
+  } while (power >= 1)
+    return sum;
+}
+console.log(numberToPower(4, 2));  // 16
+console.log(numberToPower(10, 4)); // 10000
+console.log(numberToPower(10, 0)); // 1
+console.log(numberToPower(3, 2));  // 9 ( = 3 * 3 )
+console.log(numberToPower(2, 3));  // 8 ( = 2 * 2 * 2 )
+console.log(numberToPower(10, 6)); // 1000000
+
+// # 188, Power (for loop)
+// The goal is to create a function 'numberToPower(number, power)' that "raises" the number up to power (ie multiplies number by itself power times).
+// Note: Math.pow and some other Math functions like eval() and ** can't be used.
+function numberToPower(number, power) {
+  let sum = 1;
+  for (let i = 0; i < power; i++) {
+    sum *= number;
+  }
+  return sum;
+}
+console.log(numberToPower(4, 2));  // 16
+console.log(numberToPower(10, 4)); // 10000
+console.log(numberToPower(10, 0)); // 1
+console.log(numberToPower(3, 2));  // 9 ( = 3 * 3 )
+console.log(numberToPower(2, 3));  // 8 ( = 2 * 2 * 2 )
+console.log(numberToPower(10, 6)); // 1000000
+
+// # 189, Training JS #9: loop statement --while and do..while
+// Coding in function padIt, function accept 2 parameters:
+// str, it's a string representing the string to pad, we need pad some "*" at leftside or rightside of str
+// n, it's a number, how many times to pad the string.
+// Behaviour:
+// You need to write a loop statement within the function that loops n times. Each time through the loop it will add one * to str, alternating on which side it is padded:
+// the first time will add a * to the left side of str, the second time will add a * to the right side, and so on.
+// Finally, return the padded string.
+function padIt(str, n) {
+  let res = str, i = 0;
+  while (i < n) {
+    if (i % 2 === 0) res = `*${res}`;
+    else res = `${res}*`;
+    i += 1;
+  }
+  return res;
+}
+console.log(padIt("a", 1)); // "*a"
+console.log(padIt("a", 2)); // "*a*"
+console.log(padIt("a", 3)); // "**a*"
+console.log(padIt("a", 4)); // "**a**"
+console.log(padIt("a", 5)); // "***a**"
+
+// # 190, Training JS #9: loop statement --while and do..while
+// Coding in function padIt, function accept 2 parameters:
+// str, it's a string representing the string to pad, we need pad some "*" at leftside or rightside of str
+// n, it's a number, how many times to pad the string.
+// Behaviour:
+// You need to write a loop statement within the function that loops n times. Each time through the loop it will add one * to str, alternating on which side it is padded:
+// the first time will add a * to the left side of str, the second time will add a * to the right side, and so on.
+// Finally, return the padded string.
+function padIt(str, n) {
+  let count = 1;
+  while(count <= n) {
+    if(count % 2 != 0) str = '*' + str;
+    if(count % 2 == 0) str += '*';
+    count++;
+  }
+  return str;
+}
+console.log(padIt("a", 1)); // "*a"
+console.log(padIt("a", 2)); // "*a*"
+console.log(padIt("a", 3)); // "**a*"
+console.log(padIt("a", 4)); // "**a**"
+console.log(padIt("a", 5)); // "***a**"
+
+// # 191, Training JS #9: loop statement --while and do..while
+// Coding in function padIt, function accept 2 parameters:
+// str, it's a string representing the string to pad, we need pad some "*" at leftside or rightside of str
+// n, it's a number, how many times to pad the string.
+// Behaviour:
+// You need to write a loop statement within the function that loops n times. Each time through the loop it will add one * to str, alternating on which side it is padded:
+// the first time will add a * to the left side of str, the second time will add a * to the right side, and so on.
+// Finally, return the padded string.
+function padIt(str, n) {
+  let i = 0;
+  let result = [str];
+  while(n > i) {
+    if (i % 2 === 0) { result.unshift('* '); i++; }
+    else { result.push(' *'); i++; }
+  }
+  return result.join('');
+}
+console.log(padIt("a", 1)); // * a
+console.log(padIt("a", 2)); // * a *
+console.log(padIt("a", 3)); // * * a *
+console.log(padIt("a", 4)); // * * a * *
+console.log(padIt("a", 5)); // * * * a * *
+
+// # 192, Halving Sum
+// Given a positive integer n, calculate the following sum:
+// n + n/2 + n/4 + n/8 + ...
+// All elements of the sum are the results of integer division.
+const halvingSum = n => n === 0 ? n : n + halvingSum(Math.floor(n / 2));
+console.log(halvingSum(25));  // 47  (25 + 12 + 6 + 3 + 1 = 47)
+console.log(halvingSum(127)); // 247 (127 + 63 + 31 + 15 + 7 + 3 + 1 = 247)
+
+// # 193, Halving Sum
+// Given a positive integer n, calculate the following sum:
+// n + n/2 + n/4 + n/8 + ...
+// All elements of the sum are the results of integer division.
+function halvingSum(n) {
+  if (n === 0) return n;
+  return n + halvingSum(Math.floor(n / 2));
+}
+console.log(halvingSum(25));  // 47  (25 + 12 + 6 + 3 + 1 = 47)
+console.log(halvingSum(127)); // 247 (127 + 63 + 31 + 15 + 7 + 3 + 1 = 247)
+
+// # 194, Halving Sum (while loop)
+// Given a positive integer n, calculate the following sum:
+// n + n/2 + n/4 + n/8 + ...
+// All elements of the sum are the results of integer division.
+function halvingSum(n) {
+  let sum = 0;
+  while (n !== 0) {
+    sum += n;
+    n = Math.floor(n / 2);
+  }
+  return sum;
+}
+console.log(halvingSum(25));  // 47  (25 + 12 + 6 + 3 + 1 = 47)
+console.log(halvingSum(127)); // 247 (127 + 63 + 31 + 15 + 7 + 3 + 1 = 247)
+
+// # 195, Halving Sum (do while loop)
+// Given a positive integer n, calculate the following sum:
+// n + n/2 + n/4 + n/8 + ...
+// All elements of the sum are the results of integer division.
+function halvingSum(n) {
+  let sum = n, i = 1;
+  do {
+    i *= 2;
+    sum += Math.floor(n / i);
+  } while (Math.floor (n / i) > 1);
+  return sum;
+}
+console.log(halvingSum(25));  // 47  (25 + 12 + 6 + 3 + 1 = 47)
+console.log(halvingSum(127)); // 247 (127 + 63 + 31 + 15 + 7 + 3 + 1 = 247)
+
+// # 196, Halving Sum (for loop)
+// Given a positive integer n, calculate the following sum:
+// n + n/2 + n/4 + n/8 + ...
+// All elements of the sum are the results of integer division.
+function halvingSum(n) {
+  let sum = 1, i = 1;
+  do {
+    n /= 2;
+    sum += n + Math.floor(n);
+  } while (n > 1);
+  return Math.floor(sum);
+}
+console.log(halvingSum(25));  // 47  (25 + 12 + 6 + 3 + 1 = 47)
+console.log(halvingSum(127)); // 247 (127 + 63 + 31 + 15 + 7 + 3 + 1 = 247)
+
+// # 197, Halving Sum (for loop)
+// Given a positive integer n, calculate the following sum:
+// n + n/2 + n/4 + n/8 + ...
+// All elements of the sum are the results of integer division.
+function halvingSum(n) {
+  let sum = n;
+  for (let i = n; i > 1;) {
+    let div = Math.floor(i / 2);
+    sum += div;
+    i = div;
+  }
+  return sum;
+}
+console.log(halvingSum(25));  // 47  (25 + 12 + 6 + 3 + 1 = 47)
+console.log(halvingSum(127)); // 247 (127 + 63 + 31 + 15 + 7 + 3 + 1 = 247)
