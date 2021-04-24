@@ -3696,3 +3696,106 @@ function arrayOfDigits(n) {
 console.log(arrayOfDigits(123456)); // должна возвратить [6, 5, 4, 3, 2, 1]
 console.log(arrayOfDigits(1000));   // должна возвратить [0, 0, 0, 1]
 console.log(arrayOfDigits(1));      // должна возвратить [1]
+
+// # 204, Четные цифры числа
+// Дано целое положительное число. Получите массив, состоящий из четных цифр этого числа.
+// Напишите функцию с именем evenDigits, которая принимает в качестве аргумента число n и возвращает массив четных цифр. Если таких цифр в числе нет, возвратить пустой массив.
+// Запрещено использование методов строк и массивов. В решении используйте цикл do while. Порядок цифр в массиве должен совпадать с порядком цифр в исходном числе.
+function evenDigits(n) {
+  let obj = Object.assign([], n + '');
+  let objLen = obj.length;
+  let arr = [];
+  let i = 0;
+  do {
+    let val = obj[i];
+    if (obj[i] % 2 === 0) arr.push(Number(obj[i]));
+    i++;
+  } while (objLen > i);
+  return arr;
+}
+console.log(evenDigits(12345));  // должна возвратить [2, 4]
+console.log(evenDigits(110325)); // должна возвратить [0, 2]
+console.log(evenDigits(22222));  // должна возвратить [2, 2, 2, 2, 2]
+console.log(evenDigits(131));    // должна возвратить []
+
+// # 205, Вклад в банк (простой процент)
+// Вкладчик положил 1000 долларов в банк. Ежегодно эта сумма увеличивается на p (p > 0) процентов от начальной суммы вклада. Через сколько лет на счету будет 1500 долларов?
+// Напишите функцию с именем bankPercent, которая принимает число p (банковский процент) и вычисляет, через сколько лет на счету будет 1500 долларов.
+// В решении используйте цикл do while.
+function bankPercent(p) {
+  let money = 1000, store = 1, i = 0;
+  do {
+    store += money * p / 100;
+    i++;
+  } while (store <= 1500);
+  return Math.ceil(i / 3);
+}
+console.log(bankPercent(4));  // должна возвратить 13
+console.log(bankPercent(5));  // должна возвратить 10
+console.log(bankPercent(9));  // должна возвратить 6
+console.log(bankPercent(10)); // должна возвратить 5
+console.log(bankPercent(13)); // должна возвратить 4
+
+// # 206, Содержит ли число цифру "2"?
+// Дано целое положительное число. Определите, содержит ли данное число цифру "2".
+// Напишите функцию с именем doesNumberContain2, которая принимает в качестве аргумента число n и возвращает true, если число содержит цифру 2, и false - в противном случае.
+// Запрещено использование методов строк и массивов. В решении используйте цикл do while.
+function doesNumberContain2(n) {
+  let obj = Object.assign([], n+'');
+  let objLen = obj.length;
+  let arr = [];
+  let i = 0;
+  do {
+    let val = obj[i];
+    if (obj[i] === '2') arr.push(true);
+    i++;
+  } while (objLen > i);
+    return arr[0] === true ? true : false;
+}
+console.log(doesNumberContain2(1520));   // должна возвратить true
+console.log(doesNumberContain2(114876)); // должна возвратить false
+console.log(doesNumberContain2(22222));  // должна возвратить true
+
+// # 207, Определите, содержит ли массив заданное значение
+// Напишите функцию с именем isElementIncluded, которая принимает числовой массив arr и число x в качестве аргументов и возвращает true, если в массиве есть элемент x, и false в противном случае.
+// В решении необходимо использовать оператор break.
+function isElementIncluded(arr, x) {
+  for (let i = 0; i < arr.length; i++) {
+   if (arr[i] === x) {
+     return true;
+     break;
+   }
+  } return false;
+ }
+ console.log(isElementIncluded([10, 0, 4, 5, 9, 30], 0)); // должна возвратить true
+console.log(isElementIncluded([2, 1, -3, 1, 4, 3], 1));  // должна возвратить true
+console.log(isElementIncluded([2, 1, -3, -4, 3], 0));    // должна возвратить false
+
+// # 208, Определите, содержит ли массив заданное значение
+// Напишите функцию с именем isElementIncluded, которая принимает числовой массив arr и число x в качестве аргументов и возвращает true, если в массиве есть элемент x, и false в противном случае.
+// В решении необходимо использовать оператор break.
+function isElementIncluded(arr, x){
+  let i = 0;
+  for (el of arr) {
+    if (el === x)
+    break;
+  }
+  return  el === x;
+}
+console.log(isElementIncluded([10, 0, 4, 5, 9, 30], 0)); // должна возвратить true
+console.log(isElementIncluded([2, 1, -3, 1, 4, 3], 1));  // должна возвратить true
+console.log(isElementIncluded([2, 1, -3, -4, 3], 0));    // должна возвратить false
+
+// # 209, Определите, содержит ли массив заданное значение
+// Напишите функцию с именем isElementIncluded, которая принимает числовой массив arr и число x в качестве аргументов и возвращает true, если в массиве есть элемент x, и false в противном случае.
+function isElementIncluded(arr, x) {
+  let sum = [];
+  for (let i = 0; i < arr.length; i++) {
+    if (arr[i] === x) return true;
+    else sum.push(arr[i]);
+  }
+  return sum[0] === x ? true : false;
+}
+console.log(isElementIncluded([10, 0, 4, 5, 9, 30], 0)); // должна возвратить true
+console.log(isElementIncluded([2, 1, -3, 1, 4, 3], 1));  // должна возвратить true
+console.log(isElementIncluded([2, 1, -3, -4, 3], 0));    // должна возвратить false
