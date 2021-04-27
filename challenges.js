@@ -3799,3 +3799,119 @@ function isElementIncluded(arr, x) {
 console.log(isElementIncluded([10, 0, 4, 5, 9, 30], 0)); // должна возвратить true
 console.log(isElementIncluded([2, 1, -3, 1, 4, 3], 1));  // должна возвратить true
 console.log(isElementIncluded([2, 1, -3, -4, 3], 0));    // должна возвратить false
+
+// # 210, Получить массив из целых чисел от 1 до n, за исключением данного числа x
+// Напишите функцию с именем fillArray, которая принимает числа n (n >= 1) и x (1 <= x <= n) в качестве аргументов
+// и возвращает массив из целых чисел от 1 до n включительно, за исключением числа x.
+// В решении необходимо использовать оператор continue.
+function fillArray(n, x) {
+  let arr = [];
+  for (let i = 1; i <= n; i++) {
+    if (i === x) continue;
+    arr.push(i);
+  }
+  return arr;
+}
+console.log(fillArray(5, 2)); // должна возвратить [1, 3, 4, 5]; // числа от 1 до 5, за исключением числа 2.
+console.log(fillArray(10, 5)); // должна возвратить [1, 2, 3, 4, 6, 7, 8, 9, 10]; // числа от 1 до 10, за исключением числа 5.
+console.log(fillArray(3, 1)); // должна возвратить [2, 3]; // числа от 1 до 3, за исключением числа 1.
+console.log(fillArray(5, 5)); // должна возвратить [1, 2, 3, 4]; // числа от 1 до 5, за исключением числа 5.
+console.log(fillArray(1, 1)); // должна возвратить []; // числа от 1 до 1, за исключением числа 1, т.е. пустой массив
+
+// # 211, Найдите в массиве первый четный элемент и его индекс
+// Напишите функцию с именем firstEvenElement, которая принимает массив arr в качестве аргумента и возвращает первый четный элемент и его индекс в виде массива [element, index]. Если в массиве нет ни одного четного элемента, вернуть пустой массив [].
+// В решении необходимо использовать оператор break.
+function firstEvenElement(arr) {
+  let newArr = [];
+  for (let i = 0; i < arr.length; i++) {
+    if (arr[i] % 2 === 0) {
+      newArr.push(arr[i]);
+      newArr.push(i);
+      break;
+    }
+  }
+  return newArr;
+}
+console.log(firstEvenElement([9, 1, -3, -4, 12, 6])); // должна возвратить [-4, 3]
+console.log(firstEvenElement([1, 2, 3, 4, 9, 0]));    // должна возвратить [2, 1]
+console.log(firstEvenElement([2, 1, -3, 4, 3]));      // должна возвратить [2, 0]
+console.log(firstEvenElement([0, -5, 11]));           // должна возвратить [0, 0]
+console.log(firstEvenElement([13, 13, 0, -4, 9, 6])); // должна возвратить [0, 2]
+console.log(firstEvenElement([11, 0, -5]));           // должна возвратить [0, 1]
+console.log(firstEvenElement([9, 1, -3, 3, 11]));     // должна возвратить []
+
+// # 212, Найдите в массиве первый четный элемент и его индекс
+// Напишите функцию с именем firstEvenElement, которая принимает массив arr в качестве аргумента и возвращает первый четный элемент и его индекс в виде массива [element, index]. Если в массиве нет ни одного четного элемента, вернуть пустой массив [].
+// В решении необходимо использовать оператор break.
+function firstEvenElement(arr) {
+  let newArr = arr.find(el => el % 2 === 0), str = 'break';
+  let elemInd = (element) => (element % 2 === 0);
+  if (newArr % 2 === 0 || newArr === 0) return [newArr, arr.findIndex(elemInd)];
+  else return [];
+}
+console.log(firstEvenElement([9, 1, -3, -4, 12, 6])); // должна возвратить [-4, 3]
+console.log(firstEvenElement([1, 2, 3, 4, 9, 0]));    // должна возвратить [2, 1]
+console.log(firstEvenElement([2, 1, -3, 4, 3]));      // должна возвратить [2, 0]
+console.log(firstEvenElement([0, -5, 11]));           // должна возвратить [0, 0]
+console.log(firstEvenElement([13, 13, 0, -4, 9, 6])); // должна возвратить [0, 2]
+console.log(firstEvenElement([11, 0, -5]));           // должна возвратить [0, 1]
+console.log(firstEvenElement([9, 1, -3, 3, 11]));     // должна возвратить []
+
+// # 213, Получить массив из четных чисел от 2 до n, за исключением чисел, кратных 3.
+// Напишите функцию с именем fillArray, которая принимает число n (n >= 2) в качестве аргумента и возвращает массив из четных чисел от 2 до n,
+// за исключением чисел кратных 3. В решении необходимо использовать оператор continue.
+function fillArray(n) {
+  let arr = [];
+  for (let i = 1; i <= n; i++) {
+    if (i % 3 === 0) continue;
+    else if (i <= n && i % 2 === 0) arr.push(i);
+  }
+  return arr;
+}
+console.log(fillArray(10)); // должна возвратить [2, 4, 8, 10]; // четные числа от 2 до 10, за исключением числа 6 (6 кратно 3)
+console.log(fillArray(20)); // должна возвратить [2, 4, 8, 10, 14, 16, 20]; // четные числа от 2 до 20, за исключением чисел 6, 12, 18 (чисел, кратных 3)
+console.log(fillArray(7));  // должна возвратить [2, 4]; // четные числа от 2 до 7, за исключением числа 6
+console.log(fillArray(3));  // должна возвратить [2]; // четные числа от 1 до 3, за исключением числа 3
+console.log(fillArray(2));  // должна возвратить [2]
+
+// # 214, Содержит ли строка данный символ?
+// Напишите функцию с именем iSymbInString, которая принимает строку str и символ symb в качестве аргументов и возвращает true, если в строке встречается хотя бы один символ symb, и false в противном случае.
+// В решении необходимо использовать оператор break. Запрещено использование методов строк.
+// Указание. Пройдите циклом по строке, и если встретится искомый символ,
+// присвойте некоторой переменной значение true и выполните прерывание цикла.
+function iSymbInString(str, symb) {
+  let res = '';
+  for (let i = 0; i <= str.length; i++) {
+    if (str[i] === symb) {
+      res+=str[i];
+      break;
+    }
+  }
+  return res === symb ? true : false;
+}
+console.log(iSymbInString("abcd", "b"));                // должна возвратить true
+console.log(iSymbInString("abcd", "f"));                // должна возвратить false
+console.log(iSymbInString("newspaper", "s"));           // должна возвратить true
+console.log(iSymbInString("grandmother", "n"));         // должна возвратить true
+console.log(iSymbInString("incomprehensibility", "t")); // должна возвратить true
+
+// # 215, Содержит ли строка данный символ?
+// Напишите функцию с именем iSymbInString, которая принимает строку str и символ symb в качестве аргументов и возвращает true, если в строке встречается хотя бы один символ symb, и false в противном случае.
+// В решении необходимо использовать оператор break. Запрещено использование методов строк.
+// Указание. Пройдите циклом по строке, и если встретится искомый символ,
+// присвойте некоторой переменной значение true и выполните прерывание цикла.
+function iSymbInString(str, symb) {
+  let f = false;
+  for (el of str) {
+    if (el === symb) {
+      f = true;
+      break;
+    }
+  }
+  return f;
+}
+console.log(iSymbInString("abcd", "b"));                // должна возвратить true
+console.log(iSymbInString("abcd", "f"));                // должна возвратить false
+console.log(iSymbInString("newspaper", "s"));           // должна возвратить true
+console.log(iSymbInString("grandmother", "n"));         // должна возвратить true
+console.log(iSymbInString("incomprehensibility", "t")); // должна возвратить true
