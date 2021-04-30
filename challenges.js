@@ -2621,13 +2621,13 @@ function nextPrime(prime) {
   }
   return count;
 }
-console.log(nextPrime(0)); // 2
-console.log(nextPrime(1)); // 2
-console.log(nextPrime(2)); // 3
-console.log(nextPrime(3)); // 5
-console.log(nextPrime(5)); // 7
-console.log(nextPrime(11)); // 13
-console.log(nextPrime(17)); // 19
+console.log(nextPrime(0));    // 2
+console.log(nextPrime(1));    // 2
+console.log(nextPrime(2));    // 3
+console.log(nextPrime(3));    // 5
+console.log(nextPrime(5));    // 7
+console.log(nextPrime(11));   // 13
+console.log(nextPrime(17));   // 19
 console.log(nextPrime(2971)); // 2999
 
 // # 148, Next Prime
@@ -2643,13 +2643,63 @@ function nextPrime(n) {
   }
   return n;
 }
-console.log(nextPrime(0)); // 2
-console.log(nextPrime(1)); // 2
-console.log(nextPrime(2)); // 3
-console.log(nextPrime(3)); // 5
-console.log(nextPrime(5)); // 7
-console.log(nextPrime(11)); // 13
-console.log(nextPrime(17)); // 19
+console.log(nextPrime(0));    // 2
+console.log(nextPrime(1));    // 2
+console.log(nextPrime(2));    // 3
+console.log(nextPrime(3));    // 5
+console.log(nextPrime(5));    // 7
+console.log(nextPrime(11));   // 13
+console.log(nextPrime(17));   // 19
+console.log(nextPrime(2971)); // 2999
+
+// # 148-2, Next Prime
+// You will get a numbern (>= 0) and your task is to find the next prime number.
+// Make sure to optimize your code: there will numbers tested up to about 10^12.
+// Examples:
+// 5   =>  7
+// 12  =>  13
+function isPrime(n) {
+  if (n <= 1) return false;
+  for (let i = 2; i <= Math.round(n ** 0.5); i++) {
+    if (n % i === 0) return false;
+  }
+  return true;
+}
+function nextPrime(n) {
+  n++;
+  while (!isPrime(n)) {
+    n++;
+  }
+  return n;
+}
+console.log(nextPrime(0));    // 2
+console.log(nextPrime(1));    // 2
+console.log(nextPrime(2));    // 3
+console.log(nextPrime(3));    // 5
+console.log(nextPrime(5));    // 7
+console.log(nextPrime(11));   // 13
+console.log(nextPrime(17));   // 19
+console.log(nextPrime(2971)); // 2999
+
+// # 148-3, Next Prime
+// You will get a numbern (>= 0) and your task is to find the next prime number.
+// Make sure to optimize your code: there will numbers tested up to about 10^12.
+// Examples:
+// 5   =>  7
+// 12  =>  13
+let isPrime = num => {
+  for (let i = 2, s = Math.sqrt(num); i <= s; i++)
+    if (num % i === 0) return false;
+  return num > 1;
+}
+const nextPrime = n => isPrime(++n) ? n : nextPrime(n++);
+console.log(nextPrime(0));    // 2
+console.log(nextPrime(1));    // 2
+console.log(nextPrime(2));    // 3
+console.log(nextPrime(3));    // 5
+console.log(nextPrime(5));    // 7
+console.log(nextPrime(11));   // 13
+console.log(nextPrime(17));   // 19
 console.log(nextPrime(2971)); // 2999
 
 // # 149, The wheat/rice and chessboard problem
@@ -3915,3 +3965,74 @@ console.log(iSymbInString("abcd", "f"));                // должна возв
 console.log(iSymbInString("newspaper", "s"));           // должна возвратить true
 console.log(iSymbInString("grandmother", "n"));         // должна возвратить true
 console.log(iSymbInString("incomprehensibility", "t")); // должна возвратить true
+
+// # 216, Reverser
+// Impliment the reverse function, which takes in input n and reverses it. For instance, reverse(123) should return 321.
+// You should do this without converting the inputted number into a string.
+// // Please do not use
+// const forbidden = ", ', `, string, fixed, precision, .keys
+function reverse(n) {
+  let num = 0;
+  while (n > 0) {
+    let lastNum = n % 10;
+    num = num * 10 + lastNum;
+    n = Math.floor(n / 10);
+  }
+  return num;
+}
+console.log(reverse(1234));  // 4321
+console.log(reverse(10987)); // 78901
+console.log(reverse(1020));  // 201
+
+// # 217, Mythical Heads and Tails (programmatic solution)
+// You're in ancient Greece and giving Philoctetes a hand in preparing a training exercise for Hercules!
+// You've filled a pit with two different ferocious mythical creatures for Hercules to battle!
+// The formidable "Orthus" is a 2 headed dog with 1 tail. The mighty "Hydra" has 5 heads and 1 tail.
+// Before Hercules goes in, he asks you "How many of each beast am I up against!?"
+// You know the total number of heads and the total number of tails, that's the dangerous parts, right? But you didn't consider how many of each beast.
+// Task:
+// Given the number of heads and the number of tails, work out the number of each mythical beast!
+// The data is given as two parameters. Your answer should be returned as an array:
+//  VALID ->      [24 , 15]           INVALID ->  "No solutions"
+//             [Orthus, Hydra]
+function beasts(heads, tails){
+  for (let o = 0; o <= tails; o++) {
+    for (let h = 0; h <= tails; h++) {
+      if (o + h === tails && o * 2 + h * 5 === heads) return [o, h];
+    }
+  }
+  return 'No solutions';
+}
+console.log(beasts(123, 39));  // [24, 15]
+console.log(beasts(371, 88));  // [23, 65]
+console.log(beasts(24, 12));   // [12, 0]
+console.log(beasts(113, 37));  // [24, 13]
+console.log(beasts(635, 181)); // [90, 91]
+console.log(beasts(25, 555));  // "No solutions"
+console.log(beasts(12, 25));   // "No solutions"
+console.log(beasts(54, 956));  // "No solutions"
+
+// # 218, Mythical Heads and Tails (mathematical solution)
+// You're in ancient Greece and giving Philoctetes a hand in preparing a training exercise for Hercules!
+// You've filled a pit with two different ferocious mythical creatures for Hercules to battle!
+// The formidable "Orthus" is a 2 headed dog with 1 tail. The mighty "Hydra" has 5 heads and 1 tail.
+// Before Hercules goes in, he asks you "How many of each beast am I up against!?"
+// You know the total number of heads and the total number of tails, that's the dangerous parts, right? But you didn't consider how many of each beast.
+// Task:
+// Given the number of heads and the number of tails, work out the number of each mythical beast!
+// The data is given as two parameters. Your answer should be returned as an array:
+//  VALID ->      [24 , 15]           INVALID ->  "No solutions"
+//             [Orthus, Hydra]
+function beasts(heads, tails) {
+  let h = (heads - 2 * tails) / 3;
+  let o = tails - h;
+  return (o >= 0 && h >= 0 && h % 1 === 0 && o % 1 === 0) ? [o, h] : 'No solutions';
+}
+console.log(beasts(123, 39));  // [24, 15]
+console.log(beasts(371, 88));  // [23, 65]
+console.log(beasts(24, 12));   // [12, 0]
+console.log(beasts(113, 37));  // [24, 13]
+console.log(beasts(635, 181)); // [90, 91]
+console.log(beasts(25, 555));  // "No solutions"
+console.log(beasts(12, 25));   // "No solutions"
+console.log(beasts(54, 956));  // "No solutions"
