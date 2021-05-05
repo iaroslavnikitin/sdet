@@ -4036,3 +4036,122 @@ console.log(beasts(635, 181)); // [90, 91]
 console.log(beasts(25, 555));  // "No solutions"
 console.log(beasts(12, 25));   // "No solutions"
 console.log(beasts(54, 956));  // "No solutions"
+
+// # 219, Напечатать 5 раз символ *
+for (let i = 1; i <= 5; i++) {
+  console.log('*');
+}
+
+// # 220, Получить строку, которая состоит из 5 линий, содержащих *
+// "*
+// *
+// *
+// *
+// *"
+let s = '';
+for (let i = 1; i <= 5; i++) {
+  if (i < 5) {
+    s += '*' + '\n';
+  } else {
+    s += '*';
+  }
+}
+console.log(s);
+
+
+// # 220, Получить строку, которая состоит из 5 линий, содержащих *
+// "*
+// *
+// *
+// *
+// *"
+let s = '';
+for (let i = 1; i <= 5; i++) {
+  s += '*' + '\n';
+}
+s = s.trim(); //удаляет пробелы и пробельные символы в начале и конце строки
+console.log(s);
+
+
+// 221, Получить 4 строки по 7 звездочек
+// "*******
+// ******* 
+// *******
+// *******"
+let s = '';
+for (let j = 1; j <= 4; j++) {
+  for (let i = 1; i <= 7; i++) {
+    s += '* '
+  }
+  s += "\n"
+}
+s = s.trim();
+console.log(s);
+
+// 222, Получить 4 строки с номером каждой строки
+// '1 1 1 1 1
+// 2 2 2 2 2
+// 3 3 3 3 3
+// 4 4 4 4 4'
+let s = '';
+for (let i = 1; i <= 4; i++) {
+  s += (String(i) + ' ').repeat(5).trim() + "\n";
+}
+s = s.trim()
+console.log(s);
+
+// 223, Получить n строк по k чисел в строке
+function table(n, k) {
+  let s = '';
+  for (let i = 1; i <= n; i++) {
+    s += (i + ' ').repeat(k).trim() + '\n';
+  }
+  s = s.trim();
+  return s;
+}
+console.log(table(3, 10));
+
+// 224, Рисуем треугольник
+// *
+// * *
+// * * *
+// * * * *
+function triangle(n) {
+  let s = '';
+  for (let i = 1; i <= n; i++) {
+    s += '*'.repeat(i) + "\n";
+  }
+  return s.trim();
+}
+console.log(triangle(9));
+
+// 225, Рисуем перевёрнутый треугольник
+// * * * * *
+// * * * *
+// * * *
+// * *
+// *
+function reverseTriangle(n) {
+  let s = '';
+  for (let i = n; i >= 1; i--) {
+    s += "* ".repeat(i).trim() + '\n';
+  }
+  return s.trim()
+}
+console.log(reverseTriangle(5));
+  
+// 226, Рисуем ёлочку
+//    *  
+//   ***  
+//  *****
+//    |  
+function tree(n) {
+  let width = n * 2 - 1;
+  let s = '';
+  for (let i = 1; i <= width; i += 2) {
+    let countSpaces = (width - i) / 2;
+    s += ' '.repeat(countSpaces) + '*'.repeat(i) + ' '.repeat(countSpaces) + '\n';
+  }
+  return s.trimEnd();
+}
+console.log(tree(9));
