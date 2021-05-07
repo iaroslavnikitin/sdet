@@ -4261,3 +4261,41 @@ console.log(findNextSquare(319225));      // 320356, "Wrong output for 319225"
 console.log(findNextSquare(15241383936)); // 15241630849, "Wrong output for 15241383936"
 console.log(findNextSquare(155));         // -1, "Wrong output for 155"
 console.log(findNextSquare(342786627));   // -1, "Wrong output for 342786627"
+
+// # 233, вложенные циклы, нарисовать звёздочками квадрат
+// *  *  *  *  
+// *  *  *  *  
+// *  *  *  *  
+// *  *  *  *  
+let sq = '';
+for (let i = 0; i < 4; i++) {
+  for (let j = 0; j < 4; j++) sq += '*  ';
+  sq += '\n';
+}
+console.log(sq);
+
+// # 234, вложенные циклы, нарисовать звёздочками треугольник
+let sq = '';
+for (let i = 0; i < 5; i++) {
+  for (let j = 0; j <= i; j++) sq += '* ';
+  sq += '\n';
+}
+console.log(sq);
+
+// # 235, switch cases
+let favColor = 'red';
+switch (favColor) {
+    case 'blue' : console.log('Violets are blue'); break;
+    case 'red' : console.log('Roses are red'); break;
+    default : console.log('Sugar is sweet'); break;
+} // Roses are red
+
+// # 236, basic if else conditions
+let pay = prompt('the amount you\'re paying?');
+let owe = prompt('how much we owe you?');
+function task(pay, owe) {
+  if (pay === owe) return `You gave the exact amount.`;
+  else if (pay > owe) return `You gave too much. Your change due is $${pay - owe}.`;
+  else if (pay < owe) return 'You gave too little. You still owe $' + Math.abs(owe - pay) + '.';
+}
+console.log(task(pay, owe)); // "You gave too little. You still owe $***."
