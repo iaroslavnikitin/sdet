@@ -4153,3 +4153,111 @@ function tree(n) {
   return s.trimEnd();
 }
 console.log(tree(9));
+
+// # 227, Filter the number
+// Oh no! The number has been mixed up with the text. Your goal is to retreive the number from the text, can you return the number back to it's original state?
+// Task: Your task is to return a number from a string.
+// Details: You will be given a string of numbers and letters mixed up, you have to return all the numbers in that string in the order they occur.
+var FilterString = function(value) {
+  let nums = '';
+  for (let el of value) {
+    if (!isNaN(el)) nums+=el;
+  }
+  return +nums;
+}
+console.log(FilterString("123"));          // 123, 'Just return the numbers'
+console.log(FilterString("a1b2c3"));       // 123, 'Just return the numbers'
+console.log(FilterString("aa1bb2cc3dd"));  // 123, 'Just return the numbers'
+
+// # 228, Tortoise racing (https://www.codewars.com/kata/55e2adece53b4cdcb900006c/train/javascript)
+function race(v1, v2, g) {
+  if (v1 >= v2) return null;
+  let time = (g / (v2 - v1)) * 3600; // умножили, чтобы получить секунды
+  let hours = Math.trunc(time / 3600);
+  let mins = Math.trunc((time % 3600) / 60);
+  let secs = Math.trunc(time % 60);
+  return [hours, mins, secs];
+}
+console.log(race(720, 850, 70)); // [0, 32, 18]
+console.log(race(80, 91, 37));   // [3, 21, 49]
+console.log(race(80, 100, 40));  // [2, 0, 0]
+
+// # 229, Boiled Eggs
+// You are the greatest chef on earth. No one boils eggs like you! Your restaurant is always full of guests, who love your boiled eggs.
+// But when there is a greater order of boiled eggs, you need some time, because you have only one pot for your job. How much time do you need?
+// Your Task
+// Implement a function, which takes a non-negative integer, representing the number of eggs to boil. It must return the time in minutes (integer), which it takes to have all the eggs boiled.
+// Rules
+// you can put at most 8 eggs into the pot at once
+// it takes 5 minutes to boil an egg
+// we assume, that the water is boiling all the time (no time to heat up)
+// for simplicity we also don't consider the time it takes to put eggs into the pot or get them out of it
+const cookingTime = eggs => Math.ceil(eggs / 8) * 5;
+console.log(cookingTime(0));  // 0, '0 eggs'
+console.log(cookingTime(5));  // 5, '5 eggs'
+console.log(cookingTime(10)); // 10, '10 eggs'
+
+// # 230, You're a square! (https://www.codewars.com/kata/54c27a33fb7da0db0100040e/train/javascript)
+// A square of squares
+// You like building blocks. You especially like building blocks that are squares. And what you even like more, is to arrange them into a square of square building blocks!
+// However, sometimes, you can't arrange them into a square. Instead, you end up with an ordinary rectangle! Those blasted things! If you just had a way to know, whether you're currently working in vain… Wait!
+// That's it! You just have to check if your number of building blocks is a perfect square.
+// Task: Given an integral number, determine if it's a square number:
+// In mathematics, a square number or perfect square is an integer that is the square of an integer; in other words, it is the product of some integer with itself.
+// The tests will always use some integral number, so don't worry about that in dynamic typed languages.
+var isSquare = n => Math.sqrt(n) % 1 === 0;
+console.log(isSquare(-1)); // false, "-1: Negative numbers cannot be square numbers"
+console.log(isSquare( 0)); // true, "0 is a square number (0 * 0)"
+console.log(isSquare( 3)); // false, "3 is not a square number"
+console.log(isSquare( 4)); // true, "4 is a square number (2 * 2)"
+console.log(isSquare(25)); // true, "25 is a square number (5 * 5)"
+console.log(isSquare(26)); // false, "26 is not a square number"
+
+// # 231, Area of a Circle
+// omplete the function circleArea so that it will return the area of a circle with the given radius.
+// Round the returned number to two decimal places (except for Haskell). If the radius is not positive or not a number, return false.
+let circleArea = function(radius) {
+  if (radius <= 0 || typeof(radius) !== 'number') return false;
+  return +(Math.PI * radius ** 2).toFixed(2);
+}
+console.log(circleArea(-1485.86));    //returns false
+console.log(circleArea(0));           //returns false
+console.log(circleArea(43.2673));     //returns 5881.25
+console.log(circleArea(68));          //returns 14526.72
+console.log(circleArea("number"));    //returns false
+
+// рандомные числа в заданном диапазоне
+console.log(Math.trunc(Math.random() * 10)); // случайное число от 0 до 9, преобразованное в целое число
+console.log(Math.trunc(Math.random() * 100)); // случайное число от 0 до 99, преобразованное в целое число
+console.log(Math.trunc(Math.random() * 10) + 1); // случайное число от 1 до 10, преобразованное в целое число
+console.log(Math.trunc(Math.random() * 6 + 5)); // случайное число от 5 до 10, преобразованное в целое число
+
+// рандомные числа в диапазоне от 20 до 30
+let min = 20;
+let max = 30;
+console.log(Math.trunc(Math.random() * (max - min + 1) + min));
+//
+
+// # 232, бесконечный цикл, который остановится на 100
+while (true) {
+  let n = Math.trunc(Math.random() * 100) + 1;
+  console.log(n);
+  if (n === 100) break;
+}
+
+// # 232, Find the next perfect square!
+// You might know some pretty large perfect squares. But what about the NEXT one?
+// Complete the findNextSquare method that finds the next integral perfect square after the one passed as a parameter.
+// Recall that an integral perfect square is an integer n such that sqrt(n) is also an integer.
+// If the parameter is itself not a perfect square then -1 should be returned. You may assume the parameter is non-negative.
+// Examples:
+// findNextSquare(121) --> returns 144
+// findNextSquare(625) --> returns 676
+// findNextSquare(114) --> returns -1 since 114 is not a perfect
+const findNextSquare = sq => Math.sqrt(sq) % 1 === 0 ? (Math.sqrt(sq) + 1) ** 2 : -1;
+console.log(findNextSquare(121));         // 144, "Wrong output for 121"
+console.log(findNextSquare(625));         // 676, "Wrong output for 625"
+console.log(findNextSquare(319225));      // 320356, "Wrong output for 319225"
+console.log(findNextSquare(15241383936)); // 15241630849, "Wrong output for 15241383936"
+console.log(findNextSquare(155));         // -1, "Wrong output for 155"
+console.log(findNextSquare(342786627));   // -1, "Wrong output for 342786627"
