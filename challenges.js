@@ -4086,7 +4086,7 @@ for (let j = 1; j <= 4; j++) {
 s = s.trim();
 console.log(s);
 
-// 222, Получить 4 строки с номером каждой строки
+// 222, Получить 4 строки с номером каждой строки (table of numbers)
 // '1 1 1 1 1
 // 2 2 2 2 2
 // 3 3 3 3 3
@@ -4097,6 +4097,25 @@ for (let i = 1; i <= 4; i++) {
 }
 s = s.trim()
 console.log(s);
+
+// 222.2, Получить 4 строки с номером каждой строки (table of numbers)
+// '1 1 1 1 1
+// 2 2 2 2 2
+// 3 3 3 3 3
+// 4 4 4 4 4'
+function numericalTable(n) {
+  let str = '';
+  for (let i = 1; i <= n; i++) {
+    for (let j = 1; j <= 5; j++) {
+      str = str + i + ' ';
+    }
+    str = str.trim() + '\n';
+  }
+  return str.trim();
+}
+console.log(numericalTable(1)); // должна возвратить: "1 1 1 1 1"
+console.log(numericalTable(3)); // должна возвратить: "1 1 1 1 1\n2 2 2 2 2\n3 3 3 3 3"
+console.log(numericalTable(0)); // должна возвратить: ""
 
 // 223, Получить n строк по k чисел в строке
 function table(n, k) {
@@ -4275,12 +4294,30 @@ for (let i = 0; i < 4; i++) {
 console.log(sq);
 
 // # 234, вложенные циклы, нарисовать звёздочками треугольник
+// *
+// * *
+// * * *
 let sq = '';
 for (let i = 0; i < 5; i++) {
   for (let j = 0; j <= i; j++) sq += '* ';
   sq += '\n';
 }
 console.log(sq);
+
+// # 234.2, вложенные циклы, нарисовать треугольник соответствующими цифрами
+// "1
+// 2 2
+// 3 3 3"
+function numericalTriangle(n) {
+  let x = '';
+  for (let i = 1; i <= n; i++) {
+      x += (String(i) + ' ').repeat(i).trim() + '\n';
+  }
+  x = x.trim();
+  return x;
+}
+console.log(numericalTriangle(1)); // должна возвратить: "1"
+console.log(numericalTriangle(3)); // должна возвратить: "1\n2 2\n3 3 3"
 
 // # 235, switch cases
 let favColor = 'red';
@@ -4299,3 +4336,42 @@ function task(pay, owe) {
   else if (pay < owe) return 'You gave too little. You still owe $' + Math.abs(owe - pay) + '.';
 }
 console.log(task(pay, owe)); // "You gave too little. You still owe $***."
+
+// # 236, Суммы элементов в двухмерном массиве (reduce method)
+// Напишите функцию с именем sumsInArray, которая принимает двухмерный массив arr в качестве аргумента и возвращает массив, содержащий суммы элементов вложенных массивов.
+const sumsInArray = arr => arr.map(array => array.reduce((sum, item) => sum += item, 0));
+console.log(sumsInArray([[1, 2], [2, -3, 1, 1], [3, 5, 10], [3, 7]])); // должна возвратить [3, 1, 18, 10]
+console.log(sumsInArray([[1, 0, 0], [2, 2]])); // должна возвратить [1, 4]
+console.log(sumsInArray([[], [2, 2], [0]])); // должна возвратить [0, 4, 0]
+
+// # 237, Суммы элементов в двухмерном массиве (for loop)
+// Напишите функцию с именем sumsInArray, которая принимает двухмерный массив arr в качестве аргумента и возвращает массив, содержащий суммы элементов вложенных массивов.
+function sumsInArray(arr) {
+  let res = [];
+  for (let i = 0; i < arr.length; i++) {
+    let sum = 0;
+    for (let j = 0; j < arr[i].length; j++) sum += arr[i][j];
+    res[i] = sum;
+  }
+  return res;
+}
+console.log(sumsInArray([[1, 2], [2, -3, 1, 1], [3, 5, 10], [3, 7]])); // должна возвратить [3, 1, 18, 10]
+console.log(sumsInArray([[1, 0, 0], [2, 2]])); // должна возвратить [1, 4]
+console.log(sumsInArray([[], [2, 2], [0]])); // должна возвратить [0, 4, 0]
+
+// # 238, Суммы элементов в двухмерном массиве (for of)
+// Напишите функцию с именем sumsInArray, которая принимает двухмерный массив arr в качестве аргумента и возвращает массив, содержащий суммы элементов вложенных массивов.
+function sumsInArray(array) {
+  let sumArr = [];
+  for (let arr of array) {
+    let sum = 0;
+    for (let el of arr) {
+      sum = sum + el;
+    }
+    sumArr.push(sum);
+  }
+  return sumArr;
+}
+console.log(sumsInArray([[1, 2], [2, -3, 1, 1], [3, 5, 10], [3, 7]])); // должна возвратить [3, 1, 18, 10]
+console.log(sumsInArray([[1, 0, 0], [2, 2]])); // должна возвратить [1, 4]
+console.log(sumsInArray([[], [2, 2], [0]])); // должна возвратить [0, 4, 0]
